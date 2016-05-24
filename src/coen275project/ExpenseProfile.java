@@ -1,5 +1,13 @@
 package coen275project;
 
-public class ExpenseProfile {
+import java.util.*;
 
+public class ExpenseProfile {
+    List<ExpenseRecord> explist = new ArrayList<>();
+    
+    public void addExpenseRecord(ExpenseRecord er) {
+    	explist.add(er);
+    	
+    }
+    
 }
