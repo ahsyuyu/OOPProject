@@ -1,11 +1,38 @@
 package coen275project;
 
-public class User {
+import java.util.*;
+import java.io.Serializable;
+
+public class User implements Serializable {
     private String name;
     private int id;
     private Card card;
-    private ExpenseProfile expenseProfile;
-    private DietaryProfile dietaryProfile;
+    private ExpenseProfile expenseProfile = new ExpenseProfile();
+    private DietaryProfile dietaryProfile = new DietaryProfile();
+    
+    /*----------------------about dependents---------*/
+    private HashMap<Integer, User> dependentMap = null;        ///*********
+    
+    public void addDependent(User dependent) {
+    	dependent.card = this.card;
+    	int extensionNumber = 55;        //Math.random(5-0+1) + 1;
+    	dependentMap.put(extensionNumber, dependent);
+    }
+    
+    /*public void deleteDependent(User dependent) {
+    	
+    }*/
+    
+    /*-------------------------end of dependents----------------*/
+    
+    
+    
+    public User(String name, int id, Card card) {
+    	this.name = name;
+    	this.id = id;
+    	this.card = card;
+    }
+    
 	public String getName() {
 		return name;
 	}

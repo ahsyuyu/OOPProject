@@ -1,6 +1,5 @@
 package coen275project;
 
-
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -12,6 +11,7 @@ public class ExpenseProfile {
 	private double expense;			// total expense in the period
 	private String firstDay;		// firstDay of this month
     private List<ExpenseRecord> expenseRecordList = new ArrayList<>();	//expenseList of this month
+
     
     public ExpenseProfile() {
     	this.cardNumber = null;

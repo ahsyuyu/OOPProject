@@ -26,7 +26,7 @@ public class ExpenseRecord implements Serializable{
 	public ExpenseRecord(double expense, String date) {
 		this.expense = expense;
 		SimpleDateFormat dt = new SimpleDateFormat("yyyyy-mm-dd"); 
-		this.date = date;
+		this.date = date;   
 	}
 	
 	public String getDate() {
