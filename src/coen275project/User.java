@@ -5,33 +5,44 @@ import java.io.Serializable;
 
 public class User implements Serializable {
     private String name;
-    private int id;
     private Card card;
     private ExpenseProfile expenseProfile = new ExpenseProfile();
     private DietaryProfile dietaryProfile = new DietaryProfile();
     
-    /*----------------------about dependents---------*/
-    private HashMap<Integer, User> dependentMap = null;        ///*********
+    /*----------------------about dependents----------------------*/
+    private int extensionNumber = 0;     // the extensionNumber is 0 for parents, and is a 2-digit number for children
+    private int extensionStart = 10;     
+    private int extensionEnd = 10;       // extensionEnd starts at 10, and increase by 1 when 1 dependent is added
+    // the total number of dependents is "extensionEnd - extensionStart"
     
-    public void addDependent(User dependent) {
+    private HashMap<Integer, User> dependentMap = new HashMap<Integer, User>();    // initialize the dependentMap
+    
+    public void addDependent(User dependent) {          
     	dependent.card = this.card;
-    	int extensionNumber = 55;        //Math.random(5-0+1) + 1;
-    	dependentMap.put(extensionNumber, dependent);
+    	dependent.extensionNumber = extensionEnd++;
+    	dependentMap.put(dependent.extensionNumber, dependent);       // add the dependent to the dependentMap
     }
     
-    /*public void deleteDependent(User dependent) {
-    	
-    }*/
+    public void deleteDependent(User dependent) {
+    	dependentMap.remove(dependent.extensionNumber);
+    }
     
+    public User findDependent(int extensionNumber) {          // use extensionNumber to find the dependent user
+    	return dependentMap.get(extensionNumber);
+    }
+    
+    public Collection<User> getDependents() {                // return the collection of the dependents
+    	return dependentMap.values();
+    }
     /*-------------------------end of dependents----------------*/
     
     
-    
-    public User(String name, int id, Card card) {
+    // constructor
+    public User(String name, Card card) {
     	this.name = name;
-    	this.id = id;
     	this.card = card;
     }
+    
     
 	public String getName() {
 		return name;
@@ -39,12 +50,7 @@ public class User implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+
 	public Card getCard() {
 		return card;
 	}

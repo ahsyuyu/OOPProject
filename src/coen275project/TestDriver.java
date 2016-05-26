@@ -4,7 +4,7 @@ import java.util.*;
 
 public class TestDriver {
 	public static void main(String[] args) {
-		System.out.println("test");
+		System.out.println("This is a test");
 		
 		/***************************create FoodStores and FoodStoreList**************/
 		/*FoodStore foodstore1 = new FoodStore("The White Elephant", 1, "1190 Lexington St, Santa Clara");
@@ -17,22 +17,31 @@ public class TestDriver {
 	    foodstorelist.addFoodStore(foodstore3);*/
 	    
 	    
-	    /****************************create User and Card***************************/
-	    /*Card card1 = new Card(1111, "aaaa");
-	    User user1 = new User("Alice", 1, card1);*/
+	    /****************************Lifen: create User and Card***************************/
+	    Card card1 = new Card(1111, "aaaa");
+	    User user1 = new User("Alice", card1);
+	    User user11 = new User("Lili", null);
+	    user1.addDependent(user11);
 	    
-	    
+	    //System.out.println(user1.getCard() == user11.getCard());     // true
+        /*user1.getCard().deductMoney(20.0f);     // this is in the same one thread
+        user11.getCard().deductMoney(15.5f);*/
+       
+        /* test with TestThread class as defined below */
+	    TestThread t1 = new TestThread(user1);
+	    TestThread t2 = new TestThread(user11);
 	    
 	    /************Lifen: test card with multiThread, use class TestThread and TestThread2 as below***************/
-	    Card card = new Card(1111, "aaaa");
+	    /*Card card = new Card(1111, "aaaa");
 	    //Card card1 = new Card(2222, "bbbb");
 	    TestThread t1 = new TestThread(card);
-	    TestThread2 t2 = new TestThread2(card);
+	    TestThread2 t2 = new TestThread2(card);*/
 	    
 	}
 
 }
 
+// Lifen:  use to test multiThread
 class TestThread implements Runnable {
 	Card card;
 	Thread t;
@@ -43,10 +52,15 @@ class TestThread implements Runnable {
 		t.start();
 	}
 	
+	public TestThread(User user) {
+		this.card = user.getCard();
+		t = new Thread(this);
+		t.start();
+	}
+	
 	public void run() {
 		card.deductMoney(20.0f);
 	}
-
 }
 
 class TestThread2 implements Runnable {
@@ -62,5 +76,4 @@ class TestThread2 implements Runnable {
 	public void run() {
 		card.deductMoney(15.0f);
 	}
-
 }
