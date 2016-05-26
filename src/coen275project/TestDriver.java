@@ -28,7 +28,7 @@ public class TestDriver {
 	    //Card card1 = new Card(2222, "bbbb");
 	    TestThread t1 = new TestThread(card);
 	    TestThread2 t2 = new TestThread2(card);
-	    
+
 	}
 
 }
