@@ -1,6 +1,8 @@
 package coen275project;
 
-public class Card {
+import java.io.Serializable;
+
+public class Card implements Serializable {
     private int cardNumber;
     private String password;
     private float totalBalance = 100.5F;     //****
