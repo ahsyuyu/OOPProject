@@ -10,13 +10,16 @@ public class ExpenseRecord implements Serializable{
 
 	String date;
 	double expense;
+	String userName;				// record user name
+	String storeName;				// record store name
 
-	public ExpenseRecord(double expense) {
+	public ExpenseRecord(double expense, String userName, String storeName) {
 		this.expense = expense;
+		this.userName = userName;
+		this.storeName = storeName;
 		SimpleDateFormat dt = new SimpleDateFormat("YYYY-MM-dd"); 
 		date = dt.format(new Date());
 		//date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-		
 	}
 	
 	// used for test
@@ -34,19 +37,27 @@ public class ExpenseRecord implements Serializable{
 		return expense;
 	}
 	
+	public String getUserName() {
+		return userName;
+	}
+
+	public String getStoreName() {
+		return storeName;
+	}
+
+	
 	public void setExpense(double expense) {
 		this.expense = expense;
 	}
 	
 	public String toString() {
-		String s = date + ": ";
-		s += expense;
+		String s = userName + ": " + date + ": " + expense + ": " + storeName + "\n";
 		return s;
 	}
 	
 	public static void main(String[] args) {
 
-		ExpenseRecord expenseRecord = new ExpenseRecord(1);
+		ExpenseRecord expenseRecord = new ExpenseRecord(1, "2016-05-23");
 		ExpenseRecord expenseRecord1 = new ExpenseRecord(2, "2016-05-23");
 		ExpenseRecord expenseRecord2 = new ExpenseRecord(3, "2016-05-24");
 		
