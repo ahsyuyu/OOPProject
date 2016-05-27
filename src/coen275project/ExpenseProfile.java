@@ -5,16 +5,17 @@ import java.util.*;
 
 
 public class ExpenseProfile {
-	private String cardNumber; 		// need a cardnumber to serialization
-	private double currentFund;		// expense limitation this month
-	private double nextFund;		// expense limitation next month
-	private double expense;			// total expense in the period
+	private int cardNumber; 		// need a cardnumber to serialization
+	private String userName;
+	private float currentFund;		// expense limitation this month
+	private float nextFund;		// expense limitation next month
+	private float expense;			// total expense in the period
 	private String firstDay;		// firstDay of this month
     private List<ExpenseRecord> expenseRecordList = new ArrayList<>();	//expenseList of this month
 
     
     public ExpenseProfile() {
-    	this.cardNumber = null;
+    	this.cardNumber = 0;
     	this.currentFund = 0;
     	this.nextFund = 0;
     	this.expense = 0;
@@ -23,8 +24,9 @@ public class ExpenseProfile {
     }
     
     // for program initialization
-    public ExpenseProfile(String cardNumber, double currentFund, double nextFund, double expense, String firstDay, List<ExpenseRecord> expenseRecordList ) {
+    public ExpenseProfile(int cardNumber, String userName, float currentFund, float nextFund, float expense, String firstDay, List<ExpenseRecord> expenseRecordList ) {
     	this.cardNumber = cardNumber;
+    	this.userName = userName;
     	this.currentFund = currentFund;
     	this.nextFund = nextFund;
     	this.expense = expense;
@@ -32,10 +34,7 @@ public class ExpenseProfile {
     	this.expenseRecordList = expenseRecordList;
     }
     
-	// user buy item
-    public void addExpenseRecord(ExpenseRecord er) {
-    	expenseRecordList.add(er);
-    }
+
     
     // when second period begin
     public void reset () {
@@ -43,23 +42,33 @@ public class ExpenseProfile {
     	nextFund = 0;
     	expense = 0;
     	firstDay = new SimpleDateFormat("YYYY-MM-dd").format(new Date());
-    	expenseRecordList = null;
+    	expenseRecordList = new ArrayList<>();
     	
     }
     
-    public String getCardNumber() {
+    // modify fund of next month
+    public void setNextFund(float fund) {
+    	this.nextFund = fund;	
+    }
+    
+	// user buy item
+    public void addExpenseRecord(ExpenseRecord er) {
+    	expenseRecordList.add(er);
+    }
+    
+    public int getCardNumber() {
     	return cardNumber;
     }
     
-    public double getCurrentFund() {
+    public float getCurrentFund() {
     	return currentFund;
     }
     
-    public double getExpense() {
+    public float getExpense() {
     	return expense;
     }
     
-    public double getNextFund() {
+    public float getNextFund() {
     	return nextFund;
     }
     
@@ -71,15 +80,17 @@ public class ExpenseProfile {
     	return firstDay;
     }
     
-    public void setCurrentFund(double fund) {
+    public String getUserName() {
+		return userName;
+	}
+    
+    public void setCurrentFund(float fund) {
     	this.currentFund = fund;
     }
-    // modify fund of next month
-    public void setNextFund(double fund) {
-    	this.nextFund = fund;	
-    }
     
-    public void setExpense(double expense) {
+
+    
+    public void setExpense(float expense) {
     	this.expense = expense;
     }
     
@@ -91,6 +102,10 @@ public class ExpenseProfile {
     	this.expenseRecordList = list;
     }
     
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
     
     @Override
     public String toString() {
@@ -102,6 +117,8 @@ public class ExpenseProfile {
     	return s;
     	
     }
+
+	
     
     
 }

@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Card implements Serializable {
     private int cardNumber;
     private String password;
-    private float totalBalance = 100.5F;     //****
+    private float totalBalance = 5000.0F;     //****
     
     public Card(int cardNumber, String password) {
     	this.cardNumber = cardNumber;
@@ -25,8 +25,14 @@ public class Card implements Serializable {
 		this.password = password;
 	}
     
-	synchronized void deductMoney(float expense) {    //****  update after purchase 
+	public void deductMoney(float expense) {   //synchronized //****  update after purchase   // 
+		
 		System.out.print("( before deduct is " + this.totalBalance);
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		this.totalBalance -= expense;    // this is not atomic step
 		System.out.println(", after deduct is " + this.totalBalance + ")");
 	}

@@ -7,27 +7,27 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 public class Serialization{
-	public static void serialize(ExpenseRecordList expenseRecordList, String filename) {
+	public static void serialize(ExpenseProfile expenseProfile, String filename) {
 		FileOutputStream fout = null;
 		ObjectOutputStream out = null;
 		try {
 			fout = new FileOutputStream(filename);
 			out = new ObjectOutputStream(fout);
-			out.writeObject(expenseRecordList);
+			out.writeObject(expenseProfile);
 			out.close();
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
 	}
 
-	public static ExpenseRecordList deSerialize(String filename) {
-		ExpenseRecordList transOb = null;
+	public static ExpenseProfile deSerialize(String filename) {
+		ExpenseProfile transOb = null;
 		FileInputStream fis = null;
 		ObjectInputStream fin = null;
 		try {
 			fis = new FileInputStream(filename);
 			fin = new ObjectInputStream(fis);
-			transOb = (ExpenseRecordList) fin.readObject();
+			transOb = (ExpenseProfile) fin.readObject();
 			fin.close();
 		} catch (IOException ex) {
 			ex.printStackTrace();
