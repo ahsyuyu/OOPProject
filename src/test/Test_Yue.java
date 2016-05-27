@@ -27,7 +27,7 @@ public class Test_Yue {
 		r = new ExpenseRecord(4, "June", "Cafe2");
 		list.add(r);
 
-		ExpenseProfile expenseProfile = new ExpenseProfile(card.getCardNumber(), "June", );
+		//ExpenseProfile expenseProfile = new ExpenseProfile(card.getCardNumber(), "June", );
 				
 		
 		// create a user
