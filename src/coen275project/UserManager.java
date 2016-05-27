@@ -1,8 +1,8 @@
-package multiThreadTest;
+package coen275project;
 
 import coen275project.*;
 
-public class Lifen_UserManager {
+public class UserManager {
     private static User user1;
     private static User user11;
     

@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 import coen275project.User;
+import coen275project.UserManager;
 
 /**
  * @author Lifen
@@ -21,7 +22,7 @@ import coen275project.User;
  * When buttons "parent" or "child" is clicked, a new thread is created separately, and go to deductMonday()
  */
 
-public class TestGUI_multiThread_Lifen {
+public class GUITest_plain {
 	private static JButton btnParent = new JButton("parent");
 	private static JButton btnChild = new JButton("child");
 
@@ -37,14 +38,14 @@ public class TestGUI_multiThread_Lifen {
 		c.add(panel,BorderLayout.CENTER);
 		
 		/********create a family************/
-		Lifen_UserManager.createTestFamily();   
+		UserManager.createTestFamily();   
 
 		/*******add ActionListener*****/
 		btnParent.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event){
 				Thread aWorker = new Thread() {
 					public void run(){ 
-						User parent = Lifen_UserManager.getParent();
+						User parent = UserManager.getParent();
 						parent.getCard().deductMoney(20.0f); }           // withdraw money
 				};// end of thread
 
@@ -57,7 +58,7 @@ public class TestGUI_multiThread_Lifen {
 				Thread bWorker = new Thread() {
 					public void run(){       
 						try{ 
-							User child = Lifen_UserManager.getChild();
+							User child = UserManager.getChild();
 							child.getCard().deductMoney(15.5f); }           // withdraw money
 						catch(Exception ex){} 
 					}

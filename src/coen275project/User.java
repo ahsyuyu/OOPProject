@@ -34,6 +34,7 @@ public class User implements Serializable {
     public Collection<User> getDependents() {                // return the collection of the dependents
     	return dependentMap.values();
     }
+    
     /*-------------------------end of dependents----------------*/
     
     

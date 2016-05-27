@@ -25,7 +25,7 @@ public class Card implements Serializable {
 		this.password = password;
 	}
     
-	synchronized public void deductMoney(float expense) {   //synchronized //****  update after purchase   // 
+	public void deductMoney(float expense) {   //synchronized //****  update after purchase   // 
 		
 		System.out.print("( before deduct is " + this.totalBalance);
 		try {
