@@ -8,12 +8,13 @@ import java.text.SimpleDateFormat;
 
 public class ExpenseRecord implements Serializable{
 
-	String date;
-	double expense;
-	String userName;				// record user name
-	String storeName;				// record store name
+	private String date;
+	private float expense;
+	private String userName;				// record user name
+	private String storeName;				// record store name
 
-	public ExpenseRecord(double expense, String userName, String storeName) {
+	
+	public ExpenseRecord(float expense, String userName, String storeName) {
 		this.expense = expense;
 		this.userName = userName;
 		this.storeName = storeName;
@@ -22,18 +23,21 @@ public class ExpenseRecord implements Serializable{
 		//date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 	}
 	
-	// used for test
-	public ExpenseRecord(double expense, String date) {
+	// for test
+	public ExpenseRecord(String date, float expense, String userName, String storeName) {
+		this.date = date;
 		this.expense = expense;
-		SimpleDateFormat dt = new SimpleDateFormat("yyyyy-mm-dd"); 
-		this.date = date;   
+		this.userName = userName;
+		this.storeName = storeName;
 	}
+	
+	
 	
 	public String getDate() {
 		return date;
 	}
 	
-	public double getExpense() {
+	public float getExpense() {
 		return expense;
 	}
 	
@@ -46,7 +50,7 @@ public class ExpenseRecord implements Serializable{
 	}
 
 	
-	public void setExpense(double expense) {
+	public void setExpense(float expense) {
 		this.expense = expense;
 	}
 	
@@ -57,13 +61,13 @@ public class ExpenseRecord implements Serializable{
 	
 	public static void main(String[] args) {
 
-		ExpenseRecord expenseRecord = new ExpenseRecord(1, "2016-05-23");
-		ExpenseRecord expenseRecord1 = new ExpenseRecord(2, "2016-05-23");
-		ExpenseRecord expenseRecord2 = new ExpenseRecord(3, "2016-05-24");
-		
-		System.out.println(expenseRecord);
-		System.out.println(expenseRecord1);
-		System.out.println(expenseRecord2);
+//		ExpenseRecord expenseRecord = new ExpenseRecord(1, "2016-05-23");
+//		ExpenseRecord expenseRecord1 = new ExpenseRecord(2, "2016-05-23");
+//		ExpenseRecord expenseRecord2 = new ExpenseRecord(3, "2016-05-24");
+//		
+//		System.out.println(expenseRecord);
+//		System.out.println(expenseRecord1);
+//		System.out.println(expenseRecord2);
 	}
 }
 

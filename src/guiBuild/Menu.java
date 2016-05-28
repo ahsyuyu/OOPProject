@@ -1,6 +1,8 @@
 package guiBuild;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JButton;
@@ -45,6 +47,9 @@ public class Menu {
 		JButton btnBuyorderFod = new JButton("Buy/Order food");
 		btnBuyorderFod.setBounds(173, 72, 150, 30);
 		frame.getContentPane().add(btnBuyorderFod);
+		BuyFoodHandler bh = new BuyFoodHandler();
+		btnBuyorderFod.addActionListener(bh);
+		
 		
 		JButton btnEnterPreference = new JButton("Enter Preference");
 		btnEnterPreference.setBounds(173, 114, 150, 30);
@@ -62,5 +67,17 @@ public class Menu {
 		lblWelcomeAlice.setBounds(183, 29, 112, 16);
 		frame.getContentPane().add(lblWelcomeAlice);
 	}
+	
+	class BuyFoodHandler implements ActionListener{
+		public void actionPerformed(ActionEvent e){
+			Map m = new Map();
+			frame.getContentPane().removeAll();
+			frame.getContentPane().add(m);
+			frame.setSize(1200, 600);
+			System.out.println("buy");
+		}
+	}
 
 }
+
+
