@@ -1,10 +1,11 @@
 package coen275project;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 
-public class ExpenseProfile {
+public class ExpenseProfile implements Serializable {
 	private int cardNumber; 		// need a cardnumber to serialization
 	private String userName;
 	private float currentFund;		// expense limitation this month

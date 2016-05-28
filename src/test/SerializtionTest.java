@@ -40,14 +40,9 @@ public class SerializtionTest{
 	}
 	
 	public static void main(String[] args) {
-
-		User no1 = new User("Bob", 1, new Card(1, "abc"));
-		ExpenseProfile no1Ex = new ExpenseProfile();
-		no1Ex.addExpenseRecord(new ExpenseRecord(4.99,"2016-05-25"));
-		no1.setExpenseProfile(no1Ex);
 		
+		User no1 = new User("Bob", new Card(1, "abc"));
 
-		
 		System.out.print("Before Serializing - ");
 		System.out.println(no1);
 		

@@ -1,9 +1,10 @@
 package coen275project;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DietaryProfile {
+public class DietaryProfile implements Serializable {
 	private String cardNumber; 			// need a cardnumber to serialization
 	private int currentCalorie;			// expense limitation within a day
 	private int nextCalorie;			// expense limitation within a day

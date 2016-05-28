@@ -10,6 +10,10 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import coen275project.Serialization;
+import coen275project.User;
+import test.SerializtionTest;
+
 public class Login {
 
 	private JFrame frame;
@@ -51,6 +55,7 @@ public class Login {
 		JButton btnTest = new JButton("Login");
 		btnTest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				System.out.println( (User)SerializtionTest.deSerialize("No.001.ser") );
 			}
 		});
 		btnTest.setBounds(200, 202, 117, 29);
@@ -78,4 +83,5 @@ public class Login {
 		frame.getContentPane().add(textField_1);
 		textField_1.setColumns(10);
 	}
+	
 }
