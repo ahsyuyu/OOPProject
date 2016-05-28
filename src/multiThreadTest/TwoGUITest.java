@@ -7,26 +7,21 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
 
 import coen275project.User;
 import coen275project.UserManager;
 
-/**
- * @author Lifen
- * test the GUI with two threads act at the same time
- * cooperate with class of Lifen_UserManage (create a family), class of Card (set the deductMoney() synchronized or not)
- * When buttons "parent" or "child" is clicked, a new thread is created separately, and go to deductMonday()
- */
-
-public class GUITest_plain {
+public class TwoGUITest {
 	private static JButton btnParent = new JButton("parent");
 	private static JButton btnChild = new JButton("child");
 
 	public static void main(String [] args){
+		buildGui();
+		buildGui();
+	}  
+	
+	public static void buildGui() {
 		/********create GUI*********/
 		JFrame mainFrame = new JFrame();
 		JPanel panel = new JPanel();
@@ -71,6 +66,5 @@ public class GUITest_plain {
 
 		mainFrame.setSize(300,200);
 		mainFrame.setVisible(true);
-	}  
-	
+	}
 }

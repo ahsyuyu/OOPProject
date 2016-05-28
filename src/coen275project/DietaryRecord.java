@@ -44,7 +44,7 @@ public class DietaryRecord implements Serializable{
 	
 	@Override
 	public String toString() {
-		return "date=" + date + ", expense=" + expense + ", userName=" + userName + "\n";
+		return "\n" + "date=" + date + ", expense=" + expense + ", userName=" + userName;
 	}
 	
 	

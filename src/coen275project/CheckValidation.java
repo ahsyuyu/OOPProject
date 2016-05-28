@@ -37,17 +37,20 @@ public class CheckValidation {
 	 * check expenseProfile when log in, compare today and firstDay in expenseprofile
 	 * if in the same month, do nothing, else, reset expenseProfile
 	 * @param expenseProfile
+	 * @return true: if updated
+	 *         false: if not updated since it's already with updated state
 	 */
-	public static void loginUpdateExpenseProfile(ExpenseProfile expenseProfile) {
+	public static boolean loginUpdateExpenseProfile(ExpenseProfile expenseProfile) {
 		
 		String firstDay = expenseProfile.getFirstDay();
 		if (firstDay == null) {			
-//			return false;
 			System.err.println("Will Never see this line, in CheckValidation:loginCheckExpenseProfile");
 			expenseProfile.reset();
-			
+			System.out.println("loginUpdateExpenseProfile: updated");
+			return true;
 		}
-		//String[] temp = firstDay.split("-");
+		
+		// check if within the same month
 		String[] temp1 = firstDay.split("-");
 		String yearOfProfile = temp1[0];
 		String monthOfProfile = temp1[1];
@@ -59,18 +62,22 @@ public class CheckValidation {
 		
 		if (yearOfProfile.compareTo(yearOfToday) < 0|| monthOfProfile.compareTo(monthOfToday) < 0) {
 			expenseProfile.reset();
+			System.out.println("loginUpdateExpenseProfile: ExpenseProfile is out of updated, System updated it.");
+			return true;	
 		}
 		
-		//return true;
+		System.out.println("loginUpdateExpenseProfile: ExpenseProfile has already in updated state. System doesn't update it");
+		return false;
 	}
 	
 	/**
 	 * check dietaryprofile when log in, compare today and firstDay, date in dietary profile
 	 * if without the same month, clear up dietaryRecordList and expense, modify firstDay and today
 	 * if without the same day, modify date and clear expense
+	 * 
 	 * @param dietaryprofile
 	 */
-	public static void loginUpdateDietaryProfile(DietaryProfile dietaryProfile) {
+	public static boolean loginUpdateDietaryProfile(DietaryProfile dietaryProfile) {
 		// check if within the same month
 		String today = new SimpleDateFormat("YYYY-MM-dd").format(new Date());
 		String[] temp1 = today.split("-");
@@ -89,7 +96,13 @@ public class CheckValidation {
 		if (!date.equals(today)) {
 			dietaryProfile.setDate(today);
 			dietaryProfile.setExpense(0);
+			System.out.println("loginUpdateDietaryProfile: DietaryProfile is out of updated, System updated it.");
+			return true;
 		}
+		
+		System.out.println("loginUpdateDietaryProfile: DietaryProfile has already in updated state. System doesn't update it");
+		return false;
+		
 	}
 	
 	

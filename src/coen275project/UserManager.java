@@ -11,8 +11,22 @@ public class UserManager {
 	    user1 = new User("Alice", card1);
 	    user11 = new User("Lili", null);
 	    user1.addDependent(user11);
+	    
+	    Card card2 = new Card(2222, "bbbb");
+	    User user2 = new User("Bob", card2);
+	    
+	    Card card3 = new Card(3333, "cccc");
+	    User user3 = new User("Carlos", card3);
+	    
+	    Card card4 = new Card(4444, "dddd");
+	    User user4 = new User("David", card4);
+	    
+	    Card card5 = new Card(5555, "eeee");
+	    User user5 = new User("Ella", card5);
 	}
 	
+	
+	//Lifen: below is used to test user and its dependent
 	public static User getParent() {
 		return user1;
 	}
