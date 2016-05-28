@@ -3,16 +3,18 @@ package guiBuild;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import coen275project.FoodStore;
+//import coen275project.FoodStoreList;
+
 public class SelectStore extends JPanel {
-	String[] sList = {"mission cafe", "benson"};
+	String[] sList = {"The White Elephant", "Tago", "Drink", "Snack"};
 	JList<String> storeList;
+	//static FoodStoreList foodstorelist;
 	public SelectStore(){
 		//setLayout(new GridLayout(0,1));
 		//add(new JLabel("Store List"));
@@ -33,6 +35,18 @@ public class SelectStore extends JPanel {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
+		FoodStore cafe1 = new FoodStore("The White Elephant", 1, "1190 Lexington St, Santa Clara");
+	    FoodStore cafe2 = new FoodStore("Tago", 2, "119 Washington St, Santa Clara");
+	    FoodStore vm1 = new FoodStore("Drink", 3, "Benson Memorial Hall");
+	    FoodStore vm2 = new FoodStore("Snack", 4, "Engineering Center");
+	    
+//	    foodstorelist = new FoodStoreList();
+//	    foodstorelist.addFoodStore(cafe1);
+//	    foodstorelist.addFoodStore(cafe2);
+//	    foodstorelist.addFoodStore(vm1);
+//	    foodstorelist.addFoodStore(vm2);
+		
 		
 		JFrame window = new JFrame("Select a store");
 		window.setLayout(new GridLayout(1,0));

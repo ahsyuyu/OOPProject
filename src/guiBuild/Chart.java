@@ -75,7 +75,7 @@ public class Chart extends JFrame{
 		pc = new pieChart();
 		pc.setPreferredSize(new Dimension(480,480));
 		add(lc);
-		add(pc);		
+		//add(pc);		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE );
 	    pack();
