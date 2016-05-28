@@ -5,12 +5,9 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 
-<<<<<<< HEAD
-public class ExpenseProfile implements Serializable {
-=======
+
 public class ExpenseProfile implements Serializable{
 	private static final String TYPE = "Expense Profile";
->>>>>>> 6f993d391d0ead8432e0c63082b39dae48e6cafc
 	private int cardNumber; 		// need a cardnumber to serialization
 	private String userName;
 	private float currentFund;		// expense limitation this month

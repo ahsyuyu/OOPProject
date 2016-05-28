@@ -15,7 +15,7 @@ import coen275project.User;
 import test.SerializtionTest;
 
 public class Login {
-
+	public static User USER;
 	private JFrame frame;
 	private JTextField textField;
 	private JTextField textField_1;
@@ -55,7 +55,10 @@ public class Login {
 		JButton btnTest = new JButton("Login");
 		btnTest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println( (User)SerializtionTest.deSerialize("No.001.ser") );
+				USER = Serialization.deSerialize("No.001.ser");
+				System.out.println( (User)Serialization.deSerialize("No.001.ser") );
+				Menu m = new Menu();
+				
 			}
 		});
 		btnTest.setBounds(200, 202, 117, 29);

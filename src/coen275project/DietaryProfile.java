@@ -5,13 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.io.Serializable;
 
-<<<<<<< HEAD
-public class DietaryProfile implements Serializable {
-=======
+
 public class DietaryProfile implements Serializable{
 	
 	private static final String TYPE = "Dietary Profile";
->>>>>>> 6f993d391d0ead8432e0c63082b39dae48e6cafc
 	private String cardNumber; 			// need a cardnumber to serialization
 	private int currentCalorie;			// expense limitation within a day
 	private int nextCalorie;			// expense limitation within a day
