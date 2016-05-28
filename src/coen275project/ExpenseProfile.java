@@ -1,10 +1,12 @@
 package coen275project;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 
-public class ExpenseProfile {
+public class ExpenseProfile implements Serializable{
+	private static final String TYPE = "Expense Profile";
 	private int cardNumber; 		// need a cardnumber to serialization
 	private String userName;
 	private float currentFund;		// expense limitation this month
@@ -54,6 +56,14 @@ public class ExpenseProfile {
 	// user buy item
     public void addExpenseRecord(ExpenseRecord er) {
     	expenseRecordList.add(er);
+    }
+    
+    public String getYearAndMonth() {
+    	String[] temp1 = firstDay.split("-");
+		String yearOfProfile = temp1[0];
+		String monthOfProfile = temp1[1];
+		
+		return yearOfProfile + "-" + monthOfProfile;
     }
     
     public int getCardNumber() {
@@ -109,7 +119,9 @@ public class ExpenseProfile {
     
     @Override
     public String toString() {
-    	String s = "Card number: " + cardNumber + "\n";
+    	String s = "Profile type: " + TYPE + "\n";
+    	s += "Card number: " + cardNumber + "\n";
+    	s += "Period: " + getYearAndMonth() + "\n";
     	s += "Limitation of this month: " + currentFund + "\n";
     	s += "Limitation of next month: " + nextFund + "\n";
     	s += "Expense of this month: " + expense + "\n";
