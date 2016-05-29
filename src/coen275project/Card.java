@@ -3,19 +3,19 @@ package coen275project;
 import java.io.Serializable;
 
 public class Card implements Serializable {
-    private int cardNumber;
+    private String cardNumber;
     private String password;
     private float totalBalance = 5000.0F;     //****
     
-    public Card(int cardNumber, String password) {
+    public Card(String cardNumber, String password) {
     	this.cardNumber = cardNumber;
     	this.password = password;
     }
     
-	public int getCardNumber() {
+	public String getCardNumber() {
 		return cardNumber;
 	}
-	public void setCardNumber(int cardNumber) {
+	public void setCardNumber(String cardNumber) {
 		this.cardNumber = cardNumber;
 	}
 	public String getPassword() {

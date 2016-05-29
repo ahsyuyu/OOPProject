@@ -102,7 +102,8 @@ public class Navigation {
 			message.setFont(new Font("Serif", Font.PLAIN, 20));
 			setBackground(Color.yellow);
 			add(message);
-			setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);	 		
+			setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);	
+			
 		}
 	}
 
@@ -126,7 +127,8 @@ public class Navigation {
 			message.setFont(new Font("Serif", Font.PLAIN, 20));
 			setBackground(Color.yellow);
 			add(message);
-			setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);	 		
+			setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+			
 		}
 	}
 

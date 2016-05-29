@@ -41,7 +41,7 @@ public class SerializtionTest{
 	
 	public static void main(String[] args) {
 		
-		User no1 = new User("Bob", new Card(1, "abc"));
+		User no1 = new User("Bob", new Card("1", "abc"));
 
 		System.out.print("Before Serializing - ");
 		System.out.println(no1);

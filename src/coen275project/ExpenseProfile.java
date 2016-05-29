@@ -5,10 +5,9 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 
-
 public class ExpenseProfile implements Serializable{
 	private static final String TYPE = "Expense Profile";
-	private int cardNumber; 		// need a cardnumber to serialization
+	private String cardNumber; 		// need a cardnumber to serialization
 	private String userName;
 	private float currentFund;		// expense limitation this month
 	private float nextFund;		// expense limitation next month
@@ -18,7 +17,7 @@ public class ExpenseProfile implements Serializable{
 
     
     public ExpenseProfile() {
-    	this.cardNumber = 0;
+    	this.cardNumber = "0";
     	this.currentFund = 0;
     	this.nextFund = 0;
     	this.expense = 0;
@@ -27,7 +26,7 @@ public class ExpenseProfile implements Serializable{
     }
     
     // for program initialization
-    public ExpenseProfile(int cardNumber, String userName, float currentFund, float nextFund, float expense, String firstDay, List<ExpenseRecord> expenseRecordList ) {
+    public ExpenseProfile(String cardNumber, String userName, float currentFund, float nextFund, float expense, String firstDay, List<ExpenseRecord> expenseRecordList ) {
     	this.cardNumber = cardNumber;
     	this.userName = userName;
     	this.currentFund = currentFund;
@@ -67,7 +66,7 @@ public class ExpenseProfile implements Serializable{
 		return yearOfProfile + "-" + monthOfProfile;
     }
     
-    public int getCardNumber() {
+    public String getCardNumber() {
     	return cardNumber;
     }
     
