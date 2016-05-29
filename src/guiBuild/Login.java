@@ -58,6 +58,7 @@ public class Login {
 				USER = Serialization.deSerialize("No.001.ser");
 				System.out.println( (User)Serialization.deSerialize("No.001.ser") );
 				Menu m = new Menu();
+				m.frame.setVisible(true);
 				
 			}
 		});

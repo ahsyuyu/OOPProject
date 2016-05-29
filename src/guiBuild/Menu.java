@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 
 public class Menu {
 
-	private JFrame frame;
+	JFrame frame;
 
 	/**
 	 * Launch the application.
@@ -70,11 +70,9 @@ public class Menu {
 	
 	class BuyFoodHandler implements ActionListener{
 		public void actionPerformed(ActionEvent e){
-			Map m = new Map();
-			frame.getContentPane().removeAll();
-			frame.getContentPane().add(m);
-			frame.setSize(1200, 600);
-			System.out.println("buy");
+			
+			Login.USER.setName("Ted");
+			System.out.println(Login.USER);
 		}
 	}
 

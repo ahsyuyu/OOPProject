@@ -35,4 +35,7 @@ public class Food {
     public boolean getCholesterol(){
     	return lowCholesterol;
     }
+    public String toString(){
+    	return foodName;
+    }
 }
