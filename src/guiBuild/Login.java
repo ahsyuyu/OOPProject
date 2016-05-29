@@ -10,10 +10,11 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import coen275project.UserManager;
+import coen275project.*;
+import test.SerializtionTest;
 
 public class Login {
-
+	public static User USER;
 	private JFrame frame;
 	private JTextField userAccountField;
 	private JTextField userPasswordField;
@@ -59,6 +60,7 @@ public class Login {
 		loginButton = new JButton("Login");
 		loginButton.setBounds(200, 202, 117, 29);
 		frame.getContentPane().add(loginButton);
+
 		
 		lblWelcomeTo = new JLabel("Welcome to CampusSmartCafe");
 		lblWelcomeTo.setBounds(129, 49, 218, 16);
@@ -107,6 +109,18 @@ public class Login {
 	            }
 	        }
 		});
+		
+		
+		//below is Anne's test with loginButton
+		/*loginButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				USER = Serialization.deSerialize("No.001.ser");
+				System.out.println( (User)Serialization.deSerialize("No.001.ser") );
+				Menu m = new Menu();
+				m.frame.setVisible(true);
+				
+			}
+		});*/
 	}
 	
 }

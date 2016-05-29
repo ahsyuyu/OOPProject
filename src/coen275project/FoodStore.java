@@ -7,6 +7,7 @@ public class FoodStore {
     private int id;
     private String location;
     private HashMap<String, Food> foodList = new HashMap<String, Food>();
+    //private ArrayList<Food> foodList = new ArrayList<Food>();
     
     public FoodStore(String name, int id, String location) {
     	this.name = name;
@@ -31,5 +32,8 @@ public class FoodStore {
     
     public void addFoodToList(String foodName, Food food) {
     	foodList.put(foodName, food);
+    }
+    public HashMap<String, Food> getFoodList(){
+    	return foodList;
     }
 }
