@@ -70,6 +70,8 @@ public class User implements Serializable {
 	public void setDietaryProfile(DietaryProfile dietaryProfile) {
 		this.dietaryProfile = dietaryProfile;
 	}
-    
+    public String toString(){
+    	return name;
+    }
     
 }

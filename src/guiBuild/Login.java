@@ -10,11 +10,16 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class Login {
+import coen275project.*;
+import test.SerializtionTest;
 
+public class Login {
+	public static User USER;
 	private JFrame frame;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField userAccountField;
+	private JTextField userPasswordField;
+	private JButton loginButton;
+	private JLabel lblWelcomeTo;
 
 	/**
 	 * Launch the application.
@@ -23,6 +28,9 @@ public class Login {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					// initialize a collection of users and cards
+					UserManager um = new UserManager();    
+					
 					Login window = new Login();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
@@ -37,6 +45,7 @@ public class Login {
 	 */
 	public Login() {
 		initialize();
+		addListeners();
 	}
 
 	/**
@@ -48,34 +57,70 @@ public class Login {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JButton btnTest = new JButton("Login");
-		btnTest.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnTest.setBounds(200, 202, 117, 29);
-		frame.getContentPane().add(btnTest);
+		loginButton = new JButton("Login");
+		loginButton.setBounds(200, 202, 117, 29);
+		frame.getContentPane().add(loginButton);
+
 		
-		JLabel lblWelcomeTo = new JLabel("Welcome to CampusSmartCafe");
+		lblWelcomeTo = new JLabel("Welcome to CampusSmartCafe");
 		lblWelcomeTo.setBounds(129, 49, 218, 16);
 		frame.getContentPane().add(lblWelcomeTo);
 		
-		JLabel lblUsername = new JLabel("Username:");
-		lblUsername.setBounds(104, 104, 84, 16);
-		frame.getContentPane().add(lblUsername);
+		JLabel lblUserAccount = new JLabel("Account No.:");
+		lblUserAccount.setBounds(104, 104, 84, 16);
+		frame.getContentPane().add(lblUserAccount);
 		
-		textField = new JTextField();
-		textField.setBounds(188, 98, 134, 28);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+		userAccountField = new JTextField();
+		userAccountField.setBounds(188, 98, 134, 28);
+		frame.getContentPane().add(userAccountField);
+		userAccountField.setColumns(10);
 		
 		JLabel lblPassword = new JLabel("Password:");
 		lblPassword.setBounds(104, 147, 84, 16);
 		frame.getContentPane().add(lblPassword);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(188, 141, 134, 28);
-		frame.getContentPane().add(textField_1);
-		textField_1.setColumns(10);
+		userPasswordField = new JTextField();
+		userPasswordField.setBounds(188, 141, 134, 28);
+		frame.getContentPane().add(userPasswordField);
+		userPasswordField.setColumns(10);
 	}
+	
+	public void addListeners() {
+		loginButton.addActionListener(new ActionListener() {
+	        public void actionPerformed(ActionEvent e) {   
+	        	String accountNumber = userAccountField.getText();
+	        	String password = userPasswordField.getText();  
+	        	
+	        	Boolean judge = UserManager.checkLogin(accountNumber, password);
+	            if (judge) {
+	            	lblWelcomeTo.setText("Succeed!");
+	            	userAccountField.setText("");
+	            	userPasswordField.setText("");
+	            	
+	            	try {
+						Thread.sleep(1000);
+						//Navigation.main(null);
+						Navigation.main(new String[]{accountNumber});
+					} catch (InterruptedException e1) {
+						e1.printStackTrace();
+					}
+	            } else {
+	            	lblWelcomeTo.setText("Failed! Wrong account/password.");
+	            }
+	        }
+		});
+		
+		
+		//below is Anne's test with loginButton
+		/*loginButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				USER = Serialization.deSerialize("No.001.ser");
+				System.out.println( (User)Serialization.deSerialize("No.001.ser") );
+				Menu m = new Menu();
+				m.frame.setVisible(true);
+				
+			}
+		});*/
+	}
+	
 }

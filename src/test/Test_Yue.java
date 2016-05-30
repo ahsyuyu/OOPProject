@@ -17,7 +17,7 @@ public class Test_Yue {
 		System.out.println("");
 		System.out.println("create card....");
 		
-		Card card = new Card(1, "111");			// TODO: totalBalance with defualt value 5000.0f
+		Card card = new Card("1", "111");			// TODO: totalBalance with defualt value 5000.0f
 		
 		//System.out.println(card);
 		

@@ -18,7 +18,7 @@ public class TestDriver {
 	    
 	    
 	    /****************************Lifen: create User and Card***************************/
-	    Card card1 = new Card(1111, "aaaa");
+	    Card card1 = new Card("1111", "aaaa");
 	    User user1 = new User("Alice", card1);
 	    User user11 = new User("Lili", null);
 	    user1.addDependent(user11);
