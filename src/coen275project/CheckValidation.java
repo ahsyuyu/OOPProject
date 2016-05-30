@@ -16,7 +16,7 @@ import java.util.ArrayList;
 //TODO change the class name to make more sense
 public class CheckValidation {
 	private final static String EXPENSEPROFILE_FILENAME = "database/1_exp.ser";
-	private final static String DIETARYPROFILE_FILENAME = "database/1_dia.ser";
+	private final static String DIETARYPROFILE_FILENAME = "database/1_die.ser";
 	
 	/**
 	 * check validation of cardnumber and password when login

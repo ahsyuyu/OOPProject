@@ -6,7 +6,7 @@ import java.util.*;
 
 public class Test_Yue {
 	private final static String EXPENSEPROFILE_FILENAME = "database/1_exp.ser";
-	private final static String DIETARYPROFILE_FILENAME = "database/1_dia.ser";
+	private final static String DIETARYPROFILE_FILENAME = "database/1_die.ser";
 	
 	public static void main(String[] args) {
 		
