@@ -15,6 +15,8 @@ import java.util.ArrayList;
 
 //TODO change the class name to make more sense
 public class CheckValidation {
+	private final static String EXPENSEPROFILE_FILENAME = "database/1_exp.ser";
+	private final static String DIETARYPROFILE_FILENAME = "database/1_dia.ser";
 	
 	/**
 	 * check validation of cardnumber and password when login
@@ -63,6 +65,9 @@ public class CheckValidation {
 		if (yearOfProfile.compareTo(yearOfToday) < 0|| monthOfProfile.compareTo(monthOfToday) < 0) {
 			expenseProfile.reset();
 			System.out.println("loginUpdateExpenseProfile: ExpenseProfile is out of updated, System updated it.");
+			
+			// TODO: Add serialization
+			Serialization.serialize(expenseProfile, EXPENSEPROFILE_FILENAME);
 			return true;	
 		}
 		
@@ -81,22 +86,26 @@ public class CheckValidation {
 		// check if within the same month
 		String today = new SimpleDateFormat("YYYY-MM-dd").format(new Date());
 		String[] temp1 = today.split("-");
-		String firstDay = dietaryProfile.getFirstDay();
-		String[] temp2 = firstDay.split("-");
+		String period = dietaryProfile.getPeriod();
+		String[] temp2 = period.split("-");
 		
 		if (!temp1[0].equals(temp2[0]) || !temp1[1].equals(temp2[1])) {
 			dietaryProfile.setExpense(0);
 			dietaryProfile.setList(new ArrayList<DietaryRecord>());
 			dietaryProfile.setDate(today);
-			dietaryProfile.setFirstDay(temp1[0] + temp1[1] + "01");
+			dietaryProfile.setPeriod(temp1[0] + temp1[1]);
+			System.out.println("loginUpdateDietaryProfile: without the same month, System updated it.");
 		}
 		
 		// check if within the same day
 		String date =  dietaryProfile.getDate();
 		if (!date.equals(today)) {
-			dietaryProfile.setDate(today);
+			dietaryProfile.setDate(today); System.out.println(today);
 			dietaryProfile.setExpense(0);
-			System.out.println("loginUpdateDietaryProfile: DietaryProfile is out of updated, System updated it.");
+			
+			// TODO: add serialization
+			System.out.println("loginUpdateDietaryProfile: without the same day, System updated it.");
+			Serialization.serialize(dietaryProfile, DIETARYPROFILE_FILENAME);
 			return true;
 		}
 		
@@ -131,9 +140,11 @@ public class CheckValidation {
 		// integrate dietaryProfile to everyday has a record against instead of recording every record
 		user.getDietaryProfile().addDietaryRecord(new DietaryRecord(calorie, user.getName()));
 		
-		// TODO
 		user.getCard().setTotalBalance();
 		
+		// TODO: add serialization
+		Serialization.serialize(user.getExpenseProfile(), EXPENSEPROFILE_FILENAME);
+		Serialization.serialize(user.getDietaryProfile(), DIETARYPROFILE_FILENAME);
 		return true;
 	}
 	
@@ -200,6 +211,8 @@ public class CheckValidation {
 		}
 		// update
 		user.getExpenseProfile().setNextFund(newFund);
+		// TODO: add serialization
+		Serialization.serialize(user.getDietaryProfile(), EXPENSEPROFILE_FILENAME);
 		return true;
 	}
 	
@@ -215,6 +228,8 @@ public class CheckValidation {
 		// check validation
 		
 		user.getDietaryProfile().setNextCalorie(newCalorie);
+		// TODO: add serialization
+		Serialization.serialize(user.getDietaryProfile(), DIETARYPROFILE_FILENAME);
 		return true;
 	}
 	

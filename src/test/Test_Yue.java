@@ -5,6 +5,8 @@ import java.io.*;
 import java.util.*;
 
 public class Test_Yue {
+	private final static String EXPENSEPROFILE_FILENAME = "database/1_exp.ser";
+	private final static String DIETARYPROFILE_FILENAME = "database/1_dia.ser";
 	
 	public static void main(String[] args) {
 		
@@ -27,14 +29,22 @@ public class Test_Yue {
 		List<ExpenseRecord> expenseList = new ArrayList<>();
 		ExpenseRecord er = new ExpenseRecord("2016-05-03", 20, "June", "VendingMachine1");
 		expenseList.add(er);
-		er = new ExpenseRecord("2016-05-18", 10, "June", "VendingMachine2");
+		er = new ExpenseRecord("2016-05-03", 10, "June", "VendingMachine2");
+		expenseList.add(er);
+		er = new ExpenseRecord("2016-05-04", 30, "June", "VendingMachine1");
+		expenseList.add(er);
+		er = new ExpenseRecord("2016-05-05", 40, "June", "VendingMachine2");
+		expenseList.add(er);
+		er = new ExpenseRecord("2016-05-06", 20, "June", "VendingMachine1");
+		expenseList.add(er);
+		er = new ExpenseRecord("2016-05-07", 20, "June", "VendingMachine2");
 		expenseList.add(er);
 		er = new ExpenseRecord(30, "June", "Cafe1");
 		expenseList.add(er);
 		er = new ExpenseRecord(20, "June", "Cafe2");
 		expenseList.add(er);
 
-		ExpenseProfile expenseProfile_1 = new ExpenseProfile(card.getCardNumber(), "June", 100, 80, 10, "2016-05-01", expenseList);
+		ExpenseProfile expenseProfile_1 = new ExpenseProfile(card.getCardNumber(), "June", 1000, 800, 80, "2016-05-01", expenseList);
 		
 		System.out.println(expenseProfile_1);
 		
@@ -46,14 +56,30 @@ public class Test_Yue {
 		List<DietaryRecord> dietaryList = new ArrayList<>();
 		DietaryRecord dr = new DietaryRecord("2016-05-03", 20, "June");
 		dietaryList.add(dr);
-		dr = new DietaryRecord("2016-05-18", 10, "June");
+		dr = new DietaryRecord("2016-05-08", 20, "June");
+		dietaryList.add(dr);
+		dr = new DietaryRecord("2016-05-09", 20, "June");
+		dietaryList.add(dr);
+		dr = new DietaryRecord("2016-05-13", 20, "June");
+		dietaryList.add(dr);
+		dr = new DietaryRecord("2016-05-15", 20, "June");
+		dietaryList.add(dr);
+		dr = new DietaryRecord("2016-05-17", 20, "June");
+		dietaryList.add(dr);
+		dr = new DietaryRecord("2016-05-18", 30, "June");
+		dietaryList.add(dr);
+		dr = new DietaryRecord("2016-05-20", 30, "June");
+		dietaryList.add(dr);
+		dr = new DietaryRecord("2016-05-21", 20, "June");
+		dietaryList.add(dr);
+		dr = new DietaryRecord("2016-05-22", 10, "June");
 		dietaryList.add(dr);
 		dr = new DietaryRecord(30, "June");
 		dietaryList.add(dr);
 		dr = new DietaryRecord(20, "June");
 		dietaryList.add(dr);
 		
-		DietaryProfile dietaryProfile_1 = new DietaryProfile("1", 2000, 1600, 10, "2016-05-01", "2016-05-27", dietaryList);
+		DietaryProfile dietaryProfile_1 = new DietaryProfile("1", "June", 2000, 1600, 10, "2016-05", "2016-05-27", dietaryList);
 		
 		System.out.println(dietaryProfile_1);
 		
@@ -75,10 +101,10 @@ public class Test_Yue {
 		
 		System.out.print("Before Serializing - \n");
 		System.out.println(expenseProfile_1);
-		Serialization.serialize(expenseProfile_1, "database/1_expenseprofile.ser");
+		Serialization.serialize(expenseProfile_1, EXPENSEPROFILE_FILENAME);
 		System.out.print("After DeSerializing - ");
 		expenseProfile_1 = null;
-		expenseProfile_1 = Serialization.deSerialize("database/1_expenseprofile.ser");
+		expenseProfile_1 = Serialization.deSerialize(EXPENSEPROFILE_FILENAME);
 		System.out.println(expenseProfile_1);
 		
 		/***************************test serialization dietaryProfile**************/
@@ -87,10 +113,10 @@ public class Test_Yue {
 		
 		System.out.print("Before Serializing - \n");
 		System.out.println(dietaryProfile_1);
-		Serialization.serialize(dietaryProfile_1, "database/1_dietaryProfile.ser");
+		Serialization.serialize(dietaryProfile_1, DIETARYPROFILE_FILENAME);
 		System.out.print("After DeSerializing - ");
 		dietaryProfile_1 = null;
-		dietaryProfile_1 = Serialization.deSerialize("database/1_dietaryProfile.ser");
+		dietaryProfile_1 = Serialization.deSerialize(DIETARYPROFILE_FILENAME);
 		System.out.println(dietaryProfile_1);
 		
 		
@@ -103,14 +129,22 @@ public class Test_Yue {
 		System.out.println("");
 		System.out.println("Test loginUpdateExpenseProfile....");
 		
-		CheckValidation.loginUpdateExpenseProfile(expenseProfile_1);
+		if(CheckValidation.loginUpdateExpenseProfile(expenseProfile_1)) {
+			expenseProfile_1 = Serialization.deSerialize(EXPENSEPROFILE_FILENAME);
+			System.out.println("updated expenseProfile is:\n");
+			System.out.println(expenseProfile_1);
+		}
 		
 		
 		/***************************Test loginUpdateDietaryProfile **************/
 		System.out.println("");
 		System.out.println("Test loginUpdateExpenseProfile....");
 		
-		CheckValidation.loginUpdateDietaryProfile(dietaryProfile_1);
+		if(CheckValidation.loginUpdateDietaryProfile(dietaryProfile_1)) {
+			dietaryProfile_1 = Serialization.deSerialize(DIETARYPROFILE_FILENAME);
+			System.out.println("updated dietaryProfile is:\n");
+			System.out.println(dietaryProfile_1);
+		}
 		
 		
 		/***************************Test GUI**************/

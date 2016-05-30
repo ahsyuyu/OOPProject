@@ -8,27 +8,39 @@ public class DietaryProfile implements Serializable{
 	
 	private static final String TYPE = "Dietary Profile";
 	private String cardNumber; 			// need a cardnumber to serialization
+	private String userName;
+
 	private int currentCalorie;			// expense limitation within a day
 	private int nextCalorie;			// expense limitation within a day
 	private int expense;				// total expense within a day
-	private String firstDay;			// firstDay of this month
+	private String period;				// year and month
 	private String date;				// today
     private List<DietaryRecord> dietaryRecordList = new ArrayList<>();		//Calorie expense of this month
+
+	private boolean lowSugar;
+    private boolean lowSodium;
+    private boolean lowCholesterol;
     
     public DietaryProfile() {
     	
     }
    
-    // for program initialization
-    public DietaryProfile(String cardNumber, int currentCalorie, int nextCalorie, int expense, String firstDay,
+    // TODO for program initialization
+    public DietaryProfile(String cardNumber, String userName, int currentCalorie, int nextCalorie, int expense, String period,
 			String date, List<DietaryRecord> dietaryRecordList) {
 		this.cardNumber = cardNumber;
+		this.userName = userName;
 		this.currentCalorie = currentCalorie;
 		this.nextCalorie = nextCalorie;
 		this.expense = expense;
-		this.firstDay = firstDay;
+		this.period = period;
 		this.date = date;
 		this.dietaryRecordList = dietaryRecordList;
+		
+		// need edit
+		this.lowSugar = false;
+		this.lowSodium = false;
+		this.lowCholesterol = false;
 	}
 
 	public void setCurrentCalorie(int setCurrentCalorie) {
@@ -46,20 +58,16 @@ public class DietaryProfile implements Serializable{
     	dietaryRecordList.add(record);
     }
     
-    public String getYearAndMonth() {
-    	String[] temp1 = firstDay.split("-");
-		String yearOfProfile = temp1[0];
-		String monthOfProfile = temp1[1];
-		
-		return yearOfProfile + "-" + monthOfProfile;
+    public String getPeriod() {
+    	return period;
     }
     
     public void setExpense(int expense) {
     	this.expense = expense;
     }
     
-    public void setFirstDay(String firstDay) {
-    	this.firstDay = firstDay;
+    public void setPeriod(String period) {
+    	this.period = period;
     }
     
     public void setDate(String date) {
@@ -70,7 +78,7 @@ public class DietaryProfile implements Serializable{
     	this.dietaryRecordList = dietaryRecordList;
     }
     
-    public String getCardnumber() {
+    public String getCardNumber() {
     	return cardNumber;
     }
 	
@@ -86,10 +94,6 @@ public class DietaryProfile implements Serializable{
     	return expense;
     }
     
-    public String getFirstDay() {
-    	return firstDay;
-    }
-    
     public String getDate() {
     	return date;
     }
@@ -98,14 +102,50 @@ public class DietaryProfile implements Serializable{
     	return dietaryRecordList;
     }
     
+    public boolean getLowSugar() {
+		return lowSugar;
+	}
+
+	public void setLowSugar(boolean lowSugar) {
+		this.lowSugar = lowSugar;
+	}
+
+	public boolean getLowSodium() {
+		return lowSodium;
+	}
+
+	public void setLowSodium(boolean lowSodium) {
+		this.lowSodium = lowSodium;
+	}
+
+	public boolean getLowCholesterol() {
+		return lowCholesterol;
+	}
+
+	public void setLowCholesterol(boolean lowCholesterol) {
+		this.lowCholesterol = lowCholesterol;
+	}
+	
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	
+    
     @Override
     public String toString() {
     	String s = "Profile type: " + TYPE + "\n";
     	s += "Card number: " + cardNumber + "\n";
-    	s += "Period: " + getYearAndMonth() + "\n";
+    	s += "User Name: " + userName + "\n";
+    	s += "Today: " + date + "\n";
+    	s += "Limitation: [" + "lowSugar=" + lowSugar + ", lowSodium=" + lowSodium  + ", lowCholesterol=" + lowCholesterol+ "]" + "\n";
+    	s += "Period: " + getPeriod() + "\n";
     	s += "Limitation calorie everyday in this month: " + currentCalorie + "\n";
     	s += "Limitation calorie everyday from next month: " + nextCalorie + "\n";
-    	s += "Expense of this month: " + expense + "\n";
+    	s += "Expense of this today: " + expense + "\n";
     	s += dietaryRecordList;
     	return s;
     }

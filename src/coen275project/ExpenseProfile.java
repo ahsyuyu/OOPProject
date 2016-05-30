@@ -122,6 +122,7 @@ public class ExpenseProfile implements Serializable{
     	String s = "Profile type: " + TYPE + "\n";
     	s += "Card number: " + cardNumber + "\n";
     	s += "Period: " + getYearAndMonth() + "\n";
+    	
     	s += "Limitation of this month: " + currentFund + "\n";
     	s += "Limitation of next month: " + nextFund + "\n";
     	s += "Expense of this month: " + expense + "\n";
