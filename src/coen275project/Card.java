@@ -6,6 +6,7 @@ public class Card implements Serializable {
     private String cardNumber;
     private String password;
     private float totalBalance = 5000.0F;     //****
+    private static final long serialVersionUID = 1L;
     
     public Card(String cardNumber, String password) {
     	this.cardNumber = cardNumber;
