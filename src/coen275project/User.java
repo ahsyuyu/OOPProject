@@ -70,8 +70,15 @@ public class User implements Serializable {
 	public void setDietaryProfile(DietaryProfile dietaryProfile) {
 		this.dietaryProfile = dietaryProfile;
 	}
+	
+	@Override
     public String toString(){
-    	return name;
+    	String s = "User:" + "\n";
+    	s += "user name: " + name + "\n";
+    	s += card;
+    	s += expenseProfile;
+    	s += dietaryProfile + "\n";
+    	return s;
     }
     
 }

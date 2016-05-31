@@ -12,8 +12,9 @@ public class ExpenseProfile implements Serializable{
 	private float currentFund;		// expense limitation this month
 	private float nextFund;		// expense limitation next month
 	private float expense;			// total expense in the period
-	private String firstDay;		// firstDay of this month
-    private List<ExpenseRecord> expenseRecordList = new ArrayList<>();	//expenseList of this month
+	private String period;				// year and month
+
+	private List<ExpenseRecord> expenseRecordList = new ArrayList<>();	//expenseList of this month
 
     
     public ExpenseProfile() {
@@ -21,18 +22,18 @@ public class ExpenseProfile implements Serializable{
     	this.currentFund = 0;
     	this.nextFund = 0;
     	this.expense = 0;
-    	firstDay = null;
+    	period = null;
     	expenseRecordList = null;
     }
     
     // for program initialization
-    public ExpenseProfile(String cardNumber, String userName, float currentFund, float nextFund, float expense, String firstDay, List<ExpenseRecord> expenseRecordList ) {
+    public ExpenseProfile(String cardNumber, String userName, float currentFund, float nextFund, float expense, String period, List<ExpenseRecord> expenseRecordList ) {
     	this.cardNumber = cardNumber;
     	this.userName = userName;
     	this.currentFund = currentFund;
     	this.nextFund = nextFund;
     	this.expense = expense;
-    	this.firstDay = firstDay;
+    	this.period = period;
     	this.expenseRecordList = expenseRecordList;
     }
     
@@ -43,7 +44,7 @@ public class ExpenseProfile implements Serializable{
     	currentFund = nextFund;
     	nextFund = 0;
     	expense = 0;
-    	firstDay = new SimpleDateFormat("YYYY-MM-dd").format(new Date());
+    	period = new SimpleDateFormat("YYYY-MM").format(new Date());
     	expenseRecordList = new ArrayList<>();
     	
     }
@@ -56,14 +57,6 @@ public class ExpenseProfile implements Serializable{
 	// user buy item
     public void addExpenseRecord(ExpenseRecord er) {
     	expenseRecordList.add(er);
-    }
-    
-    public String getYearAndMonth() {
-    	String[] temp1 = firstDay.split("-");
-		String yearOfProfile = temp1[0];
-		String monthOfProfile = temp1[1];
-		
-		return yearOfProfile + "-" + monthOfProfile;
     }
     
     public String getCardNumber() {
@@ -86,9 +79,6 @@ public class ExpenseProfile implements Serializable{
     	return expenseRecordList;
     }
     
-    public String getFirstDay() {
-    	return firstDay;
-    }
     
     public String getUserName() {
 		return userName;
@@ -104,9 +94,6 @@ public class ExpenseProfile implements Serializable{
     	this.expense = expense;
     }
     
-    public void setFirstDay(String firstDay) {
-    	this.firstDay = firstDay;
-    }
     
     public void setList(List<ExpenseRecord> list) {
     	this.expenseRecordList = list;
@@ -116,17 +103,25 @@ public class ExpenseProfile implements Serializable{
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+	
+    public String getPeriod() {
+		return period;
+	}
+
+	public void setPeriod(String period) {
+		this.period = period;
+	}
     
     @Override
     public String toString() {
     	String s = "Profile type: " + TYPE + "\n";
     	s += "Card number: " + cardNumber + "\n";
-    	s += "Period: " + getYearAndMonth() + "\n";
+    	s += "Period: " + getPeriod() + "\n";
     	
     	s += "Limitation of this month: " + currentFund + "\n";
     	s += "Limitation of next month: " + nextFund + "\n";
     	s += "Expense of this month: " + expense + "\n";
-    	s += expenseRecordList;
+    	s += expenseRecordList+ "\n";
     	return s;
     	
     }

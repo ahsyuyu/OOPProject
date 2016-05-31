@@ -15,18 +15,16 @@ import java.util.ArrayList;
 
 //TODO change the class name to make more sense
 public class CheckValidation {
-	private final static String EXPENSEPROFILE_FILENAME = "database/1_exp.ser";
-	private final static String DIETARYPROFILE_FILENAME = "database/1_die.ser";
 	
 	/**
-	 * check validation of cardnumber and password when login
+	 * check validation of cardnumber + extension and password when login
 	 * if not, refuse to login
 	 * 
 	 * @param cardNumber
 	 * @param password
 	 * @return
 	 */
-	public static boolean loginCheckCard(int cardNumber, String password) {
+	public static boolean loginCheckCard(int cardNumberAndExtension, String password) {
 		// TODO
 		// deserialize data from card.ser or red data from card.txt
 		
@@ -44,7 +42,7 @@ public class CheckValidation {
 	 */
 	public static boolean loginUpdateExpenseProfile(ExpenseProfile expenseProfile) {
 		
-		String firstDay = expenseProfile.getFirstDay();
+		String firstDay = expenseProfile.getPeriod();
 		if (firstDay == null) {			
 			System.err.println("Will Never see this line, in CheckValidation:loginCheckExpenseProfile");
 			expenseProfile.reset();
