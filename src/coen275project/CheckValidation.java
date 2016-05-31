@@ -2,6 +2,7 @@ package coen275project;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.ArrayList;
@@ -33,23 +34,31 @@ public class CheckValidation {
 		String extension = cardNumberAndExtension.substring(4, cardNumberAndExtension.length());
 		
 		// retrieve 
-		HashSet<Card> cardhashset = Serialization.deSerialize("/database/cards.ser");
-		if (cardhashset.)
+		HashMap<String, String> cardhashmap = Serialization.deSerialize("/database/cards.ser");
+		String s = cardhashmap.get(cardNumber);
+		if (s != password) {
+			return false;
+		}
+		
+		User user = Serialization.deSerialize("/database/user_" + cardNumber + "_" + extension + ".ser");
+		loginUpdateExpenseProfile(user);
+		loginUpdateDietaryProfile(user);
 		return true;
 	}
 	
 	
 	/**
-	 * check expenseProfile when log in, compare today and firstDay in expenseprofile
-	 * if in the same month, do nothing, else, reset expenseProfile
-	 * @param expenseProfile
+	 * check expenseProfile when log in, compare today and period in expenseprofile
+	 * if in the same month, do nothing
+	 * else, reset expenseProfile
+	 * @param user
 	 * @return true: if updated
 	 *         false: if not updated since it's already with updated state
 	 */
-	public static boolean loginUpdateExpenseProfile(ExpenseProfile expenseProfile) {
-		
-		String firstDay = expenseProfile.getPeriod();
-		if (firstDay == null) {			
+	private static boolean loginUpdateExpenseProfile(User user) {
+		ExpenseProfile expenseProfile = user.getExpenseProfile();
+		String period = expenseProfile.getPeriod();
+		if (period == null) {			
 			System.err.println("Will Never see this line, in CheckValidation:loginCheckExpenseProfile");
 			expenseProfile.reset();
 			System.out.println("loginUpdateExpenseProfile: updated");
@@ -57,21 +66,14 @@ public class CheckValidation {
 		}
 		
 		// check if within the same month
-		String[] temp1 = firstDay.split("-");
-		String yearOfProfile = temp1[0];
-		String monthOfProfile = temp1[1];
+		String newMonth = new SimpleDateFormat("YYYY-MM").format(new Date());
 		
-		String today = new SimpleDateFormat("YYYY-MM-dd").format(new Date());
-		String[] temp2 = today.split("-");
-		String yearOfToday = temp2[0];
-		String monthOfToday = temp2[1];
-		
-		if (yearOfProfile.compareTo(yearOfToday) < 0|| monthOfProfile.compareTo(monthOfToday) < 0) {
+		if (!newMonth.equals(period)) {
 			expenseProfile.reset();
 			System.out.println("loginUpdateExpenseProfile: ExpenseProfile is out of updated, System updated it.");
 			
-			// TODO: Add serialization
-			Serialization.serialize(expenseProfile, EXPENSEPROFILE_FILENAME);
+			// serialization
+			serialization(user);
 			return true;	
 		}
 		
@@ -81,35 +83,35 @@ public class CheckValidation {
 	
 	/**
 	 * check dietaryprofile when log in, compare today and firstDay, date in dietary profile
-	 * if without the same month, clear up dietaryRecordList and expense, modify firstDay and today
+	 * if without the same month, clear up dietaryRecordList and expense, modify period and today
 	 * if without the same day, modify date and clear expense
-	 * 
+	 * else, do nothing.
 	 * @param dietaryprofile
+	 * 
+	 * @return true: if updated
+	 *         false: if not updated since the user login within the same day
 	 */
-	public static boolean loginUpdateDietaryProfile(DietaryProfile dietaryProfile) {
+	private static boolean loginUpdateDietaryProfile(User user) {
+		
+		DietaryProfile dietaryProfile = user.getDietaryProfile();
 		// check if within the same month
 		String today = new SimpleDateFormat("YYYY-MM-dd").format(new Date());
-		String[] temp1 = today.split("-");
+		String newMonth = new SimpleDateFormat("YYYY-MM").format(new Date());
 		String period = dietaryProfile.getPeriod();
-		String[] temp2 = period.split("-");
 		
-		if (!temp1[0].equals(temp2[0]) || !temp1[1].equals(temp2[1])) {
-			dietaryProfile.setExpense(0);
-			dietaryProfile.setList(new ArrayList<DietaryRecord>());
-			dietaryProfile.setDate(today);
-			dietaryProfile.setPeriod(temp1[0] + temp1[1]);
+		if (!period.equals(newMonth)) {
+			dietaryProfile.reset_newmonth();
 			System.out.println("loginUpdateDietaryProfile: without the same month, System updated it.");
 		}
 		
 		// check if within the same day
 		String date =  dietaryProfile.getDate();
 		if (!date.equals(today)) {
-			dietaryProfile.setDate(today); System.out.println(today);
-			dietaryProfile.setExpense(0);
+			dietaryProfile.reset_newday();
 			
-			// TODO: add serialization
+			// serialization
 			System.out.println("loginUpdateDietaryProfile: without the same day, System updated it.");
-			Serialization.serialize(dietaryProfile, DIETARYPROFILE_FILENAME);
+			serialization(user);
 			return true;
 		}
 		
@@ -128,14 +130,13 @@ public class CheckValidation {
 	 * @param foodStore
 	 * @param price
 	 */
-	public static boolean buyItem(User user, FoodStore foodStore, float price, int calorie) {
-		if (!checkExpenseValidation(user, price) || !checkDietaryValidation(user,calorie)) {
+	public static boolean buyItem(User user, FoodStore foodStore, float price, int calorie, List<List<Boolean>> foods) {
+		if (!checkExpenseValidation(user, price) || !checkDietaryValidation(user,calorie, foods)) {
 			return false;
-			
 		}
 		
 		// update ExpenseProfile
-		user.getExpenseProfile().setExpense(user.getExpenseProfile().getExpense() - price);
+		user.getExpenseProfile().setExpense(user.getExpenseProfile().getExpense() + price);
 		ExpenseRecord record1 = new ExpenseRecord(price, user.getName(), foodStore.getName());
 		user.getExpenseProfile().addExpenseRecord(record1);
 
@@ -146,9 +147,9 @@ public class CheckValidation {
 		
 		user.getCard().setTotalBalance();
 		
-		// TODO: add serialization
-		Serialization.serialize(user.getExpenseProfile(), EXPENSEPROFILE_FILENAME);
-		Serialization.serialize(user.getDietaryProfile(), DIETARYPROFILE_FILENAME);
+		// serialization
+		serialization(user);
+		
 		return true;
 	}
 	
@@ -162,9 +163,9 @@ public class CheckValidation {
 	 *         false: not satisfy expense limitation
 	 */
 	private static boolean checkExpenseValidation(User user,float price) {
-		//return expenseProfile.getExpense() + food.getPrice()<= expenseProfile.getCurrentFund();
+		
 		// check ExpenseProfile
-		if (user.getExpenseProfile().getExpense() + price <= user.getExpenseProfile().getCurrentFund()) {
+		if (user.getExpenseProfile().getCurrentFund() <= user.getExpenseProfile().getExpense() + price) {
 			System.out.println("Exceed limitation fund of the month.");
 			return false;
 		}
@@ -187,9 +188,20 @@ public class CheckValidation {
 	 * @return true: if satisfy 
 	 * 		   false: if not satisfy
 	 */
-	private static boolean checkDietaryValidation(User user,int calorie) {
+	private static boolean checkDietaryValidation(User user,int calorie, List<List<Boolean>> foods) {
+		boolean lowsugar = user.getDietaryProfile().getLowSugar();
+		boolean lowsodium = user.getDietaryProfile().getLowSodium();
+		boolean lowcholesterol = user.getDietaryProfile().getLowCholesterol();
 		
-		return user.getDietaryProfile().getExpense() + calorie <= user.getDietaryProfile().getExpense();
+		for (List<Boolean> food: foods) {
+			if ( lowsugar == true && food.get(0) == false 
+					|| lowsodium == true &&  food.get(1) == false
+					|| lowcholesterol == true && food.get(2) == false) {
+				return false;
+			}
+		}
+		
+		return user.getDietaryProfile().getExpense() + calorie <= user.getDietaryProfile().getCurrentCalorie();
 	}
 	
 	
@@ -215,8 +227,8 @@ public class CheckValidation {
 		}
 		// update
 		user.getExpenseProfile().setNextFund(newFund);
-		// TODO: add serialization
-		Serialization.serialize(user.getDietaryProfile(), EXPENSEPROFILE_FILENAME);
+		
+		serialization(user);
 		return true;
 	}
 	
@@ -229,14 +241,17 @@ public class CheckValidation {
 	 * @return
 	 */
 	public static boolean updateDietaryProfile (User user, int newCalorie) {
-		// check validation
-		
 		user.getDietaryProfile().setNextCalorie(newCalorie);
-		// TODO: add serialization
-		Serialization.serialize(user.getDietaryProfile(), DIETARYPROFILE_FILENAME);
+		serialization(user);
 		return true;
 	}
 	
+	private static boolean serialization(User user) {
+		String cardNumber = user.getCard().getCardNumber();
+		String extension = user.getExtensionNumber()+"";
+		Serialization.serialize(user, "/database/user_" + cardNumber + "_" + extension + ".ser" );
+		return true;
+	}
 	
 	
 	public static void main(String[] args) {

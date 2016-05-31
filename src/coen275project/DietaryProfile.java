@@ -1,7 +1,9 @@
 package coen275project;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.io.Serializable;
 
@@ -58,6 +60,18 @@ public class DietaryProfile implements Serializable{
     // TODO everyday with one record 
     public void addDietaryRecord(DietaryRecord record) {
     	dietaryRecordList.add(record);
+    }
+    
+    public void reset_newmonth() {
+    	expense = 0;
+    	dietaryRecordList = new ArrayList<DietaryRecord>();
+    	date = new SimpleDateFormat("YYYY-MM-dd").format(new Date());
+    	period = new SimpleDateFormat("YYYY-MM").format(new Date());
+    }
+    
+    public void reset_newday() {
+    	expense = 0;
+    	date = new SimpleDateFormat("YYYY-MM-dd").format(new Date());
     }
     
     public String getPeriod() {

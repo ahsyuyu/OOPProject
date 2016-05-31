@@ -287,8 +287,8 @@ public class Initialization {
 		Serialization.serialize(card_1002, "database/card_1002.ser");
 		
 		// user
-		Serialization.serialize(user_1000, "database/user_1000.ser");
-		Serialization.serialize(user_1001, "database/user_1001.ser");
+		Serialization.serialize(user_1000, "database/user_1000_0.ser");
+		Serialization.serialize(user_1001, "database/user_1001_0.ser");
 		Serialization.serialize(user_1002_10, "database/user_1002_10.ser");
 		Serialization.serialize(user_1002_11, "database/user_1002_11.ser");
 		System.out.println("finish.");
@@ -308,8 +308,8 @@ public class Initialization {
 		card_1000 = Serialization.deSerialize("database/card_1000.ser");
 		card_1001 = Serialization.deSerialize("database/card_1001.ser");
 		card_1002 = Serialization.deSerialize("database/card_1002.ser");
-		user_1000 = Serialization.deSerialize("database/user_1000.ser");
-		user_1001 = Serialization.deSerialize("database/user_1001.ser");
+		user_1000 = Serialization.deSerialize("database/user_1000_0.ser");
+		user_1001 = Serialization.deSerialize("database/user_1001_0.ser");
 		user_1002_10 = Serialization.deSerialize("database/user_1002_10.ser");
 		user_1002_11 = Serialization.deSerialize("database/user_1002_11.ser");
 		cardhashmap = null;
