@@ -23,6 +23,7 @@ public class SelectStore extends JPanel {
 	static FoodStoreList foodstorelist;
 	
 	public SelectStore(){
+		initialize();
 		setLayout(new GridLayout(1,0));
 		listPanel = new JPanel();
 		mapPanel = new JPanel();
@@ -62,9 +63,10 @@ public class SelectStore extends JPanel {
 //				foodStoreMenuWindow.setSize(500,500);
 //				foodStoreMenuWindow.setVisible(true);
 //				foodStoreMenuWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				FoodStore fs = foodstorelist.getFoodStore(storeList.getSelectedValue());
+				
+				FoodStore fs = foodstorelist.getFoodStore(storeList.getSelectedValue());//
 				FoodStoreMenu fsm = new FoodStoreMenu(fs);
-				//foodStoreMenuWindow.add(fsm);
+
 				mapPanel.add(fsm);
 				mapPanel.revalidate();
 			}
@@ -131,7 +133,7 @@ public class SelectStore extends JPanel {
 		public void mouseExited(MouseEvent e){}
 	}
 	
-	public static void main(String[] args) {
+	public void initialize(){
 		// TODO Auto-generated method stub
 		
 		FoodStore cafe1 = new FoodStore("Mission Cafe", 1, "Benson Memorial Hall");
@@ -165,15 +167,15 @@ public class SelectStore extends JPanel {
 	    foodstorelist.addFoodStore("Tago", cafe2);
 	    foodstorelist.addFoodStore("Drink", vm1);
 	    foodstorelist.addFoodStore("Snack", vm2);
-		
-		
+	}
+	
+	public static void main(String[] args) {
 		JFrame window = new JFrame("Select a store");
 		SelectStore ss = new SelectStore();
 		window.add(ss);
 		window.setSize(1200, 600);
 		window.setVisible(true);
 		window.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-		
 	}
 
 }

@@ -87,9 +87,10 @@ public class Navigation {
 			add(message);*/
 			
 			SelectStore storeList = new SelectStore();
-			Map map = new Map();
+//			Map map = new Map();
+//			this.add(storeList);
+//			this.add(map);
 			this.add(storeList);
-			this.add(map);
 			setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		}
 	}
