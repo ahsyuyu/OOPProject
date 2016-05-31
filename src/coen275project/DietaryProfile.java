@@ -29,7 +29,7 @@ public class DietaryProfile implements Serializable{
    
     // TODO for program initialization
     public DietaryProfile(String cardNumber, String userName, int currentCalorie, int nextCalorie, int expense, String period,
-			String date, List<DietaryRecord> dietaryRecordList) {
+			String date, List<DietaryRecord> dietaryRecordList, boolean lowSugar, boolean lowSodium, boolean lowCholesterol) {
 		this.cardNumber = cardNumber;
 		this.userName = userName;
 		this.currentCalorie = currentCalorie;
@@ -40,9 +40,9 @@ public class DietaryProfile implements Serializable{
 		this.dietaryRecordList = dietaryRecordList;
 		
 		// need edit
-		this.lowSugar = false;
-		this.lowSodium = false;
-		this.lowCholesterol = false;
+		this.lowSugar = lowSugar;
+		this.lowSodium = lowSodium;
+		this.lowCholesterol = lowCholesterol;
 	}
 
 	public void setCurrentCalorie(int setCurrentCalorie) {
@@ -142,13 +142,13 @@ public class DietaryProfile implements Serializable{
     	String s = "Profile type: " + TYPE + "\n";
     	s += "Card number: " + cardNumber + "\n";
     	s += "User Name: " + userName + "\n";
-    	s += "Today: " + date + "\n";
-    	s += "Limitation: [" + "lowSugar=" + lowSugar + ", lowSodium=" + lowSodium  + ", lowCholesterol=" + lowCholesterol+ "]" + "\n";
     	s += "Period: " + getPeriod() + "\n";
+    	s += "Limitation: [" + "lowSugar=" + lowSugar + ", lowSodium=" + lowSodium  + ", lowCholesterol=" + lowCholesterol+ "]" + "\n";
     	s += "Limitation calorie everyday in this month: " + currentCalorie + "\n";
     	s += "Limitation calorie everyday from next month: " + nextCalorie + "\n";
+    	s += "Today: " + date + "\n";
     	s += "Expense of this today: " + expense + "\n";
-    	s += dietaryRecordList;
+    	s += dietaryRecordList + "\n";
     	return s;
     }
     

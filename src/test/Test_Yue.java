@@ -79,7 +79,7 @@ public class Test_Yue {
 		dr = new DietaryRecord(20, "June");
 		dietaryList.add(dr);
 		
-		DietaryProfile dietaryProfile_1 = new DietaryProfile("1", "June", 2000, 1600, 10, "2016-05", "2016-05-27", dietaryList);
+		DietaryProfile dietaryProfile_1 = new DietaryProfile("1", "June", 2000, 1600, 10, "2016-05", "2016-05-27", dietaryList, true, false, false);
 		
 		System.out.println(dietaryProfile_1);
 		
@@ -152,28 +152,6 @@ public class Test_Yue {
 		
 		
 	}
-	
-	
-	
-	
-	
-//	ExpenseRecordList expenseRecordList = new ExpenseRecordList();
-//	ExpenseRecord expenseRecord = new ExpenseRecord(1, "2016-05-23");
-//	ExpenseRecord expenseRecord1 = new ExpenseRecord(2, "2016-05-23");
-//	ExpenseRecord expenseRecord2 = new ExpenseRecord(3, "2016-05-24");
-//	expenseRecordList.update(expenseRecord);
-//	expenseRecordList.update(expenseRecord1);
-//	expenseRecordList.update(expenseRecord2);
-//	
-//	System.out.print("Before Serializing - ");
-//	System.out.println(expenseRecordList);
-//	
-//	serialize(expenseRecordList, "No.001.ser");
-//	
-//	ExpenseRecordList expenseRecordListRec = deSerialize("No.001.ser");
-//
-//	System.out.print("After DeSerializing - ");
-//	System.out.println(expenseRecordListRec);
 	
 	
 

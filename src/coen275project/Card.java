@@ -47,4 +47,12 @@ public class Card implements Serializable {
 	public void setTotalBalance() {
 		
 	}
+	
+	@Override
+	public String toString() {
+		String s = "cardNumber: " + cardNumber + "\n";
+		s += "password: " + password + "\n";
+		s += "totalBalance: " + totalBalance + "\n";
+		return s;
+	}
 }
