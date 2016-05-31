@@ -27,18 +27,18 @@ public class Card implements Serializable {
 	}
     
 	synchronized public void deductMoney(float expense) {   //synchronized //****  update after purchase   // 
-        try {
+        /*try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-		}
+		}*/
 		
-		Card temCard = Serialization.deSerialize("database/"+ this.cardNumber +".ser");
+		Card temCard = Serialization.deSerialize("database/card_"+ this.cardNumber +".ser");
 		this.totalBalance = temCard.getTotalBalance();
 		System.out.print("( before deduct is " + this.totalBalance);
 		this.totalBalance -= expense;    // this is not atomic step
 		System.out.println(", after deduct is " + this.totalBalance + ")");
-	    Serialization.serialize(this,"database/"+ this.cardNumber +".ser");
+	    Serialization.serialize(this,"database/card_"+ this.cardNumber +".ser");
 	}
 	
 	public float getTotalBalance() {
