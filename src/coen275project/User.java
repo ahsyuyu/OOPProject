@@ -8,7 +8,7 @@ public class User implements Serializable {
     private Card card;
     private ExpenseProfile expenseProfile = new ExpenseProfile();
     private DietaryProfile dietaryProfile = new DietaryProfile();
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2L;
     
     /*----------------------about dependents----------------------*/
     private int extensionNumber = 0;     // the extensionNumber is 0 for parents, and is a 2-digit number for children
