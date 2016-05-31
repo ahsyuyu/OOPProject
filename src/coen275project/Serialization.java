@@ -37,7 +37,7 @@ public class Serialization{
 //		}
 //		return transOb;
 //	}
-	
+	private static final long serialVersionUID = 1L;
 	public static <E> void serialize(E obj, String filename) {
 		FileOutputStream fout = null;
 		ObjectOutputStream out = null;
