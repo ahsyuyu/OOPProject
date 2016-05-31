@@ -292,7 +292,7 @@ public class Initialization {
 //		Serialization.serialize(user_1002_10, "database/user_1002_10.ser");
 //		Serialization.serialize(user_1002_11, "database/user_1002_11.ser");
 //		System.out.println("finish.");
-//		
+		
 		
 		/***************************
 		 * deserialization
