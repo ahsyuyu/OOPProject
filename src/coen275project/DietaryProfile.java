@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 
 public class DietaryProfile implements Serializable{
-	private static final long serialVersionUID = 4L;
+	private static final long serialVersionUID = 2L;
 	private static final String TYPE = "Dietary Profile";
 	private String cardNumber; 			// need a cardnumber to serialization
 	private String userName;

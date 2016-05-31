@@ -6,7 +6,7 @@ import java.util.*;
 
 
 public class ExpenseProfile implements Serializable{
-	private static final long serialVersionUID = 3L;
+	private static final long serialVersionUID = 2L;
 	private static final String TYPE = "Expense Profile";
 	private String cardNumber; 		// need a cardnumber to serialization
 	private String userName;
