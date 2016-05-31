@@ -23,6 +23,7 @@ import javax.swing.border.TitledBorder;
 import coen275project.DietaryProfile;
 import coen275project.ExpenseProfile;
 import coen275project.Serialization;
+import coen275project.User;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -45,10 +46,9 @@ public class EditProfile extends JPanel {
 	private JCheckBox checkbox_Lowcholesterol;
 	
 	public static void main(String[] args) {
-		String expensefilename = "database/1_exp.ser";
-		String dietaryfilename = "database/1_die.ser";
+		String filename = "database/user_1000_0.ser";
 
-		EditProfile editProfile = new EditProfile(expensefilename, dietaryfilename);
+		EditProfile editProfile = new EditProfile(filename);
 
 		JFrame frame = new JFrame();
 		frame.getContentPane().add(editProfile);
@@ -60,15 +60,16 @@ public class EditProfile extends JPanel {
 
 	}
 
-	public EditProfile(String expensefilename, String dietaryfilename) {
-		myExpenseProfile = initializeExpenseData(expensefilename);
-		myDietaryProfile = initializeDietaryData(dietaryfilename);
+	public EditProfile(String filename) {
+		initializeExpenseData(filename);
 		initializeGUI();
-
 	}
 
-	private ExpenseProfile initializeExpenseData(String expenseProfileFileName) {
-		return Serialization.deSerialize(expenseProfileFileName);
+	private void initializeExpenseData(String filename) {
+		User user = Serialization.deSerialize(filename);
+		myExpenseProfile = user.getExpenseProfile();
+		myDietaryProfile = user.getDietaryProfile();
+		
 	}
 
 	private DietaryProfile initializeDietaryData(String dietaryProfileFileName) {

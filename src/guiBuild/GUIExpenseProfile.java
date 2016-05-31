@@ -56,7 +56,7 @@ public class GUIExpenseProfile extends JPanel {
 	private JPanel panel_4;
 
 	public static void main(String[] args) {
-		String filename = "database/1_exp.ser";
+		String filename = "database/user_1000_0.ser";
 		JFrame window = new JFrame("Expense Profile");
 		GUIExpenseProfile GUI_expenseprofile = new GUIExpenseProfile(filename);
 		window.getContentPane().add(GUI_expenseprofile);
@@ -65,7 +65,7 @@ public class GUIExpenseProfile extends JPanel {
 		window.setLocationRelativeTo(null);
 		try {
 			// 1.6+
-			window.setLocationByPlatform(true); // !!!
+			window.setLocationByPlatform(true); 	// !!!
 			window.setMinimumSize(window.getSize()); // !!!
 		} catch (Throwable ignoreAndContinue) {
 		}
@@ -73,14 +73,14 @@ public class GUIExpenseProfile extends JPanel {
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
-	public GUIExpenseProfile(String expenseProfileFileName) {
+	public GUIExpenseProfile(String filename) {
 
-		myExpenseProfile = initializeData(expenseProfileFileName);
+		myExpenseProfile = initializeData(filename).getExpenseProfile();
 		initializeGUI();
 	}
 
-	private ExpenseProfile initializeData(String expenseProfileFileName) {
-		return Serialization.deSerialize(expenseProfileFileName);
+	private User initializeData(String filename) {
+		return Serialization.deSerialize(filename);
 	}
 
 	private void initializeGUI() {

@@ -56,7 +56,7 @@ public class GUIDietaryProfile extends JPanel {
 	private JPanel panel_4;
 
 	public static void main(String[] args) {
-		String filename = "database/1_die.ser";
+		String filename = "database/user_1000_0.ser";
 		JFrame window = new JFrame("Dietary Profile");
 		GUIDietaryProfile GUI_dietaryprofile = new GUIDietaryProfile(filename);
 		window.getContentPane().add(GUI_dietaryprofile);
@@ -73,14 +73,14 @@ public class GUIDietaryProfile extends JPanel {
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
-	public GUIDietaryProfile(String dietaryProfileFileName) {
+	public GUIDietaryProfile(String filename) {
 
-		myDietaryProfile = initializeData(dietaryProfileFileName);
+		myDietaryProfile = initializeData(filename).getDietaryProfile();
 		initializeGUI();
 	}
 
-	private DietaryProfile initializeData(String dietaryProfileFileName) {
-		return Serialization.deSerialize(dietaryProfileFileName);
+	private User initializeData(String filename) {
+		return Serialization.deSerialize(filename);
 	}
 
 	private void initializeGUI() {

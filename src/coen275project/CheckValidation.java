@@ -130,9 +130,17 @@ public class CheckValidation {
 	 * @param foodStore
 	 * @param price
 	 */
-	public static boolean buyItem(User user, FoodStore foodStore, float price, int calorie, List<List<Boolean>> foods) {
-		if (!checkExpenseValidation(user, price) || !checkDietaryValidation(user,calorie, foods)) {
-			return false;
+	public static List<Boolean> buyItem(User user, FoodStore foodStore, float price, int calorie, List<List<Boolean>> foods) {
+		// check foods + calorie
+		List<Boolean> list = checkDietaryValidation(user,calorie, foods);
+	  
+		// check expense
+		list.add(checkExpenseValidation(user, price));
+		
+		for (Boolean b : list) {
+			if (b == false) {
+				return list;
+			}
 		}
 		
 		// update ExpenseProfile
@@ -150,7 +158,7 @@ public class CheckValidation {
 		// serialization
 		serialization(user);
 		
-		return true;
+		return list;
 	}
 	
 	/**
@@ -188,21 +196,25 @@ public class CheckValidation {
 	 * @return true: if satisfy 
 	 * 		   false: if not satisfy
 	 */
-	private static boolean checkDietaryValidation(User user,int calorie, List<List<Boolean>> foods) {
+	private static List<Boolean> checkDietaryValidation(User user,int calorie, List<List<Boolean>> foods) {
 		boolean lowsugar = user.getDietaryProfile().getLowSugar();
 		boolean lowsodium = user.getDietaryProfile().getLowSodium();
 		boolean lowcholesterol = user.getDietaryProfile().getLowCholesterol();
 		
+		List<Boolean> list = new ArrayList<>();
 		for (List<Boolean> food: foods) {
 			if ( lowsugar == true && food.get(0) == false 
 					|| lowsodium == true &&  food.get(1) == false
 					|| lowcholesterol == true && food.get(2) == false) {
-				return false;
+				list.add(false);
 			}
+			list.add(true);
 		}
 		
-		return user.getDietaryProfile().getExpense() + calorie <= user.getDietaryProfile().getCurrentCalorie();
+		list.add(user.getDietaryProfile().getExpense() + calorie <= user.getDietaryProfile().getCurrentCalorie());
+		return list;
 	}
+	
 	
 	
 
