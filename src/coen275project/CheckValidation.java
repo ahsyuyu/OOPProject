@@ -2,6 +2,7 @@ package coen275project;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -18,17 +19,22 @@ public class CheckValidation {
 	
 	/**
 	 * check validation of cardnumber + extension and password when login
+	 * if yes, deserilize user.ser (eg: user_1002_1.ser) and card.ser (eg: card_1002.ser)
 	 * if not, refuse to login
 	 * 
 	 * @param cardNumber
 	 * @param password
 	 * @return
 	 */
-	public static boolean loginCheckCard(int cardNumberAndExtension, String password) {
+	public static boolean loginCheckCard(String cardNumberAndExtension, String password) {
 		// TODO
-		// deserialize data from card.ser or red data from card.txt
+		// get input
+		String cardNumber = cardNumberAndExtension.substring(0, 4);
+		String extension = cardNumberAndExtension.substring(4, cardNumberAndExtension.length());
 		
-		// retrieve and compare
+		// retrieve 
+		HashSet<Card> cardhashset = Serialization.deSerialize("/database/cards.ser");
+		if (cardhashset.)
 		return true;
 	}
 	

@@ -70,11 +70,18 @@ public class User implements Serializable {
 	public void setDietaryProfile(DietaryProfile dietaryProfile) {
 		this.dietaryProfile = dietaryProfile;
 	}
+	public void setExtensionNumber(int extensionNumber)  {
+		this.extensionNumber = extensionNumber;
+	}
+	public int getExtensionNumber() {
+		return extensionNumber;
+	}
 	
 	@Override
     public String toString(){
     	String s = "User:" + "\n";
     	s += "user name: " + name + "\n";
+    	s += "extension: " + extensionNumber + "\n";
     	s += card;
     	s += expenseProfile;
     	s += dietaryProfile + "\n";
