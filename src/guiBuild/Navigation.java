@@ -85,7 +85,7 @@ public class Navigation {
 			setBackground(Color.yellow);
 			add(message);*/
 			
-			SelectStore storeList = new SelectStore();
+			SelectStore storeList = new SelectStore(theUser);
 //			Map map = new Map();
 //			this.add(storeList);
 //			this.add(map);

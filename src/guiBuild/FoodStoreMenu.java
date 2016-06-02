@@ -1,6 +1,7 @@
 package guiBuild;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -15,12 +16,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableCellRenderer;
 
 import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
-import coen275project.CheckValidation;
+import coen275project.CheckUpdateProfile;
 import coen275project.Food;
 import coen275project.FoodStore;
 import coen275project.User;
@@ -69,9 +72,9 @@ public class FoodStoreMenu extends JPanel {
 			float price = 0;
 			int calories = 0;
 			List<List<Boolean>> allNutrition = new ArrayList<>();
-			boolean lowSugar;
-			boolean lowSodium;
-			boolean lowCholesterol;
+//			boolean lowSugar;
+//			boolean lowSodium;
+//			boolean lowCholesterol;
 			
 			for(int i = 0; i < foodList.length; i++) {
 				List<Boolean> nutrition = new ArrayList<Boolean>();
@@ -89,11 +92,12 @@ public class FoodStoreMenu extends JPanel {
 			
 			System.out.println(price);
 			System.out.println(calories);
-			System.out.println(CheckValidation.buyItem(theUser, foodStore, price, calories, allNutrition));
+			System.out.println(CheckUpdateProfile.buyItem(theUser, foodStore, price, calories, allNutrition));
 			//[food1, food2, ... calories, expense]
-			List<Boolean> validation = CheckValidation.buyItem(theUser, foodStore, price, calories, allNutrition);
+			List<Boolean> validation = CheckUpdateProfile.buyItem(theUser, foodStore, price, calories, allNutrition);
 			String msg = "";
 			Boolean succes = true;
+			List<Integer> invalidItems = new ArrayList<Integer>();
 			for(int i = 0; i < validation.size(); i++){
 				if(!validation.get(i)){
 					succes = false;
@@ -102,6 +106,7 @@ public class FoodStoreMenu extends JPanel {
 					}else if(i == validation.size() - 1){
 						msg += "Expense exceeds limitation\n";
 					} else{
+						invalidItems.add(i);
 						msg += (String)foodStoreMenuList.getValueAt(i,6) + " does not match your dietary preference\n";
 					}
 				}
@@ -121,8 +126,63 @@ public class FoodStoreMenu extends JPanel {
 				JOptionPane.showMessageDialog(null, msg,"ok",JOptionPane.PLAIN_MESSAGE);
 				
 			}
-			
+//			ColorRenderer cr = new ColorRenderer();
+//			foodStoreMenuList.setDefaultRenderer(Color.class, cr);
+//			cr.getTableCellRendererComponent(foodStoreMenuList, null, false, false, 1, 1);
+			foodStoreMenuList.setDefaultRenderer(Object.class, new DefaultTableCellRenderer(){
+			    @Override
+			    public Component getTableCellRendererComponent(JTable table,
+			            Object value, boolean isSelected, boolean hasFocus, int row, int col) {
+
+			        final Component cell = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, col);
+			        
+
+		        	for(int i = 0; i < invalidItems.size(); i++ ){
+		        		if(row == invalidItems.get(i)){//
+		        			setBackground(Color.red);
+		        		}
+		        	}
+
+			        if(row == 1){//invalidItems.get(i)
+			        	System.out.println("coloring");
+	        			cell.setForeground(Color.red);
+	        		}
+			        System.out.println(row + " " + col);
+			        
+			             
+			        return this;
+			    }   
+			});
 		}
 	}
+	
+	public class MyCellRenderer extends javax.swing.table.DefaultTableCellRenderer {
+
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            final Component cellComponent = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+
+            Object val = table.getValueAt(row, 2);
+            String sval = val.toString();
+            sval = sval.replaceAll(":", "");
+            int ival = Integer.parseInt(sval);
+            if (ival == 0) {
+                cellComponent.setForeground(Color.black);
+                cellComponent.setBackground(Color.red);
+
+            } else {
+                cellComponent.setBackground(Color.white);
+                cellComponent.setForeground(Color.black);
+            }
+            if (isSelected) {
+                cellComponent.setForeground(table.getSelectionForeground());
+                cellComponent.setBackground(table.getSelectionBackground());
+            }
+
+            return cellComponent;
+
+        }
+
+    }
+	
 	
 }

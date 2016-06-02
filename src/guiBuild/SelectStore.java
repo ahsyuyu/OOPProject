@@ -15,6 +15,7 @@ import coen275project.Cafe;
 import coen275project.Food;
 import coen275project.FoodStore;
 import coen275project.FoodStoreList;
+import coen275project.Serialization;
 import coen275project.User;
 import coen275project.VendingMachine;
 
@@ -147,26 +148,32 @@ public class SelectStore extends JPanel {
 	    VendingMachine vm1 = new VendingMachine("Drink", 3, "Daly Science Center");
 	    VendingMachine vm2 = new VendingMachine("Snack", 4, "Engineering Center");
 	    
-	    Food sandwhich = new Food("sandwhich", 5.99F, 500, true, true, true);
-	    Food yoguart = new Food("yoguart", 3.99F, 200, true, true, true);
-	    Food hamburger = new Food("hamburger", 8.99F, 1000, true, false, false);
-	    Food latte = new Food("latte", 3.99F, 500, true, true, true);
-	    Food coke = new Food("coke", 1.99F, 700, false, true, true);
-	    Food toritos = new Food("toritos", 2.99F, 1200, false, false, true);
-	    Food cheetos = new Food("cheetos", 2.99F, 1100, false, false, true);
+	    Food sandwhich = new Food("Sandwhich", 5.99F, 500, true, true, true);
+	    Food yoguart = new Food("Yoguart", 3.99F, 100, true, true, true);
+	    Food hamburger = new Food("Hamburger", 8.99F, 1500, true, false, false);
+	    Food pizza = new Food("Pizza", 4.49F, 250, true, false, false);
+	    Food latte = new Food("Latte", 3.99F, 500, true, true, true);
+	    Food american = new Food("American Coffee", 3.49F, 500, true, true, true);
+	    Food coke = new Food("Coke", 1.99F, 140, false, true, true);
+	    Food toritos = new Food("Toritos", 2.99F, 130, false, false, true);
+	    Food cheetos = new Food("Cheetos", 2.99F, 150, false, false, true);
+	    Food chipAhoy = new Food("Chips Ahoy", 1.99F, 110, false, false, true);
 	    
-	    cafe1.addFoodToList("sandwhich", sandwhich);
-	    cafe1.addFoodToList("yoguart", yoguart);
-	    cafe1.addFoodToList("latte", latte);
+	    cafe1.addFoodToList(sandwhich.getName(), sandwhich);
+	    cafe1.addFoodToList(yoguart.getName(), yoguart);
+	    cafe1.addFoodToList(latte.getName(), latte);
 	    
-	    cafe2.addFoodToList("hamburger", hamburger);
-	    cafe2.addFoodToList("yoguart", yoguart);
+	    cafe2.addFoodToList(hamburger.getName(), hamburger);
+	    cafe2.addFoodToList(yoguart.getName(), yoguart);
+	    cafe2.addFoodToList(pizza.getName(), pizza);
 	    
-	    vm1.addFoodToList("latte", latte);
-	    vm1.addFoodToList("coke", coke);
+	    vm1.addFoodToList(latte.getName(), latte);
+	    vm1.addFoodToList(coke.getName(), coke);
+	    vm1.addFoodToList(american.getName(), american);
 	    
-	    vm2.addFoodToList("toritos", toritos);
-	    vm2.addFoodToList("cheetos", cheetos);
+	    vm2.addFoodToList(toritos.getName(), toritos);
+	    vm2.addFoodToList(cheetos.getName(), cheetos);
+	    vm2.addFoodToList(chipAhoy.getName(), chipAhoy);
 	    
 	    foodstorelist = new FoodStoreList();
 	    foodstorelist.addFoodStore("Mission Cafe", cafe1);
@@ -177,8 +184,9 @@ public class SelectStore extends JPanel {
 	}
 	
 	public static void main(String[] args) {
+//		User u = Serialization.deSerialize("database/user_1002_0.ser");
 //		JFrame window = new JFrame("Select a store");
-//		SelectStore ss = new SelectStore();
+//		SelectStore ss = new SelectStore(u);
 //		window.add(ss);
 //		window.setSize(1200, 600);
 //		window.setVisible(true);
