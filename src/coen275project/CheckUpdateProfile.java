@@ -21,7 +21,9 @@ import java.util.ArrayList;
  */
 
 //TODO change the class name to make more sense
+
 public class CheckUpdateProfile {
+
 	
 	/**
 	 * check expenseProfile when log in, compare today and period in expenseprofile
@@ -228,8 +230,12 @@ public class CheckUpdateProfile {
 	 * 
 	 * @return
 	 */
-	public static boolean updateDietaryProfile (User user, int newCalorie) {
+	public static boolean updateDietaryProfile (User user, int newCalorie, boolean lowsugar, boolean lowsodium, boolean lowcholesterol) {
 		user.getDietaryProfile().setNextCalorie(newCalorie);
+		user.getDietaryProfile().setLowSugar(lowsugar);
+		user.getDietaryProfile().setLowSodium(lowsodium);
+		user.getDietaryProfile().setLowCholesterol(lowcholesterol);
+		
 		serialization(user);
 		return true;
 	}

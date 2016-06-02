@@ -301,6 +301,7 @@ public class Initialization {
 		card_1000 = null;
 		card_1001 = null;
 		card_1002 = null;
+
 		user_1000_0 = null;
 		user_1001_0 = null;
 		user_1002_0 = null;
@@ -312,6 +313,7 @@ public class Initialization {
 		user_1001_0 = Serialization.deSerialize("database/user_1001_0.ser");
 		user_1002_0 = Serialization.deSerialize("database/user_1002_0.ser");
 		user_1002_1 = Serialization.deSerialize("database/user_1002_1.ser");
+
 //		cardhashmap = null;
 //		cardhashmap = Serialization.deSerialize("database/cards.ser");
 //		

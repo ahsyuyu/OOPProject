@@ -20,6 +20,7 @@ import javax.swing.JFrame;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
 
+import coen275project.CheckValidation;
 import coen275project.DietaryProfile;
 import coen275project.ExpenseProfile;
 import coen275project.Serialization;
@@ -30,7 +31,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class EditProfile extends JPanel {
-
+	User user = null;
 	ExpenseProfile myExpenseProfile = null;
 	DietaryProfile myDietaryProfile = null;
 
@@ -47,8 +48,8 @@ public class EditProfile extends JPanel {
 	
 	public static void main(String[] args) {
 		String filename = "database/user_1000_0.ser";
-
-		EditProfile editProfile = new EditProfile(filename);
+		User user = Serialization.deSerialize(filename);
+		EditProfile editProfile = new EditProfile(user);
 
 		JFrame frame = new JFrame();
 		frame.getContentPane().add(editProfile);
@@ -60,13 +61,13 @@ public class EditProfile extends JPanel {
 
 	}
 
-	public EditProfile(String filename) {
-		initializeExpenseData(filename);
+	public EditProfile(User user) {
+		initializeExpenseData(user);
 		initializeGUI();
 	}
 
-	private void initializeExpenseData(String filename) {
-		User user = Serialization.deSerialize(filename);
+	private void initializeExpenseData(User user) {
+		this.user = user;
 		myExpenseProfile = user.getExpenseProfile();
 		myDietaryProfile = user.getDietaryProfile();
 		
@@ -78,6 +79,7 @@ public class EditProfile extends JPanel {
 
 	public void initializeGUI() {
 		setLayout(new BorderLayout(5, 5));
+//		setSize(getWidth(), getHeight());
 
 		/********************************************** NORTH **********************************************/
 
@@ -153,7 +155,7 @@ public class EditProfile extends JPanel {
 		// dietary: row 2
 		JPanel panel_dietaryprofile_checkbox1 = new JPanel();
 		panel_dietaryprofile_checkbox1.setAlignmentX(Component.LEFT_ALIGNMENT);
-//		panel_dietaryprofile_checkbox1.setLayout(new BoxLayout(panel_dietaryprofile_checkbox1, BoxLayout.X_AXIS));
+		panel_dietaryprofile_checkbox1.setLayout(new BoxLayout(panel_dietaryprofile_checkbox1, BoxLayout.X_AXIS));
 		panel_dietaryprofile_checkbox1.setPreferredSize(new Dimension(300, 20));
 		panel_dietaryprofile.add(panel_dietaryprofile_checkbox1);
 		
@@ -166,11 +168,12 @@ public class EditProfile extends JPanel {
 //		// dietary: row 3
 		JPanel panel_dietaryprofile_checkbox2 = new JPanel();
 		panel_dietaryprofile_checkbox2.setAlignmentX(Component.LEFT_ALIGNMENT);
-//		panel_dietaryprofile_checkbox2.setLayout(new BoxLayout(panel_dietaryprofile_checkbox2, BoxLayout.X_AXIS));
+		panel_dietaryprofile_checkbox2.setLayout(new BoxLayout(panel_dietaryprofile_checkbox2, BoxLayout.X_AXIS));
 		panel_dietaryprofile_checkbox2.setPreferredSize(new Dimension(300, 20));
 		panel_dietaryprofile.add(panel_dietaryprofile_checkbox2);
 		
 		checkbox_lowsodium = new JCheckBox("Low Sodium");
+		checkbox_lowsodium.setAlignmentX(Component.LEFT_ALIGNMENT);
 		checkbox_lowsodium.setSelected(myDietaryProfile.getLowSodium());
 		checkbox_lowsodium.setPreferredSize(new Dimension(300, 20));
 		panel_dietaryprofile_checkbox2.add(checkbox_lowsodium);
@@ -178,7 +181,7 @@ public class EditProfile extends JPanel {
 //		// dietary: row 4
 		JPanel panel_dietaryprofile_checkbox3 = new JPanel();
 		panel_dietaryprofile_checkbox3.setAlignmentX(Component.LEFT_ALIGNMENT);
-//		panel_dietaryprofile_checkbox3.setLayout(new BoxLayout(panel_dietaryprofile_checkbox3, BoxLayout.X_AXIS));
+		panel_dietaryprofile_checkbox3.setLayout(new BoxLayout(panel_dietaryprofile_checkbox3, BoxLayout.X_AXIS));
 		panel_dietaryprofile_checkbox3.setPreferredSize(new Dimension(300, 20));
 		panel_dietaryprofile.add(panel_dietaryprofile_checkbox3);
 		
@@ -222,9 +225,11 @@ public class EditProfile extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				float fund;
+				int calorie;
 				try {
-					float fund = Float.parseFloat(textfield_fund.getText());
-					int calorie = (int)Integer.parseInt(textfield_calorie.getText());
+					fund = Float.parseFloat(textfield_fund.getText());
+					calorie = (int)Integer.parseInt(textfield_calorie.getText());
 				} catch(NumberFormatException e1) {
 					label_result.setText("please input number");
 					return;
@@ -233,9 +238,8 @@ public class EditProfile extends JPanel {
 				boolean low_sugar = checkbox_lowsugar.isSelected();
 				boolean low_sodium  = checkbox_lowsodium.isSelected();
 				boolean low_cholesterol = checkbox_Lowcholesterol.isSelected();
-				
-				
-				
+				CheckValidation.updateExpenseProfile(user, fund);
+				CheckValidation.updateDietaryProfile(user, calorie, low_sugar, low_sodium, low_cholesterol);
 			}
 			
 		});
