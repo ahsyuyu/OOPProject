@@ -20,7 +20,7 @@ import javax.swing.JFrame;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
 
-import coen275project.CheckValidation;
+import coen275project.CheckUpdateProfile;
 import coen275project.DietaryProfile;
 import coen275project.ExpenseProfile;
 import coen275project.Serialization;
@@ -231,15 +231,15 @@ public class EditProfile extends JPanel {
 					fund = Float.parseFloat(textfield_fund.getText());
 					calorie = (int)Integer.parseInt(textfield_calorie.getText());
 				} catch(NumberFormatException e1) {
-					label_result.setText("please input number");
+					//label_result.setText("please input number");
 					return;
 				}
 				
 				boolean low_sugar = checkbox_lowsugar.isSelected();
 				boolean low_sodium  = checkbox_lowsodium.isSelected();
 				boolean low_cholesterol = checkbox_Lowcholesterol.isSelected();
-				CheckValidation.updateExpenseProfile(user, fund);
-				CheckValidation.updateDietaryProfile(user, calorie, low_sugar, low_sodium, low_cholesterol);
+				CheckUpdateProfile.updateExpenseProfile(user, fund);
+				CheckUpdateProfile.updateDietaryProfile(user, calorie, low_sugar, low_sodium, low_cholesterol);
 			}
 			
 		});
