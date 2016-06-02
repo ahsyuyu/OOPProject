@@ -41,8 +41,8 @@ public class Navigation {
 	/*** Create the application.*/
 	public Navigation(String cardNumber, String extension) {
 		theUser = Serialization.deSerialize("database/user_" + cardNumber + "_" + extension + ".ser");   //Lifen: get the user
-		CheckUpdateProfile.loginUpdateExpenseProfile(theUser);    //Lifen: copy Yue's code
-		CheckUpdateProfile.loginUpdateDietaryProfile(theUser);   //Lifen: copy Yue's code
+		//CheckUpdateProfile.loginUpdateExpenseProfile(theUser);    //Lifen: copy Yue's code
+		//CheckUpdateProfile.loginUpdateDietaryProfile(theUser);   //Lifen: copy Yue's code
 		initialize();
 	}
 	
