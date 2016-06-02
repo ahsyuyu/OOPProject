@@ -25,23 +25,56 @@ public class Card implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-    
-	synchronized public void deductMoney(float expense) {   //synchronized //****  update after purchase   // 
-        /*try {
+	
+	synchronized public static void temTest(String cardNumber, float expense){
+		try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-		}*/
+		}
 		
+		Card thisCard = Serialization.deSerialize("database/card_"+ cardNumber +".ser");
+		System.out.println("card: " + cardNumber);
+		System.out.print("( before deduct is " + thisCard.totalBalance);
+		thisCard.totalBalance -= expense;    // this is not atomic step
+		System.out.println(", after deduct is " + thisCard.totalBalance + ")");
+		
+	    Serialization.serialize(thisCard,"database/card_"+ cardNumber +".ser");		
+	}
+	
+    
+	/*synchronized public void deductMoney(float expense) {   //synchronized //****  update after purchase   // 
+        try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		System.out.println("card: " + this.cardNumber);
 		Card temCard = Serialization.deSerialize("database/card_"+ this.cardNumber +".ser");
-		this.totalBalance = temCard.getTotalBalance();
+		//this.totalBalance = temCard.getTotalBalance();
+		this.totalBalance = temCard.totalBalance;
 		System.out.print("( before deduct is " + this.totalBalance);
 		this.totalBalance -= expense;    // this is not atomic step
 		System.out.println(", after deduct is " + this.totalBalance + ")");
 	    Serialization.serialize(this,"database/card_"+ this.cardNumber +".ser");
-	}
+	}*/
+	
+	/*synchronized public void deductMoneyNoSer(float expense) {   //synchronized //****  update after purchase   // 
+        try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		System.out.println("card: " + this.cardNumber);
+		System.out.print("( before deduct is " + this.totalBalance);
+		this.totalBalance -= expense;    // this is not atomic step
+		System.out.println(", after deduct is " + this.totalBalance + ")");
+	}*/
+	
 	
 	public float getTotalBalance() {
+		Card temCard = Serialization.deSerialize("database/card_"+ this.cardNumber +".ser");
+		this.totalBalance = temCard.totalBalance;
 		return this.totalBalance;
 	}
 	

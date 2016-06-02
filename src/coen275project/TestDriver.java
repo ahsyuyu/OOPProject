@@ -32,11 +32,11 @@ public class TestDriver {
 	    TestThread t2 = new TestThread(user11);
 	    
 	    /************Lifen: test card with multiThread, use class TestThread and TestThread2 as below***************/
-	    /*Card card = new Card(1111, "aaaa");
-	    //Card card1 = new Card(2222, "bbbb");
+	    /*Card card = new Card("1111", "aaaa");
+	    Card card1 = new Card("2222", "bbbb");
 	    TestThread t1 = new TestThread(card);
 	    TestThread2 t2 = new TestThread2(card);*/
-
+		
 	}
 
 }
@@ -59,7 +59,7 @@ class TestThread implements Runnable {
 	}
 	
 	public void run() {
-		card.deductMoney(20.0f);
+		card.deductMoneyNoSer(20.0f);
 	}
 }
 

@@ -301,14 +301,14 @@ public class Initialization {
 //		card_1000 = null;
 //		card_1001 = null;
 //		card_1002 = null;
-		//user_1000 = null;
+//		user_1000 = null;
 //		user_1001 = null;
 //		user_1002_10 = null;
 //		user_1002_11 = null;
-		card_1000 = Serialization.deSerialize("database/card_1000.ser");
+//		card_1000 = Serialization.deSerialize("database/card_1000.ser");
 //		card_1001 = Serialization.deSerialize("database/card_1001.ser");
 //		card_1002 = Serialization.deSerialize("database/card_1002.ser");
-		user_1000 = Serialization.deSerialize("database/user_1000_0.ser");
+//		user_1000 = Serialization.deSerialize("database/user_1000_0.ser");
 //		user_1001 = Serialization.deSerialize("database/user_1001_0.ser");
 //		user_1002_10 = Serialization.deSerialize("database/user_1002_10.ser");
 //		user_1002_11 = Serialization.deSerialize("database/user_1002_11.ser");
@@ -316,24 +316,16 @@ public class Initialization {
 //		cardhashmap = Serialization.deSerialize("database/cards.ser");
 //		
 //		// succeed
-		//System.out.println("card_1000" + "\n" + card_1000 + "\n");
+//		System.out.println("card_1000" + "\n" + card_1000 + "\n");
 //		System.out.println("card_1001" + "\n" + card_1001 + "\n");
 //		System.out.println("card_1002" + "\n" + card_1002 + "\n");
-		//System.out.println("user_1000" + "\n" + user_1000 + "\n");
+//		System.out.println("user_1000" + "\n" + user_1000 + "\n");
 //		System.out.println("user_1001" + "\n" + user_1001 + "\n");
 //		System.out.println("user_1002_10" + "\n" + user_1002_10 + "\n");
 //		System.out.println("user_1002_11" + "\n" + user_1002_11 + "\n");
 //		System.out.println(cardhashmap);
 		
-		System.out.println("****************************************");
-		System.out.println(card_1000.getTotalBalance());
-		System.out.println(user_1000.getCard().getTotalBalance());
-	
-		user_1000.getCard().deductMoney(100);
-		System.out.println(user_1000.getCard().getTotalBalance());
-		user_1000.getCard().deductMoney(100);
-		System.out.println(user_1000.getCard().getTotalBalance());
-		Serialization.serialize(user_1000, "database/user_1000_0.ser");
+		
 	}
 
 }
