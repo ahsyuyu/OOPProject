@@ -10,7 +10,9 @@ import java.io.Serializable;
 
 public class DietaryProfile implements Serializable{
 	private static final long serialVersionUID = 2L;
+	
 	private static final String TYPE = "Dietary Profile";
+	
 	private String cardNumber; 			// need a cardnumber to serialization
 	private String userName;
 
@@ -29,7 +31,7 @@ public class DietaryProfile implements Serializable{
     	
     }
    
-    // TODO for program initialization
+    // for program initialization
     public DietaryProfile(String cardNumber, String userName, int currentCalorie, int nextCalorie, int expense, String period,
 			String date, List<DietaryRecord> dietaryRecordList, boolean lowSugar, boolean lowSodium, boolean lowCholesterol) {
 		this.cardNumber = cardNumber;
@@ -40,17 +42,11 @@ public class DietaryProfile implements Serializable{
 		this.period = period;
 		this.date = date;
 		this.dietaryRecordList = dietaryRecordList;
-		
-		// need edit
 		this.lowSugar = lowSugar;
 		this.lowSodium = lowSodium;
 		this.lowCholesterol = lowCholesterol;
 	}
 
-	public void setCurrentCalorie(int setCurrentCalorie) {
-    	this.currentCalorie = setCurrentCalorie;
-    }
-    
     // modify calorie of next month		
     public void setNextCalorie(int nextCalorie) {
     	this.nextCalorie = nextCalorie;
@@ -150,6 +146,9 @@ public class DietaryProfile implements Serializable{
 		this.userName = userName;
 	}
 	
+	public void setCurrentCalorie(int setCurrentCalorie) {
+    	this.currentCalorie = setCurrentCalorie;
+    }
     
     @Override
     public String toString() {

@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 public class DietaryRecord implements Serializable{
 	private String date;
 	private int expense;
-	private String userName;				// record user name
+	private String userName;
 	
 	
 	public DietaryRecord(int expense, String userName) {
@@ -16,7 +16,7 @@ public class DietaryRecord implements Serializable{
 		this.userName = userName;
 	}
 	
-	// for test
+	// for program initialization
 	public DietaryRecord(String date, int expense, String userName) {
 		this.date = date;
 		this.expense = expense;
@@ -46,7 +46,4 @@ public class DietaryRecord implements Serializable{
 	public String toString() {
 		return "\n" + "date=" + date + ", expense=" + expense + ", userName=" + userName;
 	}
-	
-	
-
 }

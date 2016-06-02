@@ -20,11 +20,8 @@ import java.util.ArrayList;
  *
  */
 
-//TODO change the class name to make more sense
-
 public class CheckUpdateProfile {
 
-	
 	/**
 	 * check expenseProfile when log in, compare today and period in expenseprofile
 	 * if in the same month, do nothing
@@ -247,9 +244,8 @@ public class CheckUpdateProfile {
 		return true;
 	}
 	
-	
 	public static void main(String[] args) {
 
 	}
-
+	
 }

@@ -7,17 +7,18 @@ import java.util.*;
 
 public class ExpenseProfile implements Serializable{
 	private static final long serialVersionUID = 2L;
+	
 	private static final String TYPE = "Expense Profile";
+	
 	private String cardNumber; 		// need a cardnumber to serialization
 	private String userName;
 	private float currentFund;		// expense limitation this month
-	private float nextFund;		// expense limitation next month
+	private float nextFund;			// expense limitation next month
 	private float expense;			// total expense in the period
-	private String period;				// year and month
+	private String period;			// year and month
 
 	private List<ExpenseRecord> expenseRecordList = new ArrayList<>();	//expenseList of this month
 
-    
     public ExpenseProfile() {
     	this.cardNumber = "0";
     	this.currentFund = 0;
@@ -38,8 +39,6 @@ public class ExpenseProfile implements Serializable{
     	this.expenseRecordList = expenseRecordList;
     }
     
-
-    
     // when second period begin
     public void reset () {
     	currentFund = nextFund;
@@ -47,7 +46,6 @@ public class ExpenseProfile implements Serializable{
     	expense = 0;
     	period = new SimpleDateFormat("YYYY-MM").format(new Date());
     	expenseRecordList = new ArrayList<>();
-    	
     }
     
     // modify fund of next month
@@ -124,10 +122,5 @@ public class ExpenseProfile implements Serializable{
     	s += "Expense of this month: " + expense + "\n";
     	s += expenseRecordList+ "\n";
     	return s;
-    	
     }
-
-	
-    
-    
 }

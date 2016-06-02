@@ -18,17 +18,17 @@ public class Initialization {
 		Card card_1000 = new Card("1000", "0000");
 		// expense profile
 		List<ExpenseRecord> expenseList_1000 = new ArrayList<>();
-		ExpenseRecord er = new ExpenseRecord("2016-05-03", 20, "user_1000_0", "Drink");
+		ExpenseRecord er = new ExpenseRecord("2016-06-01", 20, "user_1000_0", "Drink");
 		expenseList_1000.add(er);
-		er = new ExpenseRecord("2016-05-03", 10, "user_1000_0", "Snack");
+		er = new ExpenseRecord("2016-06-01", 10, "user_1000_0", "Snack");
 		expenseList_1000.add(er);
-		er = new ExpenseRecord("2016-05-04", 30, "user_1000_0", "Drink");
+		er = new ExpenseRecord("2016-06-01", 30, "user_1000_0", "Drink");
 		expenseList_1000.add(er);
-		er = new ExpenseRecord("2016-05-05", 40, "user_1000_0", "Snack");
+		er = new ExpenseRecord("2016-06-01", 40, "user_1000_0", "Snack");
 		expenseList_1000.add(er);
-		er = new ExpenseRecord("2016-05-06", 20, "user_1000_0", "Drink");
+		er = new ExpenseRecord("2016-06-02", 20, "user_1000_0", "Drink");
 		expenseList_1000.add(er);
-		er = new ExpenseRecord("2016-05-07", 20, "user_1000_0", "Snack");
+		er = new ExpenseRecord("2016-06-02", 20, "user_1000_0", "Snack");
 		expenseList_1000.add(er);
 		er = new ExpenseRecord(30, "user_1000_0", "Mission Cafe");
 		expenseList_1000.add(er);
@@ -38,34 +38,34 @@ public class Initialization {
 				expenseList_1000);
 		// dietary profile
 		List<DietaryRecord> dietaryList_1000 = new ArrayList<>();
-		DietaryRecord dr = new DietaryRecord("2016-05-03", 20, "user_1000_0");
+		DietaryRecord dr = new DietaryRecord("2016-06-01", 100, "user_1000_0");
 		dietaryList_1000.add(dr);
-		dr = new DietaryRecord("2016-05-08", 20, "user_1000_0");
+		dr = new DietaryRecord("2016-06-01", 200, "user_1000_0");
 		dietaryList_1000.add(dr);
-		dr = new DietaryRecord("2016-05-09", 20, "user_1000_0");
+		dr = new DietaryRecord("2016-06-01", 60, "user_1000_0");
 		dietaryList_1000.add(dr);
-		dr = new DietaryRecord("2016-05-13", 20, "user_1000_0");
+		dr = new DietaryRecord("2016-06-01", 100, "user_1000_0");
 		dietaryList_1000.add(dr);
-		dr = new DietaryRecord("2016-05-15", 20, "user_1000_0");
+		dr = new DietaryRecord("2016-06-01", 200, "user_1000_0");
 		dietaryList_1000.add(dr);
-		dr = new DietaryRecord("2016-05-17", 20, "user_1000_0");
+		dr = new DietaryRecord("2016-06-01", 180, "user_1000_0");
 		dietaryList_1000.add(dr);
-		dr = new DietaryRecord("2016-05-18", 30, "user_1000_0");
+		dr = new DietaryRecord("2016-06-01", 60, "user_1000_0");
 		dietaryList_1000.add(dr);
-		dr = new DietaryRecord("2016-05-20", 30, "user_1000_0");
+		dr = new DietaryRecord("2016-06-02", 80, "user_1000_0");
 		dietaryList_1000.add(dr);
-		dr = new DietaryRecord("2016-05-21", 20, "user_1000_0");
+		dr = new DietaryRecord("2016-06-02", 110, "user_1000_0");
 		dietaryList_1000.add(dr);
-		dr = new DietaryRecord("2016-05-22", 10, "user_1000_0");
-		dietaryList_1000.add(dr);
-		dr = new DietaryRecord(30, "user_1000_0");
+		dr = new DietaryRecord("2016-06-02", 120, "user_1000_0");
 		dietaryList_1000.add(dr);
 		dr = new DietaryRecord(20, "user_1000_0");
 		dietaryList_1000.add(dr);
-		DietaryProfile dietaryProfile_1000 = new DietaryProfile("1000", "user_1000_0", 2000, 1600, 0, "2016-05",
-				"2016-05-27", dietaryList_1000, true, false, false);
+		dr = new DietaryRecord(220, "user_1000_0");
+		dietaryList_1000.add(dr);
+		DietaryProfile dietaryProfile_1000 = new DietaryProfile("1000", "user_1000_0", 2000, 1600, 0, "2016-06",
+				"2016-06-02", dietaryList_1000, true, false, false);
 		// user
-		User user_1000 = new User("user_1000_0", card_1000);
+		User user_1000 = new User("user_1000_0", "card_1000");
 		user_1000.setExtensionNumber(0);
 		user_1000.setExpenseProfile(expenseProfile_1000);
 		user_1000.setDietaryProfile(dietaryProfile_1000);

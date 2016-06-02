@@ -23,7 +23,7 @@ public class ExpenseRecord implements Serializable{
 		//date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 	}
 	
-	// for test
+	// for programe initialization
 	public ExpenseRecord(String date, float expense, String userName, String storeName) {
 		this.date = date;
 		this.expense = expense;
