@@ -108,7 +108,7 @@ public class CheckUpdateProfile {
 	 * @param foodStore
 	 * @param price
 	 */
-	public List<Boolean> buyItem(User user, FoodStore foodStore, float price, int calorie, List<List<Boolean>> foods) {
+	public static List<Boolean> buyItem(User user, FoodStore foodStore, float price, int calorie, List<List<Boolean>> foods) {
 		// check foods + calorie
 		List<Boolean> list = checkDietaryValidation(user,calorie, foods);
 	  
@@ -174,7 +174,7 @@ public class CheckUpdateProfile {
 	 * @return true: if satisfy 
 	 * 		   false: if not satisfy
 	 */
-	private List<Boolean> checkDietaryValidation(User user,int calorie, List<List<Boolean>> foods) {
+	private static List<Boolean> checkDietaryValidation(User user,int calorie, List<List<Boolean>> foods) {
 		boolean lowsugar = user.getDietaryProfile().getLowSugar();
 		boolean lowsodium = user.getDietaryProfile().getLowSodium();
 		boolean lowcholesterol = user.getDietaryProfile().getLowCholesterol();
