@@ -14,7 +14,7 @@ import javax.swing.SwingUtilities;
 
 import coen275project.Serialization;
 import coen275project.User;
-import coen275project.UserManager;
+import discard.UserManager;
 
 /**
  * @author Lifen

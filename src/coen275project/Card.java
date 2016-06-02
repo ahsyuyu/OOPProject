@@ -72,10 +72,9 @@ public class Card implements Serializable {
 	}*/
 	
 	
-	public float getTotalBalance() {
-		Card temCard = Serialization.deSerialize("database/card_"+ this.cardNumber +".ser");
-		this.totalBalance = temCard.totalBalance;
-		return this.totalBalance;
+	public static float getTotalBalance(String cardNumber) {
+		Card temCard = Serialization.deSerialize("database/card_"+ cardNumber +".ser");
+		return temCard.totalBalance;
 	}
 	
 	public void setTotalBalance() {
