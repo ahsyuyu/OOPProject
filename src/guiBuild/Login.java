@@ -1,11 +1,17 @@
 package guiBuild;
 
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.ItemSelectable;
 
 import javax.swing.JFrame;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -20,6 +26,11 @@ public class Login {
 	private JTextField userPasswordField;
 	private JButton loginButton;
 	private JLabel lblWelcomeTo;
+	private JComboBox extensionComboBox;
+	
+	private String accountNumber;
+	private String password;
+	private String extension;
 
 	/**
 	 * Launch the application.
@@ -29,7 +40,7 @@ public class Login {
 			public void run() {
 				try {
 					// initialize a collection of users and cards
-					UserManager um = new UserManager();    
+					//UserManager um = new UserManager();    
 					
 					Login window = new Login();
 					window.frame.setVisible(true);
@@ -83,15 +94,23 @@ public class Login {
 		userPasswordField.setBounds(188, 141, 134, 28);
 		frame.getContentPane().add(userPasswordField);
 		userPasswordField.setColumns(10);
+		
+		String [] extension = {"0", "1","2","3","4", "5", "6", "7", "8", "9"};
+		extensionComboBox = new JComboBox(extension);
+		extensionComboBox.setBounds(334, 100, 52, 27);
+		extensionComboBox.setFont(new Font("Arial", Font.PLAIN, 12));
+		frame.getContentPane().add(extensionComboBox);  	
+	          
 	}
 	
 	public void addListeners() {
+		// add ActionListener to loginButton
 		loginButton.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {   
-	        	String accountNumber = userAccountField.getText();
-	        	String password = userPasswordField.getText();  
+	        	accountNumber = userAccountField.getText();
+	        	password = userPasswordField.getText();  
 	        	
-	        	Boolean judge = UserManager.checkLogin(accountNumber, password);
+	        	Boolean judge = LoginCheck.loginCheckCard(accountNumber, extension, password);
 	            if (judge) {
 	            	lblWelcomeTo.setText("Succeed!");
 	            	userAccountField.setText("");
@@ -100,7 +119,7 @@ public class Login {
 	            	try {
 						Thread.sleep(1000);
 						//Navigation.main(null);
-						Navigation.main(new String[]{accountNumber});
+						Navigation.main(new String[]{accountNumber, extension});    //**??need to update
 					} catch (InterruptedException e1) {
 						e1.printStackTrace();
 					}
@@ -109,6 +128,21 @@ public class Login {
 	            }
 	        }
 		});
+		
+		// add stateChanged listener to extension comboBox
+		ItemListener itemListener = new ItemListener() {
+			public void itemStateChanged(ItemEvent itemEvent) {
+				int state = itemEvent.getStateChange();
+				if (state == ItemEvent.SELECTED){	            		            	
+					ItemSelectable is = itemEvent.getItemSelectable();
+					Object selected[] = is.getSelectedObjects();
+					if (selected.length != 0){
+						extension = (String)selected[0];
+					}
+				}
+			}
+		};
+		extensionComboBox.addItemListener(itemListener);	  
 		
 		
 		//below is Anne's test with loginButton
@@ -122,5 +156,4 @@ public class Login {
 			}
 		});*/
 	}
-	
 }

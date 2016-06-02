@@ -11,9 +11,12 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import coen275project.Cafe;
 import coen275project.Food;
 import coen275project.FoodStore;
 import coen275project.FoodStoreList;
+import coen275project.User;
+import coen275project.VendingMachine;
 
 public class SelectStore extends JPanel {
 	String[] sList = {"Mission Cafe", "Tago", "Drink", "Snack"};
@@ -21,9 +24,12 @@ public class SelectStore extends JPanel {
 	static JPanel listPanel;
 	static JPanel mapPanel;
 	static FoodStoreList foodstorelist;
+	User theUser;
 	
-	public SelectStore(){
+	public SelectStore(User u){
+		System.out.println(u);
 		initialize();
+		this.theUser = u;
 		setLayout(new GridLayout(1,0));
 		listPanel = new JPanel();
 		mapPanel = new JPanel();
@@ -65,7 +71,7 @@ public class SelectStore extends JPanel {
 //				foodStoreMenuWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				
 				FoodStore fs = foodstorelist.getFoodStore(storeList.getSelectedValue());//
-				FoodStoreMenu fsm = new FoodStoreMenu(fs);
+				FoodStoreMenu fsm = new FoodStoreMenu(theUser, fs);
 
 				mapPanel.add(fsm);
 				mapPanel.revalidate();
@@ -121,7 +127,7 @@ public class SelectStore extends JPanel {
 //			foodStoreMenuWindow.setVisible(true);
 //			foodStoreMenuWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			FoodStore fs = SelectStore.foodstorelist.getFoodStore(storeName);
-			FoodStoreMenu fsm = new FoodStoreMenu(fs);
+			FoodStoreMenu fsm = new FoodStoreMenu(theUser, fs);
 			//foodStoreMenuWindow.add(fsm);
 			listPanel.add(fsm);
 			listPanel.revalidate();
@@ -136,10 +142,10 @@ public class SelectStore extends JPanel {
 	public void initialize(){
 		// TODO Auto-generated method stub
 		
-		FoodStore cafe1 = new FoodStore("Mission Cafe", 1, "Benson Memorial Hall");
-	    FoodStore cafe2 = new FoodStore("Tago", 2, "119 Washington St, Santa Clara");
-	    FoodStore vm1 = new FoodStore("Drink", 3, "Daly Science Center");
-	    FoodStore vm2 = new FoodStore("Snack", 4, "Engineering Center");
+		Cafe cafe1 = new Cafe("Mission Cafe", 1, "Benson Memorial Hall");
+		Cafe cafe2 = new Cafe("Tago", 2, "119 Washington St, Santa Clara");
+	    VendingMachine vm1 = new VendingMachine("Drink", 3, "Daly Science Center");
+	    VendingMachine vm2 = new VendingMachine("Snack", 4, "Engineering Center");
 	    
 	    Food sandwhich = new Food("sandwhich", 5.99F, 500, true, true, true);
 	    Food yoguart = new Food("yoguart", 3.99F, 200, true, true, true);
@@ -167,15 +173,16 @@ public class SelectStore extends JPanel {
 	    foodstorelist.addFoodStore("Tago", cafe2);
 	    foodstorelist.addFoodStore("Drink", vm1);
 	    foodstorelist.addFoodStore("Snack", vm2);
+	    
 	}
 	
 	public static void main(String[] args) {
-		JFrame window = new JFrame("Select a store");
-		SelectStore ss = new SelectStore();
-		window.add(ss);
-		window.setSize(1200, 600);
-		window.setVisible(true);
-		window.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+//		JFrame window = new JFrame("Select a store");
+//		SelectStore ss = new SelectStore();
+//		window.add(ss);
+//		window.setSize(1200, 600);
+//		window.setVisible(true);
+//		window.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 	}
 
 }

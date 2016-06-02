@@ -12,8 +12,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
+import coen275project.Serialization;
 import coen275project.User;
-import coen275project.UserManager;
+import discard.UserManager;
 
 /**
  * @author Lifen
@@ -25,6 +26,9 @@ import coen275project.UserManager;
 public class GUITest_plain {
 	private static JButton btnParent = new JButton("parent");
 	private static JButton btnChild = new JButton("child");
+	
+	User user_1002_10 = Serialization.deSerialize("database/user_1002_10.ser");
+	User user_1002_11 = Serialization.deSerialize("database/user_1002_11.ser");	
 
 	public static void main(String [] args){
 		/********create GUI*********/
@@ -38,15 +42,16 @@ public class GUITest_plain {
 		c.add(panel,BorderLayout.CENTER);
 		
 		/********create a family************/
-		UserManager.createTestFamily();   
-
+		UserManager.createTestFamily();  
+	
 		/*******add ActionListener*****/
 		btnParent.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event){
 				Thread aWorker = new Thread() {
 					public void run(){ 
 						User parent = UserManager.getParent();
-						parent.getCard().deductMoney(20.0f); }           // withdraw money
+						parent.getCard().deductMoney(20.0f);            // withdraw money
+						}
 				};// end of thread
 
 				aWorker.start();
@@ -67,7 +72,6 @@ public class GUITest_plain {
 				bWorker.start();
 			}
 		});
-
 
 		mainFrame.setSize(300,200);
 		mainFrame.setVisible(true);

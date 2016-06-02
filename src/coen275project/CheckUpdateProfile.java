@@ -1,5 +1,10 @@
 package coen275project;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -16,36 +21,9 @@ import java.util.ArrayList;
  */
 
 //TODO change the class name to make more sense
-public class CheckValidation {
-	
-	/**
-	 * check validation of cardnumber + extension and password when login
-	 * if yes, deserilize user.ser (eg: user_1002_1.ser) and card.ser (eg: card_1002.ser)
-	 * if not, refuse to login
-	 * 
-	 * @param cardNumber
-	 * @param password
-	 * @return
-	 */
-	public static String loginCheckCard(String cardNumber, String extension, String password) {
-		// TODO
-		// get input
-		
-		// TODO : Lifen
-		// retrieve 
-		HashMap<String, String> cardhashmap = Serialization.deSerialize("/database/cards.ser");
-		
-		String s = cardhashmap.get(cardNumber);
-		if (s != password) {
-			return "";
-		}
-		
-		User user = Serialization.deSerialize("/database/user_" + cardNumber + "_" + extension + ".ser");
-		loginUpdateExpenseProfile(user);
-		loginUpdateDietaryProfile(user);
-		return "/database/user_" + cardNumber + "_" + extension + ".ser";
-	}
-	
+
+public class CheckUpdateProfile {
+
 	
 	/**
 	 * check expenseProfile when log in, compare today and period in expenseprofile
@@ -55,7 +33,7 @@ public class CheckValidation {
 	 * @return true: if updated
 	 *         false: if not updated since it's already with updated state
 	 */
-	private static boolean loginUpdateExpenseProfile(User user) {
+	public static boolean loginUpdateExpenseProfile(User user) {
 		ExpenseProfile expenseProfile = user.getExpenseProfile();
 		String period = expenseProfile.getPeriod();
 		if (period == null) {			
@@ -91,7 +69,7 @@ public class CheckValidation {
 	 * @return true: if updated
 	 *         false: if not updated since the user login within the same day
 	 */
-	private static boolean loginUpdateDietaryProfile(User user) {
+	public static boolean loginUpdateDietaryProfile(User user) {
 		
 		DietaryProfile dietaryProfile = user.getDietaryProfile();
 		// check if within the same month
@@ -130,7 +108,7 @@ public class CheckValidation {
 	 * @param foodStore
 	 * @param price
 	 */
-	public static List<Boolean> buyItem(User user, FoodStore foodStore, float price, int calorie, List<List<Boolean>> foods) {
+	public List<Boolean> buyItem(User user, FoodStore foodStore, float price, int calorie, List<List<Boolean>> foods) {
 		// check foods + calorie
 		List<Boolean> list = checkDietaryValidation(user,calorie, foods);
 	  
@@ -153,7 +131,7 @@ public class CheckValidation {
 		// integrate dietaryProfile to everyday has a record against instead of recording every record
 		user.getDietaryProfile().addDietaryRecord(new DietaryRecord(calorie, user.getName()));
 		
-		user.getCard().setTotalBalance();
+		Card.getTotalBalance(user.getCardNumber());
 		
 		// serialization
 		serialization(user);
@@ -170,7 +148,7 @@ public class CheckValidation {
 	 * @return true:  if satisfy expense limitation
 	 *         false: not satisfy expense limitation
 	 */
-	private static boolean checkExpenseValidation(User user,float price) {
+	public static boolean checkExpenseValidation(User user,float price) {
 		
 		// check ExpenseProfile
 		if (user.getExpenseProfile().getCurrentFund() <= user.getExpenseProfile().getExpense() + price) {
@@ -180,7 +158,7 @@ public class CheckValidation {
 		
 		// check totalBalance
 		// Since we don't implement deposit, we will initialize totalBalance with a large number
-		if (user.getCard().getTotalBalance() < price) {
+		if (Card.getTotalBalance(user.getCardNumber()) < price) {
 			System.err.println("Will Never see this line, exceed totalBalance, the user is shopping expert, please re-initialize it to a large number");
 			return false;
 		}
@@ -196,7 +174,7 @@ public class CheckValidation {
 	 * @return true: if satisfy 
 	 * 		   false: if not satisfy
 	 */
-	private static List<Boolean> checkDietaryValidation(User user,int calorie, List<List<Boolean>> foods) {
+	private List<Boolean> checkDietaryValidation(User user,int calorie, List<List<Boolean>> foods) {
 		boolean lowsugar = user.getDietaryProfile().getLowSugar();
 		boolean lowsodium = user.getDietaryProfile().getLowSodium();
 		boolean lowcholesterol = user.getDietaryProfile().getLowCholesterol();
@@ -233,7 +211,7 @@ public class CheckValidation {
 	public static boolean updateExpenseProfile (User user,float newFund) {
 		// check validation
 		// may not need check validation when update ExpenseProfile, since we check totalBalance when buy item
-		if(user.getCard().getTotalBalance() < newFund) {
+		if(Card.getTotalBalance(user.getCardNumber()) < newFund) {
 			System.err.println("Will Never see this line, please initialize the totalBlance to a large number");
 			return false;
 		}
@@ -263,7 +241,7 @@ public class CheckValidation {
 	}
 	
 	private static boolean serialization(User user) {
-		String cardNumber = user.getCard().getCardNumber();
+		String cardNumber = user.getCardNumber();
 		String extension = user.getExtensionNumber()+"";
 		Serialization.serialize(user, "database/user_" + cardNumber + "_" + extension + ".ser" );
 		return true;
