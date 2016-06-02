@@ -1,4 +1,4 @@
-package coen275project;
+package discard;
 
 import java.util.*;
 
@@ -47,7 +47,6 @@ public class UserManager {
 	    userHash.put("1111-1", user11);
 	}
 	
-	
 	//Lifen: below is used to test user and its dependent
 	public static User getParent() {
 		return user1;
@@ -55,11 +54,6 @@ public class UserManager {
 	
 	public static User getChild() {
 		return user11;
-	}
-	
-	//Lifen: check account and password
-	public static boolean checkLogin(String account, String password){
-		return cardHash.containsKey(account) && cardHash.get(account).equals(password);
 	}
 	
 	public static User getUser(String account) {
@@ -70,4 +64,11 @@ public class UserManager {
 		}
 		
 	}
+	
+	//Lifen: check account and password
+	public static boolean checkLogin(String account, String password){
+		return cardHash.containsKey(account) && cardHash.get(account).equals(password);
+	}
+	
+	
 }

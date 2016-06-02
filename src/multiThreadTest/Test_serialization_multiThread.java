@@ -3,7 +3,7 @@ package multiThreadTest;
 import coen275project.Card;
 import coen275project.Serialization;
 import coen275project.User;
-import coen275project.UserManager;
+import discard.UserManager;
 
 /******Lifen: test serialization with user login (single user and family)*****/
 

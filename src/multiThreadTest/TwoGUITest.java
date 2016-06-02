@@ -10,7 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import coen275project.User;
-import coen275project.UserManager;
+import discard.UserManager;
 
 public class TwoGUITest {
 	private static JButton btnParent = new JButton("parent");

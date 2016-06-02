@@ -23,12 +23,13 @@ public class Navigation {
     
 	/*** Launch the application.*/
 	public static void main(String[] args) {
-		final String accountNumber = args[0];       // get the accountNumber
+		final String cardNumber = args[0];       // get the cardNumber
+		final String extension = args[1];       // get the extension
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Navigation window = new Navigation(accountNumber);    // pass the accountNumber
+					Navigation window = new Navigation(cardNumber, extension);    // pass the accountNumber
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -38,15 +39,13 @@ public class Navigation {
 	}
 
 	/*** Create the application.*/
-	public Navigation(String accountNumber) {
-		findUser(accountNumber);
+	public Navigation(String cardNumber, String extension) {
+		theUser = Serialization.deSerialize("database/user_" + cardNumber + "_" + extension + ".ser");   //Lifen: get the user
+		CheckUpdateProfile.loginUpdateExpenseProfile(theUser);    //Lifen: copy Yue's code
+		CheckUpdateProfile.loginUpdateDietaryProfile(theUser);   //Lifen: copy Yue's code
 		initialize();
 	}
 	
-	private void findUser(String accountNumber) {
-		theUser = UserManager.getUser(accountNumber);
-	}
-
 	/*** Initialize the contents of the frame.*/
 	private void initialize() {
 		frame = new JFrame("Navigation");
@@ -86,7 +85,7 @@ public class Navigation {
 			setBackground(Color.yellow);
 			add(message);*/
 			
-			SelectStore storeList = new SelectStore(theUser);
+			SelectStore storeList = new SelectStore();
 //			Map map = new Map();
 //			this.add(storeList);
 //			this.add(map);
@@ -99,10 +98,13 @@ public class Navigation {
 		JLabel message;
 
 		public PreferencePanel(){
-			message = new JLabel("Welcome " + theUser.getName() + ", please edit your preferences here");
-			message.setFont(new Font("Serif", Font.PLAIN, 20));
-			setBackground(Color.yellow);
-			add(message);
+//			message = new JLabel("Welcome " + theUser.getName() + ", please edit your preferences here");
+//			message.setFont(new Font("Serif", Font.PLAIN, 20));
+//			setBackground(Color.yellow);
+//			add(message);
+			User user_1000_0 = Serialization.deSerialize("database/user_1000_0.ser");
+			EditProfile editprofile = new EditProfile(user_1000_0);
+			this.add(editprofile);
 			setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);	
 			
 		}
@@ -112,10 +114,13 @@ public class Navigation {
 		JLabel message;
 
 		public DietaryPanel(){
-			message = new JLabel(theUser.getName() + ", below is your Dietary Profile");
-			message.setFont(new Font("Serif", Font.PLAIN, 20));
-			setBackground(Color.yellow);
-			add(message);
+//			message = new JLabel(theUser.getName() + ", below is your Dietary Profile");
+//			message.setFont(new Font("Serif", Font.PLAIN, 20));
+//			setBackground(Color.yellow);
+//			add(message);
+			User user_1000_0 = Serialization.deSerialize("database/user_1000_0.ser");
+			GUIDietaryProfile e = new GUIDietaryProfile(user_1000_0);
+			this.add(e);
 			setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);	 		
 		}
 	}
@@ -124,10 +129,13 @@ public class Navigation {
 		JLabel message;
 
 		public ExpensePanel(){
-			message = new JLabel(theUser.getName() + ", below is your Expense Profile");
-			message.setFont(new Font("Serif", Font.PLAIN, 20));
-			setBackground(Color.yellow);
-			add(message);
+//			message = new JLabel(theUser.getName() + ", below is your Expense Profile");
+//			message.setFont(new Font("Serif", Font.PLAIN, 20));
+//			setBackground(Color.yellow);
+//			add(message);
+			User user_1000_0 = Serialization.deSerialize("database/user_1000_0.ser");
+			GUIExpenseProfile e = new GUIExpenseProfile(user_1000_0);
+			this.add(e);
 			setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
 			
 		}

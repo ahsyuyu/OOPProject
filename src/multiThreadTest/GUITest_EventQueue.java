@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
 import coen275project.User;
-import coen275project.UserManager;
+import discard.UserManager;
 
 import javax.swing.JButton;
 
