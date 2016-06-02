@@ -7,26 +7,9 @@ import java.io.IOException;
 public class LoginCheck {
 	/**
 	 * check validation of cardnumber + extension and password when login
-	 * if yes, deserilize user.ser (eg: user_1002_1.ser) and card.ser (eg: card_1002.ser)
-	 * if not, refuse to login
-	 * 
-	 * @param cardNumber
-	 * @param password
-	 * @return
+	 * return true or false
 	 */
 	public static boolean loginCheckCard(String cardNumber, String extension, String password) {
-		// TODO
-		// get input
-		//String cardNumber = cardNumberAndExtension.substring(0, 4);
-		//String extension = cardNumberAndExtension.substring(4, cardNumberAndExtension.length());
-		
-		// retrieve, markoff, change to read from txt file
-		/*HashMap<String, String> cardhashmap = Serialization.deSerialize("/database/cards.ser");
-		String s = cardhashmap.get(cardNumber);
-		if (s != password) {
-			return false;
-		}*/
-		
 		String filePath = "database/cardCollection.txt";
 		
         BufferedReader br = null;
@@ -47,9 +30,6 @@ public class LoginCheck {
 	            	System.out.println(parts.length);
 	            	System.out.println(parts[0] + " + " + parts[1] + " + " + parts[2]);
 	            	if (parts[0].equals(cardNumber) && parts[1].equals(password) && parts[2].equals(extension)){
-	            		//User user = Serialization.deSerialize("database/user_" + cardNumber + "_" + extension + ".ser");
-	            		//loginUpdateExpenseProfile(user);    //Lifen:?? do later
-	            		//loginUpdateDietaryProfile(user);    //Lifen:?? do later
 	            		return true;
 	            	}
 	            } 
@@ -57,8 +37,7 @@ public class LoginCheck {
 				e.printStackTrace();
 			}     
         } while (line != null);
-        
-		
+        	
 		return false;
 	}
 }
