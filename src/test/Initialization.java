@@ -298,20 +298,20 @@ public class Initialization {
 		 * deserialization
 		 **********************************************************/
 		
-//		card_1000 = null;
-//		card_1001 = null;
-//		card_1002 = null;
+		card_1000 = null;
+		card_1001 = null;
+		card_1002 = null;
 		user_1000 = null;
-//		user_1001 = null;
-//		user_1002_10 = null;
-//		user_1002_11 = null;
-//		card_1000 = Serialization.deSerialize("database/card_1000.ser");
-//		card_1001 = Serialization.deSerialize("database/card_1001.ser");
-//		card_1002 = Serialization.deSerialize("database/card_1002.ser");
+		user_1001 = null;
+		user_1002_10 = null;
+		user_1002_11 = null;
+		card_1000 = Serialization.deSerialize("database/card_1000.ser");
+		card_1001 = Serialization.deSerialize("database/card_1001.ser");
+		card_1002 = Serialization.deSerialize("database/card_1002.ser");
 		user_1000 = Serialization.deSerialize("database/user_1000_0.ser");
-//		user_1001 = Serialization.deSerialize("database/user_1001_0.ser");
-//		user_1002_10 = Serialization.deSerialize("database/user_1002_10.ser");
-//		user_1002_11 = Serialization.deSerialize("database/user_1002_11.ser");
+		user_1001 = Serialization.deSerialize("database/user_1001_0.ser");
+		user_1002_10 = Serialization.deSerialize("database/user_1002_10.ser");
+		user_1002_11 = Serialization.deSerialize("database/user_1002_11.ser");
 //		cardhashmap = null;
 //		cardhashmap = Serialization.deSerialize("database/cards.ser");
 //		

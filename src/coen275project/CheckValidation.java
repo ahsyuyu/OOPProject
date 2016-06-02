@@ -27,23 +27,23 @@ public class CheckValidation {
 	 * @param password
 	 * @return
 	 */
-	public static boolean loginCheckCard(String cardNumberAndExtension, String password) {
+	public static String loginCheckCard(String cardNumber, String extension, String password) {
 		// TODO
 		// get input
-		String cardNumber = cardNumberAndExtension.substring(0, 4);
-		String extension = cardNumberAndExtension.substring(4, cardNumberAndExtension.length());
 		
+		// TODO : Lifen
 		// retrieve 
 		HashMap<String, String> cardhashmap = Serialization.deSerialize("/database/cards.ser");
+		
 		String s = cardhashmap.get(cardNumber);
 		if (s != password) {
-			return false;
+			return "";
 		}
 		
 		User user = Serialization.deSerialize("/database/user_" + cardNumber + "_" + extension + ".ser");
 		loginUpdateExpenseProfile(user);
 		loginUpdateDietaryProfile(user);
-		return true;
+		return "/database/user_" + cardNumber + "_" + extension + ".ser";
 	}
 	
 	
@@ -252,8 +252,12 @@ public class CheckValidation {
 	 * 
 	 * @return
 	 */
-	public static boolean updateDietaryProfile (User user, int newCalorie) {
+	public static boolean updateDietaryProfile (User user, int newCalorie, boolean lowsugar, boolean lowsodium, boolean lowcholesterol) {
 		user.getDietaryProfile().setNextCalorie(newCalorie);
+		user.getDietaryProfile().setLowSugar(lowsugar);
+		user.getDietaryProfile().setLowSodium(lowsodium);
+		user.getDietaryProfile().setLowCholesterol(lowcholesterol);
+		
 		serialization(user);
 		return true;
 	}
@@ -261,7 +265,7 @@ public class CheckValidation {
 	private static boolean serialization(User user) {
 		String cardNumber = user.getCard().getCardNumber();
 		String extension = user.getExtensionNumber()+"";
-		Serialization.serialize(user, "/database/user_" + cardNumber + "_" + extension + ".ser" );
+		Serialization.serialize(user, "database/user_" + cardNumber + "_" + extension + ".ser" );
 		return true;
 	}
 	

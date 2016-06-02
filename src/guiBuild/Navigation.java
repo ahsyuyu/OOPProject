@@ -99,10 +99,13 @@ public class Navigation {
 		JLabel message;
 
 		public PreferencePanel(){
-			message = new JLabel("Welcome " + theUser.getName() + ", please edit your preferences here");
-			message.setFont(new Font("Serif", Font.PLAIN, 20));
-			setBackground(Color.yellow);
-			add(message);
+//			message = new JLabel("Welcome " + theUser.getName() + ", please edit your preferences here");
+//			message.setFont(new Font("Serif", Font.PLAIN, 20));
+//			setBackground(Color.yellow);
+//			add(message);
+			User user_1000_0 = Serialization.deSerialize("database/user_1000_0.ser");
+			EditProfile editprofile = new EditProfile(user_1000_0);
+			this.add(editprofile);
 			setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);	
 			
 		}
@@ -112,10 +115,13 @@ public class Navigation {
 		JLabel message;
 
 		public DietaryPanel(){
-			message = new JLabel(theUser.getName() + ", below is your Dietary Profile");
-			message.setFont(new Font("Serif", Font.PLAIN, 20));
-			setBackground(Color.yellow);
-			add(message);
+//			message = new JLabel(theUser.getName() + ", below is your Dietary Profile");
+//			message.setFont(new Font("Serif", Font.PLAIN, 20));
+//			setBackground(Color.yellow);
+//			add(message);
+			User user_1000_0 = Serialization.deSerialize("database/user_1000_0.ser");
+			GUIDietaryProfile e = new GUIDietaryProfile(user_1000_0);
+			this.add(e);
 			setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);	 		
 		}
 	}
@@ -124,10 +130,13 @@ public class Navigation {
 		JLabel message;
 
 		public ExpensePanel(){
-			message = new JLabel(theUser.getName() + ", below is your Expense Profile");
-			message.setFont(new Font("Serif", Font.PLAIN, 20));
-			setBackground(Color.yellow);
-			add(message);
+//			message = new JLabel(theUser.getName() + ", below is your Expense Profile");
+//			message.setFont(new Font("Serif", Font.PLAIN, 20));
+//			setBackground(Color.yellow);
+//			add(message);
+			User user_1000_0 = Serialization.deSerialize("database/user_1000_0.ser");
+			GUIExpenseProfile e = new GUIExpenseProfile(user_1000_0);
+			this.add(e);
 			setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
 			
 		}
