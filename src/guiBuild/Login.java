@@ -17,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import coen275project.*;
+import discard.UserManager;
 import test.SerializtionTest;
 
 public class Login {
@@ -46,18 +47,9 @@ public class Login {
 				}
 			}
 		});
-		
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {					
-					Login window2 = new Login();
-					window2.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
 	}
+	
+	
 
 	/**
 	 * Create the application.
