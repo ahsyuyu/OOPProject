@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 import coen275project.*;
+import multiThreadTest.GUIMultiThreadTest;
 
 public class Navigation {
 	private JFrame frame;
@@ -58,7 +59,7 @@ public class Navigation {
     	int height = screenSize.height;
     	int width = screenSize.width;
     	System.out.println(width);
-    	frame.setSize(width*2/3, height/2);
+    	frame.setSize(width*3/4, height*2/3);
 
     	// center the mainFrame on screen
     	frame.setLocationRelativeTo(null);
@@ -68,12 +69,28 @@ public class Navigation {
     	tabbedPane.addTab("Enter Preference", new PreferencePanel());
     	tabbedPane.addTab("Dietary Profile", new DietaryPanel());
     	tabbedPane.addTab("Expense Profile", new ExpensePanel());
+    	tabbedPane.addTab("Multi-Thread-test", new TestMultiThread());
     	
     	frame.getContentPane().add(tabbedPane);
     	//frame.pack();
     	frame.setVisible(true);
 	}	
 	
+	//Lifen: test MultiThread purchase
+	private class TestMultiThread extends JPanel{
+		JLabel message;
+		
+		public TestMultiThread(){
+			message = new JLabel("welcome, " + theUser.getName() + "!");
+			message.setFont(new Font("Serif", Font.PLAIN, 20));
+			setBackground(Color.yellow);
+			add(message);
+			
+			GUIMultiThreadTest mtt = new GUIMultiThreadTest(theUser);
+			this.add(mtt);
+			setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+		}
+	}
 	
 	// Lifen:  below are 4 panels as inner classes
 	private class OrderPanel extends JPanel {     // include SelectStore GUI

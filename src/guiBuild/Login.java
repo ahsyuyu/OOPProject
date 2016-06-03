@@ -46,6 +46,17 @@ public class Login {
 				}
 			}
 		});
+		
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {					
+					Login window2 = new Login();
+					window2.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 
 	/**
