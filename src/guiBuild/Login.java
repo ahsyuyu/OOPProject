@@ -38,10 +38,7 @@ public class Login {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				try {
-					// initialize a collection of users and cards
-					//UserManager um = new UserManager();    
-					
+				try {					
 					Login window = new Login();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
@@ -118,8 +115,7 @@ public class Login {
 	            	
 	            	try {
 						Thread.sleep(1000);
-						//Navigation.main(null);
-						Navigation.main(new String[]{accountNumber, extension});    //**??need to update
+						Navigation.main(new String[]{accountNumber, extension});    
 					} catch (InterruptedException e1) {
 						e1.printStackTrace();
 					}
