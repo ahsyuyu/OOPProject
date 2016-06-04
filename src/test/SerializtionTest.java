@@ -41,17 +41,17 @@ public class SerializtionTest{
 	
 	public static void main(String[] args) {
 		
-		User no1 = new User("Bob", new Card("1", "abc"));
-
-		System.out.print("Before Serializing - ");
-		System.out.println(no1);
-		
-		serialize(no1, "No.001.ser");
-		
-		User no1Record = deSerialize("No.001.ser");
-
-		System.out.print("After DeSerializing - ");
-		System.out.println(no1Record);
+//		User no1 = new User("Bob", new Card("1", "abc"));
+//
+//		System.out.print("Before Serializing - ");
+//		System.out.println(no1);
+//		
+//		serialize(no1, "No.001.ser");
+//		
+//		User no1Record = deSerialize("No.001.ser");
+//
+//		System.out.print("After DeSerializing - ");
+//		System.out.println(no1Record);
 
 	}
 }

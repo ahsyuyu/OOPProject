@@ -77,9 +77,10 @@ public class FoodStoreMenu extends JPanel {
 //			boolean lowCholesterol;
 			
 			for(int i = 0; i < foodList.length; i++) {
+				System.out.println(foodList[i]);
 				List<Boolean> nutrition = new ArrayList<Boolean>();
 				String foodName = (String)foodStoreMenuList.getValueAt(foodList[i],0);
-				System.out.println(foodName);
+				
 				int quantity = Integer.parseInt( (String)foodStoreMenuList.getValueAt(foodList[i],6) );
 				price += quantity * Float.parseFloat( (String)foodStoreMenuList.getValueAt(foodList[i],1) );
 				calories += quantity * Integer.parseInt( (String)foodStoreMenuList.getValueAt(foodList[i],2) );
@@ -107,7 +108,7 @@ public class FoodStoreMenu extends JPanel {
 						msg += "Expense exceeds limitation\n";
 					} else{
 						invalidItems.add(i);
-						msg += (String)foodStoreMenuList.getValueAt(i,6) + " does not match your dietary preference\n";
+						msg += rows[foodList[i]][0] + " does not match your dietary preference\n";
 					}
 				}
 						
@@ -126,10 +127,8 @@ public class FoodStoreMenu extends JPanel {
 				JOptionPane.showMessageDialog(null, msg,"ok",JOptionPane.PLAIN_MESSAGE);
 				
 			}
-//			ColorRenderer cr = new ColorRenderer();
-//			foodStoreMenuList.setDefaultRenderer(Color.class, cr);
-//			cr.getTableCellRendererComponent(foodStoreMenuList, null, false, false, 1, 1);
-			foodStoreMenuList.setDefaultRenderer(Object.class, new DefaultTableCellRenderer(){
+
+			/*foodStoreMenuList.setDefaultRenderer(Object.class, new DefaultTableCellRenderer(){
 			    @Override
 			    public Component getTableCellRendererComponent(JTable table,
 			            Object value, boolean isSelected, boolean hasFocus, int row, int col) {
@@ -139,50 +138,25 @@ public class FoodStoreMenu extends JPanel {
 
 		        	for(int i = 0; i < invalidItems.size(); i++ ){
 		        		if(row == invalidItems.get(i)){//
-		        			setBackground(Color.red);
+		        			//System.out.println(i);
+		        			cell.setBackground(Color.red);
 		        		}
 		        	}
 
-			        if(row == 1){//invalidItems.get(i)
-			        	System.out.println("coloring");
-	        			cell.setForeground(Color.red);
-	        		}
-			        System.out.println(row + " " + col);
+//			        if(row == 1){//invalidItems.get(i)
+//			        	System.out.println("coloring");
+//	        			cell.setForeground(Color.red);
+//	        		}
+			        
 			        
 			             
 			        return this;
 			    }   
-			});
+			});*/
+			
 		}
 	}
 	
-	public class MyCellRenderer extends javax.swing.table.DefaultTableCellRenderer {
-
-        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-            final Component cellComponent = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-
-            Object val = table.getValueAt(row, 2);
-            String sval = val.toString();
-            sval = sval.replaceAll(":", "");
-            int ival = Integer.parseInt(sval);
-            if (ival == 0) {
-                cellComponent.setForeground(Color.black);
-                cellComponent.setBackground(Color.red);
-
-            } else {
-                cellComponent.setBackground(Color.white);
-                cellComponent.setForeground(Color.black);
-            }
-            if (isSelected) {
-                cellComponent.setForeground(table.getSelectionForeground());
-                cellComponent.setBackground(table.getSelectionBackground());
-            }
-
-            return cellComponent;
-
-        }
-
-    }
 	
 	
 }
