@@ -16,7 +16,6 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 import coen275project.*;
-import multiThreadTest.GUIMultiThreadTest;
 
 public class Navigation {
 	private JFrame frame;
@@ -59,7 +58,7 @@ public class Navigation {
     	int height = screenSize.height;
     	int width = screenSize.width;
     	System.out.println(width);
-    	frame.setSize(width*3/4, height*2/3);
+    	frame.setSize(width*9/10, height*7/8);
 
     	// center the mainFrame on screen
     	frame.setLocationRelativeTo(null);
@@ -69,7 +68,7 @@ public class Navigation {
     	tabbedPane.addTab("Enter Preference", new PreferencePanel());
     	tabbedPane.addTab("Dietary Profile", new DietaryPanel());
     	tabbedPane.addTab("Expense Profile", new ExpensePanel());
-    	tabbedPane.addTab("Multi-Thread-test", new TestMultiThread());
+    	tabbedPane.addTab("Family Expense Profile", new TotalExpensePanel());
     	
     	frame.getContentPane().add(tabbedPane);
     	//frame.pack();
@@ -77,17 +76,17 @@ public class Navigation {
 	}	
 	
 	//Lifen: test MultiThread purchase
-	private class TestMultiThread extends JPanel{
+	private class TotalExpensePanel extends JPanel{
 		JLabel message;
 		
-		public TestMultiThread(){
+		public TotalExpensePanel(){
 			message = new JLabel("welcome, " + theUser.getName() + "!");
 			message.setFont(new Font("Serif", Font.PLAIN, 20));
 			setBackground(Color.yellow);
 			add(message);
 			
-			GUIMultiThreadTest mtt = new GUIMultiThreadTest(theUser);
-			this.add(mtt);
+			TotalExpenseProfile tep = new TotalExpenseProfile(theUser);
+			this.add(tep);
 			setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		}
 	}
