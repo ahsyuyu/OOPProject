@@ -182,8 +182,9 @@ public class CheckUpdateProfile {
 					|| lowsodium == true &&  food.get(1) == false
 					|| lowcholesterol == true && food.get(2) == false) {
 				list.add(false);
+			} else{
+				list.add(true);
 			}
-			list.add(true);
 		}
 		
 		list.add(user.getDietaryProfile().getExpense() + calorie <= user.getDietaryProfile().getCurrentCalorie());
