@@ -1,5 +1,6 @@
 package guiBuild;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -20,7 +21,7 @@ import coen275project.User;
 import coen275project.VendingMachine;
 
 public class SelectStore extends JPanel {
-	String[] sList = {"Mission Cafe", "Tago", "Drink", "Snack"};
+	String[] sList = {"Mission Cafe", "Tago Restaurant", "Drink Vending Machine", "Snack Vending Machine"};
 	JList<String> storeList;
 	static JPanel listPanel;
 	static JPanel mapPanel;
@@ -47,10 +48,10 @@ public class SelectStore extends JPanel {
 	
 	class StoreList extends JPanel{
 		public StoreList(){
-			//setLayout(new GridLayout(0,1));
+			//setLayout(new BorderLayout());
 			//add(new JLabel("Store List"));
 			storeList = new JList<>(sList);
-			storeList.setPreferredSize(new Dimension(200,400));
+			storeList.setPreferredSize(new Dimension(300,400));
 			storeList.setFont(new Font("Serif", Font.PLAIN, 24));
 			listHandler lh = new listHandler();
 			storeList.addListSelectionListener(lh);
@@ -109,15 +110,15 @@ public class SelectStore extends JPanel {
 			//blue Daly Science
 			if(x > 150 && x < 200 && y > 97 && y < 140){
 				System.out.println("blue");
-				storeName = "Drink";
+				storeName = "Drink Vending Machine";
 			}
 			else if(x > 107 && x < 143 && y > 250 && y < 292){
 				System.out.println("orange");
-				storeName = "Tago";
+				storeName = "Tago Restaurant";
 			}
 			else if(x > 496 && x < 540 && y > 302 && y < 340){
 				System.out.println("green");
-				storeName = "Snack";
+				storeName = "Snack Vending Machine";
 			}
 			else if(x > 365 && x < 400 && y > 446 && y < 486){
 				System.out.println("red");
@@ -144,9 +145,9 @@ public class SelectStore extends JPanel {
 		// TODO Auto-generated method stub
 		
 		Cafe cafe1 = new Cafe("Mission Cafe", 1, "Benson Memorial Hall");
-		Cafe cafe2 = new Cafe("Tago", 2, "119 Washington St, Santa Clara");
-	    VendingMachine vm1 = new VendingMachine("Drink", 3, "Daly Science Center");
-	    VendingMachine vm2 = new VendingMachine("Snack", 4, "Engineering Center");
+		Cafe cafe2 = new Cafe("Tago Restaurant", 2, "119 Washington St, Santa Clara");
+	    VendingMachine vm1 = new VendingMachine("Drink Vending Machine", 3, "Daly Science Center");
+	    VendingMachine vm2 = new VendingMachine("Snack Vending Machine", 4, "Engineering Center");
 	    
 	    Food sandwhich = new Food("Sandwhich", 5.99F, 500, true, true, true);
 	    Food yoguart = new Food("Yoguart", 3.99F, 100, true, true, true);
@@ -176,10 +177,10 @@ public class SelectStore extends JPanel {
 	    vm2.addFoodToList(chipAhoy.getName(), chipAhoy);
 	    
 	    foodstorelist = new FoodStoreList();
-	    foodstorelist.addFoodStore("Mission Cafe", cafe1);
-	    foodstorelist.addFoodStore("Tago", cafe2);
-	    foodstorelist.addFoodStore("Drink", vm1);
-	    foodstorelist.addFoodStore("Snack", vm2);
+	    foodstorelist.addFoodStore(cafe1.getName(), cafe1);
+	    foodstorelist.addFoodStore(cafe2.getName(), cafe2);
+	    foodstorelist.addFoodStore(vm1.getName(), vm1);
+	    foodstorelist.addFoodStore(vm2.getName(), vm2);
 	    
 	}
 	

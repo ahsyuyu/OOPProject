@@ -1,7 +1,10 @@
 package guiBuild;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -54,14 +57,14 @@ public class FoodStoreMenu extends JPanel {
 	
 			counter++;
 		}
-		
+		setLayout(new BorderLayout());
 		foodStoreMenuList = new JTable(rows, colNames);
 		JScrollPane scrollPane = new JScrollPane(foodStoreMenuList);
-		add(scrollPane);
+		add(scrollPane, BorderLayout.CENTER);
 		JButton checkout = new JButton("Checkout");
 		checkoutHandler ch = new checkoutHandler();
 		checkout.addActionListener(ch);
-		add(checkout);
+		add(checkout, BorderLayout.SOUTH);
 	}
 	
 	
@@ -99,7 +102,7 @@ public class FoodStoreMenu extends JPanel {
 			String msg = "";
 			Boolean succes = true;
 			List<Integer> invalidItems = new ArrayList<Integer>();
-			for(int i = 0; i < validation.size(); i++){
+			for(int i = 0; i < foodList.length + 2; i++){
 				if(!validation.get(i)){
 					succes = false;
 					if(i == validation.size() - 2){
@@ -122,7 +125,7 @@ public class FoodStoreMenu extends JPanel {
 				    Date dateobj = new Date(System.currentTimeMillis()+15*60*1000);
 					JOptionPane.showMessageDialog(null, "Purchase completed\nPlease pick up at " + df.format(dateobj),"ok",JOptionPane.PLAIN_MESSAGE);
 				}
-				
+				  
 			} else {
 				JOptionPane.showMessageDialog(null, msg,"ok",JOptionPane.PLAIN_MESSAGE);
 				
