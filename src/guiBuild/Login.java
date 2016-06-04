@@ -17,7 +17,6 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import coen275project.*;
-import discard.UserManager;
 import test.SerializtionTest;
 
 public class Login {
@@ -47,6 +46,8 @@ public class Login {
 				}
 			}
 		});
+		
+		
 	}
 	
 	
