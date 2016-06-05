@@ -42,7 +42,7 @@ public class CheckUpdateProfile {
 			System.out.println("loginUpdateExpenseProfile: ExpenseProfile is out of updated, System updated it.");
 			
 			// serialization
-			serialization(user);
+			//serialization(user);
 			return true;	
 		}
 		
@@ -80,7 +80,7 @@ public class CheckUpdateProfile {
 			
 			// serialization
 			System.out.println("loginUpdateDietaryProfile: without the same day, System updated it.");
-			serialization(user);
+			//serialization(user);
 			return true;
 		}
 		
@@ -127,7 +127,7 @@ public class CheckUpdateProfile {
 		//System.out.println("here count");
 		
 		// serialization
-		serialization(user);
+		//serialization(user);
 		
 		return list;
 	}
@@ -212,7 +212,7 @@ public class CheckUpdateProfile {
 		// update
 		user.getExpenseProfile().setNextFund(newFund);
 		
-		serialization(user);
+		//serialization(user);
 		return true;
 	}
 	
@@ -230,7 +230,7 @@ public class CheckUpdateProfile {
 		user.getDietaryProfile().setLowSodium(lowsodium);
 		user.getDietaryProfile().setLowCholesterol(lowcholesterol);
 		
-		serialization(user);
+		//serialization(user);
 		return true;
 	}
 	

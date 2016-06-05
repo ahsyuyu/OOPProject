@@ -8,6 +8,8 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import javax.swing.JFrame;
 import javax.swing.JButton;
@@ -49,6 +51,8 @@ public class Navigation {
 	/*** Initialize the contents of the frame.*/
 	private void initialize() {
 		frame = new JFrame("Navigation");
+		WindowExitHandler windowExitHandler = new WindowExitHandler();
+		frame.addWindowListener(windowExitHandler);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// make the frame, according to the height and width of the screen size
@@ -154,9 +158,42 @@ public class Navigation {
 			
 		}
 	}
+	
+	public class WindowExitHandler implements WindowListener{
+
+		@Override
+		public void windowOpened(WindowEvent e) {}
+
+		@Override
+		public void windowClosing(WindowEvent e) {
+			// TODO Auto-generated method stub
+			serialization(theUser);
+			System.out.println("Closing!");
+		}
+		
+		private boolean serialization(User user) {
+			String cardNumber = user.getCardNumber();
+			String extension = user.getExtensionNumber()+"";
+			Serialization.serialize(user, "database/user_" + cardNumber + "_" + extension + ".ser" );
+			return true;
+		}
+
+		@Override
+		public void windowClosed(WindowEvent e) {}
+
+		@Override
+		public void windowIconified(WindowEvent e) {}
+
+		@Override
+		public void windowDeiconified(WindowEvent e) {}
+
+		@Override
+		public void windowActivated(WindowEvent e) {}
+
+		@Override
+		public void windowDeactivated(WindowEvent e) {}
+		
+	}
 
 }
-
-
-
 
