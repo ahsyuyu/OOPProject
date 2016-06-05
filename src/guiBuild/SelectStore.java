@@ -67,7 +67,7 @@ public class SelectStore extends JPanel {
 				.getImage().getScaledInstance(600, 600,
 				java.awt.Image.SCALE_SMOOTH));
 		MapHandler mh = new MapHandler();
-		addMouseListener(mh);
+		mapPanel.addMouseListener(mh);
 		mapPanel.add(new JLabel(imageIcon), BorderLayout.CENTER);
 		
 		add(listPanel);
