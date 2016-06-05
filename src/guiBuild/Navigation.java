@@ -50,15 +50,15 @@ public class Navigation {
 	private void initialize() {
 		frame = new JFrame("Navigation");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//frame.setBounds(100, 100, 2000, 1000);
-		//frame.getContentPane().setLayout(null);
-		
-		 // make the frame 1/2 the height and width
-    	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
+		 // make the frame, according to the height and width of the screen size
+    	/*Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     	int height = screenSize.height;
     	int width = screenSize.width;
-    	System.out.println(width);
-    	frame.setSize(width*9/10, height*7/8);
+    	System.out.println("width" + width + ", height" + height);
+    	frame.setSize(width*9/10, height*7/8);*/
+    	frame.setBounds(100, 100, 1150, 700);
+    	//frame.getContentPane().setLayout(null);
 
     	// center the mainFrame on screen
     	frame.setLocationRelativeTo(null);
