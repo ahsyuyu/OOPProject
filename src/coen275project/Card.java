@@ -26,7 +26,7 @@ public class Card implements Serializable {
 		this.password = password;
 	}
 	
-	synchronized public static void temTest(String cardNumber, float expense){
+	synchronized public static void deductMoney(String cardNumber, float expense){
 		try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {

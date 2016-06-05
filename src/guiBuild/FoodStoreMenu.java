@@ -98,9 +98,10 @@ public class FoodStoreMenu extends JPanel {
 			
 			System.out.println(price);
 			System.out.println(calories);
-			System.out.println(CheckUpdateProfile.buyItem(theUser, foodStore, price, calories, allNutrition));
+			//System.out.println(CheckUpdateProfile.buyItem(theUser, foodStore, price, calories, allNutrition));
 			//[food1, food2, ... calories, expense]
 			List<Boolean> validation = CheckUpdateProfile.buyItem(theUser, foodStore, price, calories, allNutrition);
+			//System.out.println(validation);
 			String msg = "";
 			Boolean succes = true;
 			List<Integer> invalidItems = new ArrayList<Integer>();

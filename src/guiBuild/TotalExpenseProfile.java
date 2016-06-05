@@ -57,7 +57,7 @@ public class TotalExpenseProfile extends JPanel{
 			File f = new File(filePathString);
 			
 			if(f.exists() && !f.isDirectory()) { 
-			    System.out.println("yes," + iExtension + " it exist");
+			    //System.out.println("yes," + iExtension + " it exist");
 			    
 			    JScrollPane scrollPane_record = new ExpenseShowPanel(filePathString);
 				scrollPane_record.setBorder(BorderFactory.createTitledBorder("Record Information of user_" + user.getCardNumber() + "_" + iExtension));
@@ -136,7 +136,7 @@ public class TotalExpenseProfile extends JPanel{
 				public void actionPerformed(ActionEvent event){
 					Thread aWorker = new Thread() {
 						public void run(){ 
-							Card.temTest(user.getCardNumber(), Float.parseFloat(moneyArea.getText()));
+							Card.deductMoney(user.getCardNumber(), Float.parseFloat(moneyArea.getText()));
 						}
 					};// end of thread
 					aWorker.start();
