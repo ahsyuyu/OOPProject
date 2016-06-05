@@ -131,8 +131,7 @@ public class SelectStore extends JPanel {
 		
 		public void mouseClicked(MouseEvent e){
 			System.out.println(e.getX() + " " + e.getY());
-			listPanel.removeAll();
-			listPanel.repaint();
+			
 			int x = e.getX();
 			int y = e.getY();
 			String storeName = "";
@@ -153,11 +152,15 @@ public class SelectStore extends JPanel {
 				System.out.println("red");
 				storeName = "Mission Cafe";
 			}
-
-			FoodStore fs = SelectStore.foodstorelist.getFoodStore(storeName);
-			FoodStoreMenu fsm = new FoodStoreMenu(theUser, fs);
-			listPanel.add(fsm);
-			listPanel.revalidate();
+			if(!storeName.isEmpty()){
+				listPanel.removeAll();
+				listPanel.repaint();
+				FoodStore fs = SelectStore.foodstorelist.getFoodStore(storeName);
+				FoodStoreMenu fsm = new FoodStoreMenu(theUser, fs);
+				listPanel.add(fsm);
+				listPanel.revalidate();
+			}
+			
 			
 		}
 		public void mousePressed(MouseEvent e){};
