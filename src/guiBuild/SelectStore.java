@@ -60,7 +60,7 @@ public class SelectStore extends JPanel {
 		listPanel.add(new JPanel(), BorderLayout.WEST);
 		listPanel.add(new JPanel(), BorderLayout.SOUTH);
 		listPanel.add(storeList, BorderLayout.CENTER);
-		
+		//
 		
 		//Map map = new Map(listPanel, mapPanel);
 		ImageIcon imageIcon = new ImageIcon((new ImageIcon("image.jpg"))
