@@ -38,12 +38,10 @@ import coen275project.*;
 
 public class TotalExpenseProfile extends JPanel{	
 	private User user;
-	//private ExpenseProfile myExpenseProfile = null;
 	private static final String[] COLUMN_NAMES = { "Date", "Expense", "Location", "User" };
 	
 	public TotalExpenseProfile(User user){
 		this.user = user;
-		//this.myExpenseProfile = user.getExpenseProfile();
 		initialize();
 	}
 	
@@ -52,14 +50,8 @@ public class TotalExpenseProfile extends JPanel{
 		this.setBorder(new EmptyBorder(5, 5, 5, 5));
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); 
 		
-		// this user's profile
-		/*JScrollPane scrollPane_record = new ExpenseShowPanel(myExpenseProfile);
-		scrollPane_record.setBorder(BorderFactory.createTitledBorder("Your Record Information"));
-		scrollPane_record.setPreferredSize(new Dimension(700, 200));
-		this.add(scrollPane_record);*/
 		
-		
-
+		// find the user + extension, if exists, create JScrollPanel and add to TotalExpenseProfile
 		for (int iExtension = 0; iExtension < 5; iExtension++) {
 			String filePathString = "database/user_" + user.getCardNumber() + "_" + iExtension + ".ser";
 			File f = new File(filePathString);
@@ -76,8 +68,8 @@ public class TotalExpenseProfile extends JPanel{
 			}		
 		}
 		
-			
-		
+        
+		// test multi-thread panel
 		JPanel testMultiThreadPanel = new TestMultiThreadPanel();
 		testMultiThreadPanel.setLayout(new FlowLayout());
 		testMultiThreadPanel.setPreferredSize(new Dimension(700, 120));
@@ -87,21 +79,15 @@ public class TotalExpenseProfile extends JPanel{
 	}  
 
 	
-	
 	private class ExpenseShowPanel extends JScrollPane {
-	    private JLabel docNameLabel, docStoreLabel;
-	    private JTextField docNameText, docStoreText;
-	    private JPanel docNamePanel, docStorePanel, buttonPanel;
-	    private JTextArea docContentArea;
-	    private JScrollPane scrollPane;
 	    
 		public ExpenseShowPanel (String filePath) {
 			setBackground(Color.ORANGE);
 			
-			User theUser = Serialization.deSerialize(filePath);   //Lifen: get the user
-            ExpenseProfile oneExpenseProfile = theUser.getExpenseProfile();
-			/************************************* record ******************************************/
-
+			User theUser = Serialization.deSerialize(filePath);   // get the user
+            ExpenseProfile oneExpenseProfile = theUser.getExpenseProfile();   // get s/he profile
+            
+			/************************************* record, Yue's code***********************************/
 			// populate table content
 			final int NumberOfRow = oneExpenseProfile.getList().size();
 			Object[][] data = new Object[NumberOfRow][4];
@@ -112,7 +98,7 @@ public class TotalExpenseProfile extends JPanel{
 				data[i][3] = oneExpenseProfile.getList().get(i).getUserName();
 			}
 
-			final JTable table = new JTable(data, COLUMN_NAMES);
+			JTable table = new JTable(data, COLUMN_NAMES);
 
 			table.setFillsViewportHeight(true); 	
 
