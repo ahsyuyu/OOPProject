@@ -9,6 +9,9 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -35,11 +38,37 @@ public class SelectStore extends JPanel {
 		setLayout(new GridLayout(1,0));
 		listPanel = new JPanel();
 		mapPanel = new JPanel();
+		listPanel.setLayout(new BorderLayout(20,20));
+		mapPanel.setLayout(new BorderLayout(20,20));
+		//StoreList sl = new StoreList();
+		storeList = new JList<>(sList);
+		//storeList.setPreferredSize(new Dimension(300,400));
+		DefaultListCellRenderer renderer = (DefaultListCellRenderer) storeList.getCellRenderer();
+		renderer.setHorizontalAlignment(SwingConstants.CENTER);
+		storeList.setFont(new Font("Serif", Font.PLAIN, 28));
+		listHandler lh = new listHandler();
+		storeList.addListSelectionListener(lh);
+		JLabel listTitle = new JLabel("Food Store List");
+		Border border = listTitle.getBorder();
+		Border margin = new EmptyBorder(20,10,0,10);
+		listTitle.setBorder(new CompoundBorder(border, margin));
+		listTitle.setHorizontalAlignment(JLabel.CENTER);
+		listTitle.setFont(new Font("Serif", Font.PLAIN, 28));;
+		listPanel.add(listTitle, BorderLayout.NORTH);
+		//listPanel.setBorder(BorderFactory.createEmptyBorder(int top, int left, int bottom, int right);
+		listPanel.add(new JPanel(), BorderLayout.EAST);
+		listPanel.add(new JPanel(), BorderLayout.WEST);
+		listPanel.add(new JPanel(), BorderLayout.SOUTH);
+		listPanel.add(storeList, BorderLayout.CENTER);
 		
-		StoreList sl = new StoreList();
-		listPanel.add(sl);
-		Map map = new Map(listPanel, mapPanel);
-		mapPanel.add(map);
+		
+		//Map map = new Map(listPanel, mapPanel);
+		ImageIcon imageIcon = new ImageIcon((new ImageIcon("image.jpg"))
+				.getImage().getScaledInstance(600, 600,
+				java.awt.Image.SCALE_SMOOTH));
+		MapHandler mh = new MapHandler();
+		addMouseListener(mh);
+		mapPanel.add(new JLabel(imageIcon), BorderLayout.CENTER);
 		
 		add(listPanel);
 		add(mapPanel);		
@@ -48,14 +77,14 @@ public class SelectStore extends JPanel {
 	
 	class StoreList extends JPanel{
 		public StoreList(){
-			//setLayout(new BorderLayout());
+			setLayout(new BorderLayout());
 			//add(new JLabel("Store List"));
 			storeList = new JList<>(sList);
 			storeList.setPreferredSize(new Dimension(300,400));
 			storeList.setFont(new Font("Serif", Font.PLAIN, 24));
 			listHandler lh = new listHandler();
 			storeList.addListSelectionListener(lh);
-			add(storeList);
+			add(storeList, BorderLayout.CENTER);
 			
 			
 		}
@@ -101,36 +130,32 @@ public class SelectStore extends JPanel {
 	private class MapHandler implements MouseListener{
 		
 		public void mouseClicked(MouseEvent e){
-			//System.out.println(e.getX() + " " + e.getY());
+			System.out.println(e.getX() + " " + e.getY());
 			listPanel.removeAll();
 			listPanel.repaint();
 			int x = e.getX();
 			int y = e.getY();
 			String storeName = "";
 			//blue Daly Science
-			if(x > 150 && x < 200 && y > 97 && y < 140){
+			if(x > 751 && x < 792 && y > 68 && y < 114){
 				System.out.println("blue");
 				storeName = "Drink Vending Machine";
 			}
-			else if(x > 107 && x < 143 && y > 250 && y < 292){
+			else if(x > 703 && x < 748 && y > 222 && y < 275){
 				System.out.println("orange");
 				storeName = "Tago Restaurant";
 			}
-			else if(x > 496 && x < 540 && y > 302 && y < 340){
+			else if(x > 1096 && x < 1139 && y > 282 && y < 335){
 				System.out.println("green");
 				storeName = "Snack Vending Machine";
 			}
-			else if(x > 365 && x < 400 && y > 446 && y < 486){
+			else if(x > 963 && x < 1004 && y > 427 && y < 477){
 				System.out.println("red");
 				storeName = "Mission Cafe";
 			}
-//			JFrame foodStoreMenuWindow = new JFrame();
-//			foodStoreMenuWindow.setSize(500,500);
-//			foodStoreMenuWindow.setVisible(true);
-//			foodStoreMenuWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 			FoodStore fs = SelectStore.foodstorelist.getFoodStore(storeName);
 			FoodStoreMenu fsm = new FoodStoreMenu(theUser, fs);
-			//foodStoreMenuWindow.add(fsm);
 			listPanel.add(fsm);
 			listPanel.revalidate();
 			
@@ -185,13 +210,13 @@ public class SelectStore extends JPanel {
 	}
 	
 	public static void main(String[] args) {
-//		User u = Serialization.deSerialize("database/user_1002_0.ser");
-//		JFrame window = new JFrame("Select a store");
-//		SelectStore ss = new SelectStore(u);
-//		window.add(ss);
-//		window.setSize(1200, 600);
-//		window.setVisible(true);
-//		window.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+		User u = Serialization.deSerialize("database/user_1002_0.ser");
+		JFrame window = new JFrame("Select a store");
+		SelectStore ss = new SelectStore(u);
+		window.add(ss);
+		window.setSize(1200, 600);
+		window.setVisible(true);
+		window.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 	}
 
 }

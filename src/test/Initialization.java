@@ -19,21 +19,21 @@ public class Initialization {
 		// expense profile
 
 		List<ExpenseRecord> expenseList_1000_0 = new ArrayList<>();
-		ExpenseRecord er = new ExpenseRecord("2016-06-01", 20, "user_1000_0", "Drink");
+		ExpenseRecord er = new ExpenseRecord("2016-06-01", 20, "user_1000_0", "Drink Vending Machine");
 		expenseList_1000_0.add(er);
-		er = new ExpenseRecord("2016-06-01", 100, "user_1000_0", "Snack");
+		er = new ExpenseRecord("2016-06-01", 100, "user_1000_0", "Snack Vending Machine");
 		expenseList_1000_0.add(er);
-		er = new ExpenseRecord("2016-06-01", 30, "user_1000_0", "Drink");
+		er = new ExpenseRecord("2016-06-01", 30, "user_1000_0", "Drink Vending Machine");
 		expenseList_1000_0.add(er);
-		er = new ExpenseRecord("2016-06-01", 40, "user_1000_0", "Snack");
+		er = new ExpenseRecord("2016-06-01", 40, "user_1000_0", "Snack Vending Machine");
 		expenseList_1000_0.add(er);
-		er = new ExpenseRecord("2016-06-01", 20, "user_1000_0", "Drink");
+		er = new ExpenseRecord("2016-06-01", 20, "user_1000_0", "Drink Vending Machine");
 		expenseList_1000_0.add(er);
-		er = new ExpenseRecord("2016-06-01", 20, "user_1000_0", "Snack");
+		er = new ExpenseRecord("2016-06-01", 20, "user_1000_0", "Snack Vending Machine");
 		expenseList_1000_0.add(er);
 		er = new ExpenseRecord(30, "user_1000_0", "Mission Cafe");
 		expenseList_1000_0.add(er);
-		er = new ExpenseRecord(20, "user_1000_0", "Tago");
+		er = new ExpenseRecord(20, "user_1000_0", "Tago Restaurant");
 		expenseList_1000_0.add(er);
 		ExpenseProfile expenseProfile_1000_0 = new ExpenseProfile("1000", "user_1000_0", 1000, 800, 280, "2016-06",
 				expenseList_1000_0);
@@ -82,21 +82,21 @@ public class Initialization {
 		Card card_1001 = new Card("1001", "0000");
 		// expense profile
 		List<ExpenseRecord> expenseList_1001_0 = new ArrayList<>();
-		er = new ExpenseRecord("2016-06-01", 200, "user_1001_0", "Drink");
+		er = new ExpenseRecord("2016-06-01", 200, "user_1001_0", "Drink Vending Machine");
 		expenseList_1001_0.add(er);
-		er = new ExpenseRecord("2016-06-01", 10, "user_1001_0", "Snack");
+		er = new ExpenseRecord("2016-06-01", 10, "user_1001_0", "Snack Vending Machine");
 		expenseList_1001_0.add(er);
-		er = new ExpenseRecord("2016-06-01", 30, "user_1001_0", "Drink");
+		er = new ExpenseRecord("2016-06-01", 30, "user_1001_0", "Drink Vending Machine");
 		expenseList_1001_0.add(er);
-		er = new ExpenseRecord("2016-06-01", 40, "user_1001_0", "Snack");
+		er = new ExpenseRecord("2016-06-01", 40, "user_1001_0", "Snack Vending Machine");
 		expenseList_1001_0.add(er);
-		er = new ExpenseRecord("2016-06-01", 20, "user_1001_0", "Drink");
+		er = new ExpenseRecord("2016-06-01", 20, "user_1001_0", "Drink Vending Machine");
 		expenseList_1001_0.add(er);
-		er = new ExpenseRecord("2016-06-01", 20, "user_1001_0", "Snack");
+		er = new ExpenseRecord("2016-06-01", 20, "user_1001_0", "Snack Vending Machine");
 		expenseList_1001_0.add(er);
 		er = new ExpenseRecord(30, "user_1001_0", "Mission Cafe");
 		expenseList_1001_0.add(er);
-		er = new ExpenseRecord(20, "user_1001_0", "Tago");
+		er = new ExpenseRecord(20, "user_1001_0", "Tago Restaurant");
 		expenseList_1001_0.add(er);
 		ExpenseProfile expenseProfile_1001_0 = new ExpenseProfile("1001", "user_1001_0", 1000, 800, 370, "2016-06",
 				expenseList_1001_0);
@@ -143,21 +143,21 @@ public class Initialization {
 		Card card_1002 = new Card("1002", "0000");
 		// expense profile
 		List<ExpenseRecord> expenseList_1002_0 = new ArrayList<>();
-		er = new ExpenseRecord("2016-06-01", 20, "user_1002_0", "Drink");
+		er = new ExpenseRecord("2016-06-01", 20, "user_1002_0", "Drink Vending Machine");
 		expenseList_1002_0.add(er);
-		er = new ExpenseRecord("2016-06-01", 10, "user_1002_0", "Snack");
+		er = new ExpenseRecord("2016-06-01", 10, "user_1002_0", "Snack Vending Machine");
 		expenseList_1002_0.add(er);
-		er = new ExpenseRecord("2016-06-01", 30, "user_1002_0", "Drink");
+		er = new ExpenseRecord("2016-06-01", 30, "user_1002_0", "Drink Vending Machine");
 		expenseList_1002_0.add(er);
-		er = new ExpenseRecord("2016-06-01", 40, "user_1002_0", "Snack");
+		er = new ExpenseRecord("2016-06-01", 40, "user_1002_0", "Snack Vending Machine");
 		expenseList_1002_0.add(er);
-		er = new ExpenseRecord("2016-06-01", 20, "user_1002_0", "Drink");
+		er = new ExpenseRecord("2016-06-01", 20, "user_1002_0", "Drink Vending Machine");
 		expenseList_1002_0.add(er);
-		er = new ExpenseRecord("2016-06-01", 20, "user_1002_0", "Snack");
+		er = new ExpenseRecord("2016-06-01", 20, "user_1002_0", "Snack Vending Machine");
 		expenseList_1002_0.add(er);
 		er = new ExpenseRecord(30, "user_1002_0", "Mission Cafe");
 		expenseList_1002_0.add(er);
-		er = new ExpenseRecord(20, "user_1002_0", "Tago");
+		er = new ExpenseRecord(20, "user_1002_0", "Tago Restaurant");
 		expenseList_1002_0.add(er);
 		ExpenseProfile expenseProfile_1002_0 = new ExpenseProfile("1002", "user_1002_0", 1000, 800, 190, "2016-06",
 				expenseList_1002_0);
@@ -205,21 +205,21 @@ public class Initialization {
 		
 		// expense profile
 		List<ExpenseRecord> expenseList_1002_1 = new ArrayList<>();
-		er = new ExpenseRecord("2016-06-01", 20, "user_1002_1", "Drink");
+		er = new ExpenseRecord("2016-06-01", 20, "user_1002_1", "Drink Vending Machine");
 		expenseList_1002_1.add(er);
-		er = new ExpenseRecord("2016-06-01", 100, "user_1002_1", "Snack");
+		er = new ExpenseRecord("2016-06-01", 100, "user_1002_1", "Snack Vending Machine");
 		expenseList_1002_1.add(er);
-		er = new ExpenseRecord("2016-06-01", 80, "user_1002_1", "Drink");
+		er = new ExpenseRecord("2016-06-01", 80, "user_1002_1", "Drink Vending Machine");
 		expenseList_1002_1.add(er);
-		er = new ExpenseRecord("2016-06-01", 40, "user_1002_1", "Snack");
+		er = new ExpenseRecord("2016-06-01", 40, "user_1002_1", "Snack Vending Machine");
 		expenseList_1002_1.add(er);
-		er = new ExpenseRecord("2016-06-01", 20, "user_1002_1", "Drink");
+		er = new ExpenseRecord("2016-06-01", 20, "user_1002_1", "Drink Vending Machine");
 		expenseList_1002_1.add(er);
-		er = new ExpenseRecord("2016-06-01", 20, "user_1002_1", "Snack");
+		er = new ExpenseRecord("2016-06-01", 20, "user_1002_1", "Snack Vending Machine");
 		expenseList_1002_1.add(er);
 		er = new ExpenseRecord(30, "user_1002_1", "Mission Cafe");
 		expenseList_1002_1.add(er);
-		er = new ExpenseRecord(20, "user_1002_1", "Tago");
+		er = new ExpenseRecord(20, "user_1002_1", "Tago Restaurant");
 		expenseList_1002_1.add(er);
 		ExpenseProfile expenseProfile_1002_1 = new ExpenseProfile("1002", "user_1002_1", 1000, 800, 330, "2016-06",
 				expenseList_1002_1);
