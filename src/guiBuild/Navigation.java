@@ -51,17 +51,15 @@ public class Navigation {
 		frame = new JFrame("Navigation");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		 // make the frame, according to the height and width of the screen size
+		// make the frame, according to the height and width of the screen size
     	/*Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     	int height = screenSize.height;
     	int width = screenSize.width;
     	System.out.println("width" + width + ", height" + height);
     	frame.setSize(width*9/10, height*7/8);*/
-    	frame.setBounds(100, 100, 1150, 700);
-    	//frame.getContentPane().setLayout(null);
-
-    	// center the mainFrame on screen
-    	frame.setLocationRelativeTo(null);
+    	frame.setBounds(100, 100, 1250, 700);   	
+    	frame.setLocationRelativeTo(null);          // center the mainFrame on screen
+    	
     	
     	JTabbedPane tabbedPane = new JTabbedPane();      //**JTabbedPane
     	tabbedPane.addTab("Buy/Order food", new OrderPanel());
