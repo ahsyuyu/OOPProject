@@ -57,7 +57,7 @@ public class Navigation {
     	int width = screenSize.width;
     	System.out.println("width" + width + ", height" + height);
     	frame.setSize(width*9/10, height*7/8);*/
-    	frame.setBounds(100, 100, 1150, 700);
+    	frame.setBounds(100, 100, 1250, 700);
     	//frame.getContentPane().setLayout(null);
 
     	// center the mainFrame on screen
