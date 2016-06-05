@@ -55,7 +55,7 @@ public class ExpenseRecord implements Serializable{
 	}
 	
 	public String toString() {
-		return "\n" + "date=" + date + ", expense=" + expense + ", userName=" + userName;
+		return "\n" + "date=" + date + ", expense=" + expense +  " , location = " + storeName + ", userName=" + userName;
 	}
 	
 	public static void main(String[] args) {
