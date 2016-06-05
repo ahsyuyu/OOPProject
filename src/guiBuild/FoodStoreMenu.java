@@ -63,6 +63,7 @@ public class FoodStoreMenu extends JPanel {
 		add(scrollPane, BorderLayout.CENTER);
 		JButton checkout = new JButton("Checkout");
 		checkout.setBackground(Color.orange);
+		checkout.setOpaque(true);
 		checkoutHandler ch = new checkoutHandler();
 		checkout.addActionListener(ch);
 		add(checkout, BorderLayout.SOUTH);
