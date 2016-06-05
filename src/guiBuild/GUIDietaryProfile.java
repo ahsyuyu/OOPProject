@@ -117,7 +117,7 @@ public class GUIDietaryProfile extends JPanel {
 		lblNewLabel_2.setBounds(6, 50, 158, 16);
 		panel_info.add(lblNewLabel_2);
 
-		JLabel lblNewLabel_3 = new JLabel("Calorie Expense :");
+		JLabel lblNewLabel_3 = new JLabel("Calorie Consumed :");
 		lblNewLabel_3.setBounds(606, 20, 110, 16);
 		panel_info.add(lblNewLabel_3);
 
@@ -321,7 +321,7 @@ public class GUIDietaryProfile extends JPanel {
 		
 		JLabel lblCalorieUsedOf = new JLabel();
 		lblCalorieUsedOf.setPreferredSize(new Dimension(300, 16));
-		lblCalorieUsedOf.setText("calorie used of today: $ 0");
+		lblCalorieUsedOf.setText("calorie consumed of today: $ 0");
 		
 		JPanel panel_row1 = new JPanel();
 		panel_row1.setPreferredSize(new Dimension(300,125));
