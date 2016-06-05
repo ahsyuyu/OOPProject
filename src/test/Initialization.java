@@ -118,10 +118,14 @@ public class Initialization {
 		expenseList_1001_0.add(er);
 		er = new ExpenseRecord("2016-06-03", 20, "user_1001_0", "Snack Vending Machine");
 		expenseList_1001_0.add(er);
-		dr = new DietaryRecord("2016-06-04", 200, "user_1001_0", "Tago Restaurant");
-		dietaryList_1000_0.add(dr);
-		dr = new DietaryRecord("2016-06-04", 190, "user_1001_0", "Tago Restaurant");
-		dietaryList_1000_0.add(dr);
+		er = new ExpenseRecord("2016-06-04", 20, "user_1001_0", "Drink Vending Machine");
+		expenseList_1001_0.add(er);
+		er = new ExpenseRecord("2016-06-04", 200, "user_1001_0", "Snack Vending Machine");
+		expenseList_1001_0.add(er);
+		er = new ExpenseRecord("2016-06-04", 100, "user_1001_0", "Drink Vending Machine");
+		expenseList_1001_0.add(er);
+		er = new ExpenseRecord("2016-06-04", 80, "user_1001_0", "Tago Restaurant");
+		expenseList_1001_0.add(er);
 		ExpenseProfile expenseProfile_1001_0 = new ExpenseProfile("1001", "user_1001_0", 1000, 1200, 980, "2016-06",
 				expenseList_1001_0);
 		
@@ -205,7 +209,7 @@ public class Initialization {
 				"2016-06-04", dietaryList_1002_0, true, false, true);
 		// user
 		User user_1002_0 = new User("user_1002_0", "1002");
-		user_1002_0.setExtensionNumber(10);
+		user_1002_0.setExtensionNumber(0);
 		user_1002_0.setExpenseProfile(expenseProfile_1002_0);
 		user_1002_0.setDietaryProfile(dietaryProfile_1002_0);
 
@@ -314,13 +318,13 @@ public class Initialization {
 		user_1002_1 = Serialization.deSerialize("database/user_1002_1.ser");
 //		
 //		// succeed
-		System.out.println("card_1000" + "\n" + card_1000 + "\n");
-		System.out.println("card_1001" + "\n" + card_1001 + "\n");
-		System.out.println("card_1002" + "\n" + card_1002 + "\n");
-		System.out.println("user_1000_0" + "\n" + user_1000_0 + "\n");
-		System.out.println("user_1001_0" + "\n" + user_1001_0 + "\n");
+//		System.out.println("card_1000" + "\n" + card_1000 + "\n");
+//		System.out.println("card_1001" + "\n" + card_1001 + "\n");
+//		System.out.println("card_1002" + "\n" + card_1002 + "\n");
+//		System.out.println("user_1000_0" + "\n" + user_1000_0 + "\n");
+//		System.out.println("user_1001_0" + "\n" + user_1001_0 + "\n");
 		System.out.println("user_1002_0" + "\n" + user_1002_0 + "\n");
-		System.out.println("user_1002_1" + "\n" + user_1002_1 + "\n");
+//		System.out.println("user_1002_1" + "\n" + user_1002_1 + "\n");
 		
 		
 	}

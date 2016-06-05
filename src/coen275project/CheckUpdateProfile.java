@@ -42,7 +42,7 @@ public class CheckUpdateProfile {
 			System.out.println("loginUpdateExpenseProfile: ExpenseProfile is out of updated, System updated it.");
 			
 			// serialization
-			serialization(user);
+			//serialization(user);
 			return true;	
 		}
 		
@@ -80,7 +80,7 @@ public class CheckUpdateProfile {
 			
 			// serialization
 			System.out.println("loginUpdateDietaryProfile: without the same day, System updated it.");
-			serialization(user);
+			//serialization(user);
 			return true;
 		}
 		
@@ -118,19 +118,16 @@ public class CheckUpdateProfile {
 		user.getExpenseProfile().addExpenseRecord(record1);
 
 		// update DietaryProfile
+		DietaryRecord record2 = new DietaryRecord(calorie, user.getName(), foodStore.getName());
 		user.getDietaryProfile().setExpense(user.getDietaryProfile().getExpense() + calorie);
-		// integrate dietaryProfile to everyday has a record against instead of recording every record
-		user.getDietaryProfile().addDietaryRecord(new DietaryRecord(calorie, user.getName(), foodStore.getName()));
+		user.getDietaryProfile().addDietaryRecord(record2);
 		
-		// TODO
 		//Card.getTotalBalance(user.getCardNumber());    //Lifen:no need of this
 		Card.deductMoney(user.getCardNumber(), price);   //Lifen: deduct money
 		//System.out.println("here count");
 		
-		
-		
 		// serialization
-		serialization(user);
+		//serialization(user);
 		
 		return list;
 	}
@@ -215,7 +212,7 @@ public class CheckUpdateProfile {
 		// update
 		user.getExpenseProfile().setNextFund(newFund);
 		
-		serialization(user);
+		//serialization(user);
 		return true;
 	}
 	
@@ -233,7 +230,7 @@ public class CheckUpdateProfile {
 		user.getDietaryProfile().setLowSodium(lowsodium);
 		user.getDietaryProfile().setLowCholesterol(lowcholesterol);
 		
-		serialization(user);
+		//serialization(user);
 		return true;
 	}
 	
@@ -241,6 +238,7 @@ public class CheckUpdateProfile {
 		String cardNumber = user.getCardNumber();
 		String extension = user.getExtensionNumber()+"";
 		Serialization.serialize(user, "database/user_" + cardNumber + "_" + extension + ".ser" );
+		
 		return true;
 	}
 	
