@@ -11,7 +11,7 @@ public class Initialization {
 	public static void main(String[] args) {
 
 		/**************************************
-		 * create user_1000_0
+		 * create user_1000_0   used for testing buy item
 		 **********************************************************/
 
 		// card
@@ -21,51 +21,51 @@ public class Initialization {
 		List<ExpenseRecord> expenseList_1000_0 = new ArrayList<>();
 		ExpenseRecord er = new ExpenseRecord("2016-06-01", 20, "user_1000_0", "Drink Vending Machine");
 		expenseList_1000_0.add(er);
-		er = new ExpenseRecord("2016-06-01", 100, "user_1000_0", "Snack Vending Machine");
+		er = new ExpenseRecord("2016-06-01", 80, "user_1000_0", "Snack Vending Machine");
 		expenseList_1000_0.add(er);
 		er = new ExpenseRecord("2016-06-01", 30, "user_1000_0", "Drink Vending Machine");
 		expenseList_1000_0.add(er);
-		er = new ExpenseRecord("2016-06-01", 40, "user_1000_0", "Snack Vending Machine");
+		er = new ExpenseRecord("2016-06-01", 40, "user_1000_0", "Tago Restaurant");
 		expenseList_1000_0.add(er);
-		er = new ExpenseRecord("2016-06-01", 20, "user_1000_0", "Drink Vending Machine");
+		er = new ExpenseRecord("2016-06-02", 20, "user_1000_0", "Drink Vending Machine");
 		expenseList_1000_0.add(er);
-		er = new ExpenseRecord("2016-06-01", 20, "user_1000_0", "Snack Vending Machine");
+		er = new ExpenseRecord("2016-06-02", 10, "user_1000_0", "Snack Vending Machine");
 		expenseList_1000_0.add(er);
-		er = new ExpenseRecord(30, "user_1000_0", "Mission Cafe");
+		er = new ExpenseRecord("2016-06-03", 20, "user_1000_0", "Drink Vending Machine");
 		expenseList_1000_0.add(er);
-		er = new ExpenseRecord(20, "user_1000_0", "Tago Restaurant");
+		er = new ExpenseRecord("2016-06-03", 10, "user_1000_0", "Mission Cafe");
 		expenseList_1000_0.add(er);
-		ExpenseProfile expenseProfile_1000_0 = new ExpenseProfile("1000", "user_1000_0", 1000, 800, 280, "2016-06",
+		er = new ExpenseRecord("2016-06-03", 20, "user_1000_0", "Drink Vending Machine");
+		expenseList_1000_0.add(er);
+		er = new ExpenseRecord("2016-06-04", 20, "user_1000_0", "Snack Vending Machine");
+		expenseList_1000_0.add(er);
+		ExpenseProfile expenseProfile_1000_0 = new ExpenseProfile("1000", "user_1000_0", 1000, 800, 250, "2016-06",
 				expenseList_1000_0);
 		// dietary profile
 
 		List<DietaryRecord> dietaryList_1000_0 = new ArrayList<>();
-		DietaryRecord dr = new DietaryRecord("2016-06-01", 50, "user_1000_0");
+		DietaryRecord dr = new DietaryRecord("2016-06-01", 50, "user_1000_0", "Mission Cafe");
 		dietaryList_1000_0.add(dr);
-		dr = new DietaryRecord("2016-06-01", 160, "user_1000_0");
+		dr = new DietaryRecord("2016-06-01", 160, "user_1000_0", "Snack Vending Machine");
 		dietaryList_1000_0.add(dr);
-		dr = new DietaryRecord("2016-06-01", 80, "user_1000_0");
+		dr = new DietaryRecord("2016-06-01", 80, "user_1000_0", "Snack Vending Machine");
 		dietaryList_1000_0.add(dr);
-		dr = new DietaryRecord("2016-06-01", 40, "user_1000_0");
+		dr = new DietaryRecord("2016-06-01", 40, "user_1000_0", "Drink Vending Machine");
 		dietaryList_1000_0.add(dr);
-		dr = new DietaryRecord("2016-06-01", 20, "user_1000_0");
+		dr = new DietaryRecord("2016-06-02", 20, "user_1000_0", "Drink Vending Machine");
 		dietaryList_1000_0.add(dr);
-		dr = new DietaryRecord("2016-06-01", 20, "user_1000_0");
+		dr = new DietaryRecord("2016-06-02", 20, "user_1000_0", "Drink Vending Machine");
 		dietaryList_1000_0.add(dr);
-		dr = new DietaryRecord("2016-06-01", 30, "user_1000_0");
+		dr = new DietaryRecord("2016-06-03", 30, "user_1000_0", "Mission Cafe");
 		dietaryList_1000_0.add(dr);
-		dr = new DietaryRecord("2016-06-01", 80, "user_1000_0");
+		dr = new DietaryRecord("2016-06-03", 80, "user_1000_0", "Mission Cafe");
 		dietaryList_1000_0.add(dr);
-		dr = new DietaryRecord("2016-06-01", 200, "user_1000_0");
+		dr = new DietaryRecord("2016-06-04", 200, "user_1000_0", "Tago Restaurant");
 		dietaryList_1000_0.add(dr);
-		dr = new DietaryRecord("2016-06-01", 10, "user_1000_0");
+		dr = new DietaryRecord("2016-06-04", 10, "user_1000_0", "Tago Restaurant");
 		dietaryList_1000_0.add(dr);
-		dr = new DietaryRecord(800, "user_1000_0");
-		dietaryList_1000_0.add(dr);
-		dr = new DietaryRecord(200, "user_1000_0");
-		dietaryList_1000_0.add(dr);
-		DietaryProfile dietaryProfile_1000_0 = new DietaryProfile("1000", "user_1000_0", 2000, 1600, 1000, "2016-06",
-				"2016-06-02", dietaryList_1000_0, true, false, false);
+		DietaryProfile dietaryProfile_1000_0 = new DietaryProfile("1000", "user_1000_0", 2000, 1600, 0, "2016-06",
+				"2016-06-04", dietaryList_1000_0, true, false, false);
 		// user
 		User user_1000_0 = new User("user_1000_0", "1000");
 		user_1000_0.setExtensionNumber(0);
@@ -75,59 +75,80 @@ public class Initialization {
 
 
 		/**************************************
-		 * create user_1001_0
+		 * create user_1001_0      used fot testing exceed limitation
 		 **********************************************************/
 
 		// card
 		Card card_1001 = new Card("1001", "0000");
 		// expense profile
 		List<ExpenseRecord> expenseList_1001_0 = new ArrayList<>();
-		er = new ExpenseRecord("2016-06-01", 200, "user_1001_0", "Drink Vending Machine");
-		expenseList_1001_0.add(er);
-		er = new ExpenseRecord("2016-06-01", 10, "user_1001_0", "Snack Vending Machine");
-		expenseList_1001_0.add(er);
-		er = new ExpenseRecord("2016-06-01", 30, "user_1001_0", "Drink Vending Machine");
-		expenseList_1001_0.add(er);
-		er = new ExpenseRecord("2016-06-01", 40, "user_1001_0", "Snack Vending Machine");
+		er = new ExpenseRecord("2016-06-01", 10, "user_1001_0", "Drink Vending Machine");
 		expenseList_1001_0.add(er);
 		er = new ExpenseRecord("2016-06-01", 20, "user_1001_0", "Drink Vending Machine");
 		expenseList_1001_0.add(er);
-		er = new ExpenseRecord("2016-06-01", 20, "user_1001_0", "Snack Vending Machine");
+		er = new ExpenseRecord("2016-06-01", 30, "user_1001_0", "Drink Vending Machine");
 		expenseList_1001_0.add(er);
-		er = new ExpenseRecord(30, "user_1001_0", "Mission Cafe");
+		er = new ExpenseRecord("2016-06-01", 20, "user_1001_0", "Drink Vending Machine");
 		expenseList_1001_0.add(er);
-		er = new ExpenseRecord(20, "user_1001_0", "Tago Restaurant");
+		er = new ExpenseRecord("2016-06-01", 50, "user_1001_0", "Drink Vending Machine");
 		expenseList_1001_0.add(er);
-		ExpenseProfile expenseProfile_1001_0 = new ExpenseProfile("1001", "user_1001_0", 1000, 800, 370, "2016-06",
+		er = new ExpenseRecord("2016-06-01", 10, "user_1001_0", "Drink Vending Machine");
+		expenseList_1001_0.add(er);
+		er = new ExpenseRecord("2016-06-02", 10, "user_1001_0", "Tago Restaurant");
+		expenseList_1001_0.add(er);
+		er = new ExpenseRecord("2016-06-02", 10, "user_1001_0", "Drink Vending Machine");
+		expenseList_1001_0.add(er);
+		er = new ExpenseRecord("2016-06-02", 20, "user_1001_0", "Drink Vending Machine");
+		expenseList_1001_0.add(er);
+		er = new ExpenseRecord("2016-06-02", 10, "user_1001_0", "Tago Restaurant");
+		expenseList_1001_0.add(er);
+		er = new ExpenseRecord("2016-06-02", 10, "user_1001_0", "Tago Restaurant");
+		expenseList_1001_0.add(er);
+		er = new ExpenseRecord("2016-06-02", 10, "user_1001_0", "Snack Vending Machine");
+		expenseList_1001_0.add(er);
+		er = new ExpenseRecord("2016-06-02", 200, "user_1001_0", "Drink Vending Machine");
+		expenseList_1001_0.add(er);
+		er = new ExpenseRecord("2016-06-02", 10, "user_1001_0", "Snack Vending Machine");
+		expenseList_1001_0.add(er);
+		er = new ExpenseRecord("2016-06-02", 30, "user_1001_0", "Drink Vending Machine");
+		expenseList_1001_0.add(er);
+		er = new ExpenseRecord("2016-06-02", 100, "user_1001_0", "Snack Vending Machine");
+		expenseList_1001_0.add(er);
+		er = new ExpenseRecord("2016-06-03", 20, "user_1001_0", "Drink Vending Machine");
+		expenseList_1001_0.add(er);
+		er = new ExpenseRecord("2016-06-03", 20, "user_1001_0", "Snack Vending Machine");
+		expenseList_1001_0.add(er);
+		dr = new DietaryRecord("2016-06-04", 200, "user_1001_0", "Tago Restaurant");
+		dietaryList_1000_0.add(dr);
+		dr = new DietaryRecord("2016-06-04", 190, "user_1001_0", "Tago Restaurant");
+		dietaryList_1000_0.add(dr);
+		ExpenseProfile expenseProfile_1001_0 = new ExpenseProfile("1001", "user_1001_0", 1000, 1200, 980, "2016-06",
 				expenseList_1001_0);
+		
 		// dietary profile
 		List<DietaryRecord> dietaryList_1001_0 = new ArrayList<>();
-		dr = new DietaryRecord("2016-06-01", 20, "user_1001_0");
+		dr = new DietaryRecord("2016-06-01", 20, "user_1001_0", "Drink Vending Machine");
 		dietaryList_1001_0.add(dr);
-		dr = new DietaryRecord("2016-06-01", 200, "user_1001_0");
+		dr = new DietaryRecord("2016-06-01", 200, "user_1001_0", "Tago Restaurant");
 		dietaryList_1001_0.add(dr);
-		dr = new DietaryRecord("2016-06-01", 20, "user_1001_0");
+		dr = new DietaryRecord("2016-06-02", 20, "user_1001_0", "Mission Cafe");
 		dietaryList_1001_0.add(dr);
-		dr = new DietaryRecord("2016-06-01", 150, "user_1001_0");
+		dr = new DietaryRecord("2016-06-02", 150, "user_1001_0", "Tago Restaurant");
 		dietaryList_1001_0.add(dr);
-		dr = new DietaryRecord("2016-06-01", 20, "user_1001_0");
+		dr = new DietaryRecord("2016-06-03", 20, "user_1001_0", "Drink Vending Machine");
 		dietaryList_1001_0.add(dr);
-		dr = new DietaryRecord("2016-06-01", 30, "user_1001_0");
+		dr = new DietaryRecord("2016-06-03", 30, "user_1001_0", "Snack Vending Machine");
 		dietaryList_1001_0.add(dr);
-		dr = new DietaryRecord("2016-06-01", 30, "user_1001_0");
+		dr = new DietaryRecord("2016-06-04", 30, "user_1001_0", "Tago Restaurant");
 		dietaryList_1001_0.add(dr);
-		dr = new DietaryRecord("2016-06-01", 100, "user_1001_0");
+		dr = new DietaryRecord("2016-06-04", 100, "user_1001_0", "Snack Vending Machine");
 		dietaryList_1001_0.add(dr);
-		dr = new DietaryRecord("2016-06-01", 20, "user_1001_0");
+		dr = new DietaryRecord("2016-06-04", 20, "user_1001_0", "Mission Cafe");
 		dietaryList_1001_0.add(dr);
-		dr = new DietaryRecord("2016-06-01", 10, "user_1001_0");
+		dr = new DietaryRecord("2016-06-04", 10, "user_1001_0", "Snack Vending Machine");
 		dietaryList_1001_0.add(dr);
-		dr = new DietaryRecord(200, "user_1001_0");
-		dietaryList_1001_0.add(dr);
-		dr = new DietaryRecord(300, "user_1001_0");
-		dietaryList_1001_0.add(dr);
-		DietaryProfile dietaryProfile_1001_0 = new DietaryProfile("1001", "user_1001_0", 2000, 1600, 500, "2016-06",
-				"2016-06-02", dietaryList_1001_0, true, false, true);
+		DietaryProfile dietaryProfile_1001_0 = new DietaryProfile("1001", "user_1001_0", 2000, 2200, 0, "2016-06",
+				"2016-06-04", dietaryList_1001_0, true, false, true);
 		// user
 		User user_1001_0 = new User("user_1001_0", "1001");
 		user_1001_0.setExtensionNumber(0);
@@ -147,48 +168,41 @@ public class Initialization {
 		expenseList_1002_0.add(er);
 		er = new ExpenseRecord("2016-06-01", 10, "user_1002_0", "Snack Vending Machine");
 		expenseList_1002_0.add(er);
-		er = new ExpenseRecord("2016-06-01", 30, "user_1002_0", "Drink Vending Machine");
+		er = new ExpenseRecord("2016-06-02", 30, "user_1002_0", "Mission Cafe");
 		expenseList_1002_0.add(er);
-		er = new ExpenseRecord("2016-06-01", 40, "user_1002_0", "Snack Vending Machine");
+		er = new ExpenseRecord("2016-06-02", 40, "user_1002_0", "Snack Vending Machine");
 		expenseList_1002_0.add(er);
-		er = new ExpenseRecord("2016-06-01", 20, "user_1002_0", "Drink Vending Machine");
+		er = new ExpenseRecord("2016-06-03", 20, "user_1002_0", "Mission Cafe");
 		expenseList_1002_0.add(er);
-		er = new ExpenseRecord("2016-06-01", 20, "user_1002_0", "Snack Vending Machine");
+		er = new ExpenseRecord("2016-06-04", 20, "user_1002_0", "Snack Vending Machine");
 		expenseList_1002_0.add(er);
-		er = new ExpenseRecord(30, "user_1002_0", "Mission Cafe");
-		expenseList_1002_0.add(er);
-		er = new ExpenseRecord(20, "user_1002_0", "Tago Restaurant");
-		expenseList_1002_0.add(er);
-		ExpenseProfile expenseProfile_1002_0 = new ExpenseProfile("1002", "user_1002_0", 1000, 800, 190, "2016-06",
+		ExpenseProfile expenseProfile_1002_0 = new ExpenseProfile("1002", "user_1002_0", 1000, 800, 140, "2016-06",
 				expenseList_1002_0);
+		
 		// dietary profile
 		List<DietaryRecord> dietaryList_1002_0 = new ArrayList<>();
-		dr = new DietaryRecord("2016-06-01", 60, "user_1002_0");
+		dr = new DietaryRecord("2016-06-01", 60, "user_1002_0", "Mission Cafe");
 		dietaryList_1002_0.add(dr);
-		dr = new DietaryRecord("2016-06-01", 20, "user_1002_0");
+		dr = new DietaryRecord("2016-06-02", 20, "user_1002_0", "Snack Vending Machine");
 		dietaryList_1002_0.add(dr);
-		dr = new DietaryRecord("2016-06-01", 80, "user_1002_0");
+		dr = new DietaryRecord("2016-06-02", 80, "user_1002_0", "Drink Vending Machine");
 		dietaryList_1002_0.add(dr);
-		dr = new DietaryRecord("2016-06-01", 20, "user_1002_0");
+		dr = new DietaryRecord("2016-06-02", 20, "user_1002_0", "Snack Vending Machine");
 		dietaryList_1002_0.add(dr);
-		dr = new DietaryRecord("2016-06-01", 200, "user_1002_0");
+		dr = new DietaryRecord("2016-06-03", 200, "user_1002_0", "Mission Cafe");
 		dietaryList_1002_0.add(dr);
-		dr = new DietaryRecord("2016-06-01", 20, "user_1002_0");
+		dr = new DietaryRecord("2016-06-03", 20, "user_1002_0", "Drink Vending Machine");
 		dietaryList_1002_0.add(dr);
-		dr = new DietaryRecord("2016-06-01", 30, "user_1002_0");
+		dr = new DietaryRecord("2016-06-03", 30, "user_1002_0", "Snack Vending Machine");
 		dietaryList_1002_0.add(dr);
-		dr = new DietaryRecord("2016-06-01", 30, "user_1002_0");
+		dr = new DietaryRecord("2016-06-04", 30, "user_1002_0", "Mission Cafe");
 		dietaryList_1002_0.add(dr);
-		dr = new DietaryRecord("2016-06-01", 20, "user_1002_0");
+		dr = new DietaryRecord("2016-06-04", 20, "user_1002_0", "Drink Vending Machine");
 		dietaryList_1002_0.add(dr);
-		dr = new DietaryRecord("2016-06-01", 10, "user_1002_0");
+		dr = new DietaryRecord("2016-06-04", 10, "user_1002_0", "Mission Cafe");
 		dietaryList_1002_0.add(dr);
-		dr = new DietaryRecord(40, "user_1002_0");
-		dietaryList_1002_0.add(dr);
-		dr = new DietaryRecord(160, "user_1002_0");
-		dietaryList_1002_0.add(dr);
-		DietaryProfile dietaryProfile_1002_0 = new DietaryProfile("1002", "user_1002_0", 2000, 1600, 200, "2016-06",
-				"2016-06-02", dietaryList_1002_0, true, false, true);
+		DietaryProfile dietaryProfile_1002_0 = new DietaryProfile("1002", "user_1002_0", 2000, 1600, 0, "2016-06",
+				"2016-06-04", dietaryList_1002_0, true, false, true);
 		// user
 		User user_1002_0 = new User("user_1002_0", "1002");
 		user_1002_0.setExtensionNumber(10);
@@ -209,48 +223,46 @@ public class Initialization {
 		expenseList_1002_1.add(er);
 		er = new ExpenseRecord("2016-06-01", 100, "user_1002_1", "Snack Vending Machine");
 		expenseList_1002_1.add(er);
-		er = new ExpenseRecord("2016-06-01", 80, "user_1002_1", "Drink Vending Machine");
+		er = new ExpenseRecord("2016-06-02", 80, "user_1002_1", "Drink Vending Machine");
 		expenseList_1002_1.add(er);
-		er = new ExpenseRecord("2016-06-01", 40, "user_1002_1", "Snack Vending Machine");
+		er = new ExpenseRecord("2016-06-02", 40, "user_1002_1", "Snack Vending Machine");
 		expenseList_1002_1.add(er);
-		er = new ExpenseRecord("2016-06-01", 20, "user_1002_1", "Drink Vending Machine");
+		er = new ExpenseRecord("2016-06-02", 20, "user_1002_1", "Drink Vending Machine");
 		expenseList_1002_1.add(er);
-		er = new ExpenseRecord("2016-06-01", 20, "user_1002_1", "Snack Vending Machine");
+		er = new ExpenseRecord("2016-06-03", 20, "user_1002_1", "Snack Vending Machine");
 		expenseList_1002_1.add(er);
-		er = new ExpenseRecord(30, "user_1002_1", "Mission Cafe");
-		expenseList_1002_1.add(er);
-		er = new ExpenseRecord(20, "user_1002_1", "Tago Restaurant");
-		expenseList_1002_1.add(er);
-		ExpenseProfile expenseProfile_1002_1 = new ExpenseProfile("1002", "user_1002_1", 1000, 800, 330, "2016-06",
+		dr = new DietaryRecord("2016-06-04", 30, "user_1002_1", "Mission Cafe");
+		dietaryList_1002_0.add(dr);
+		dr = new DietaryRecord("2016-06-04", 20, "user_1002_1", "Drink Vending Machine");
+		dietaryList_1002_0.add(dr);
+		dr = new DietaryRecord("2016-06-04", 10, "user_1002_1", "Mission Cafe");
+		dietaryList_1002_0.add(dr);
+		ExpenseProfile expenseProfile_1002_1 = new ExpenseProfile("1002", "user_1002_1", 1000, 800, 340, "2016-06",
 				expenseList_1002_1);
 		// dietary profile
 		List<DietaryRecord> dietaryList_1002_1 = new ArrayList<>();
-		dr = new DietaryRecord("2016-06-01", 80, "user_1002_1");
+		dr = new DietaryRecord("2016-06-01", 80, "user_1002_1", "Drink Vending Machine");
 		dietaryList_1002_1.add(dr);
-		dr = new DietaryRecord("2016-06-01", 20, "user_1002_1");
+		dr = new DietaryRecord("2016-06-01", 20, "user_1002_1", "Snack Vending Machine");
 		dietaryList_1002_1.add(dr);
-		dr = new DietaryRecord("2016-06-01", 20, "user_1002_1");
+		dr = new DietaryRecord("2016-06-02", 20, "user_1002_1", "Mission Cafe");
 		dietaryList_1002_1.add(dr);
-		dr = new DietaryRecord("2016-06-01", 200, "user_1002_1");
+		dr = new DietaryRecord("2016-06-02", 200, "user_1002_1", "Drink Vending Machine");
 		dietaryList_1002_1.add(dr);
-		dr = new DietaryRecord("2016-06-01", 20, "user_1002_1");
+		dr = new DietaryRecord("2016-06-03", 20, "user_1002_1", "Mission Cafe");
 		dietaryList_1002_1.add(dr);
-		dr = new DietaryRecord("2016-06-01", 20, "user_1002_1");
+		dr = new DietaryRecord("2016-06-04", 20, "user_1002_1", "Snack Vending Machine");
 		dietaryList_1002_1.add(dr);
-		dr = new DietaryRecord("2016-06-01", 100, "user_1002_1");
+		dr = new DietaryRecord("2016-06-04", 100, "user_1002_1", "Drink Vending Machine");
 		dietaryList_1002_1.add(dr);
-		dr = new DietaryRecord("2016-06-01", 30, "user_1002_1");
+		dr = new DietaryRecord("2016-06-04", 30, "user_1002_1", "Mission Cafe");
 		dietaryList_1002_1.add(dr);
-		dr = new DietaryRecord("2016-06-01", 20, "user_1002_1");
+		dr = new DietaryRecord("2016-06-04", 20, "user_1002_1", "Snack Vending Machine");
 		dietaryList_1002_1.add(dr);
-		dr = new DietaryRecord("2016-06-01", 10, "user_1002_1");
+		dr = new DietaryRecord("2016-06-04", 10, "user_1002_1", "Mission Cafe");
 		dietaryList_1002_1.add(dr);
-		dr = new DietaryRecord(300, "user_1002_1");
-		dietaryList_1002_1.add(dr);
-		dr = new DietaryRecord(200, "user_1002_1");
-		dietaryList_1002_1.add(dr);
-		DietaryProfile dietaryProfile_1002_1 = new DietaryProfile("1002", "user_1002_1", 2000, 1600, 500, "2016-06",
-				"2016-06-02", dietaryList_1002_1, true, false, true);
+		DietaryProfile dietaryProfile_1002_1 = new DietaryProfile("1002", "user_1002_1", 2000, 1600, 0, "2016-06",
+				"2016-06-04", dietaryList_1002_1, true, false, true);
 		// user
 		User user_1002_1 = new User("user_1002_1", "1002");
 		user_1002_1.setExtensionNumber(1);

@@ -50,7 +50,7 @@ public class GUIDietaryProfile extends JPanel {
 	private DietaryProfile myDietaryProfile = null;
 
 	// GUI data
-	private static final String[] COLUMN_NAMES = { "Date", "Expense", "User" };
+	private static final String[] COLUMN_NAMES = { "Date", "Expense", "Location"};
 
 	public static void main(String[] args) {
 		String filename = "database/user_1000_0.ser";
@@ -59,7 +59,7 @@ public class GUIDietaryProfile extends JPanel {
 
 		JFrame window = new JFrame("Dietary Profile");
 		window.getContentPane().add(GUI_dietaryprofile);
-		window.setSize(600, 600);
+		window.setSize(800, 600);
 		window.setLocationRelativeTo(null);
 		try {
 			// 1.6+
@@ -69,10 +69,11 @@ public class GUIDietaryProfile extends JPanel {
 		}
 		window.setVisible(true);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		
 	}
 
 	public GUIDietaryProfile(User user) {
-
 		initializeData(user);
 		initializeGUI();
 	}
@@ -84,76 +85,92 @@ public class GUIDietaryProfile extends JPanel {
 
 	private void initializeGUI() {
 		
-		this.setSize(600, 600);
+		this.setSize(800, 700);
 		this.setBorder(new EmptyBorder(5, 5, 5, 5));
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); 
-
+		
 		JPanel panel_info = new JPanel();
 		panel_info.setBorder(BorderFactory.createTitledBorder("Information"));
-		panel_info.setPreferredSize(new Dimension(600, 100));
+		panel_info.setPreferredSize(new Dimension(800, 110));
 		this.add(panel_info);
 		panel_info.setLayout(null);
 
 		JScrollPane scrollPane_record = new JScrollPane();
 		scrollPane_record.setBorder(BorderFactory.createTitledBorder("Record Information"));
-		scrollPane_record.setPreferredSize(new Dimension(600, 200));
+		scrollPane_record.setPreferredSize(new Dimension(800, 150));
+		scrollPane_record.setMaximumSize(new Dimension(800, 150));
 		this.add(scrollPane_record);
 
 		JTabbedPane tabbedPane_graph = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane_graph.setPreferredSize(new Dimension(600, 230));
+		tabbedPane_graph.setPreferredSize(new Dimension(800, 300));
 		this.add(tabbedPane_graph);
+
+		
+		
 
 		/************************************* info ******************************************/
 		JLabel lblNewLabel_1 = new JLabel("Card Number : ");
-		lblNewLabel_1.setBounds(6, 20, 110, 16);
+		lblNewLabel_1.setBounds(6, 20, 151, 16);
 		panel_info.add(lblNewLabel_1);
 
-		JLabel lblNewLabel_2 = new JLabel("Current Calorie :");
-		lblNewLabel_2.setBounds(6, 50, 110, 16);
+		JLabel lblNewLabel_2 = new JLabel("Calorie Of This Month:");
+		lblNewLabel_2.setBounds(6, 50, 151, 16);
 		panel_info.add(lblNewLabel_2);
 
 		JLabel lblNewLabel_3 = new JLabel("Expense :");
-		lblNewLabel_3.setBounds(242, 50, 81, 16);
+		lblNewLabel_3.setBounds(581, 50, 81, 16);
 		panel_info.add(lblNewLabel_3);
 
 		JLabel lblNewLabel_4 = new JLabel("User Name :");
-		lblNewLabel_4.setBounds(242, 20, 81, 16);
+		lblNewLabel_4.setBounds(278, 20, 149, 16);
 		panel_info.add(lblNewLabel_4);
-
+		
+		JLabel lblNewLabel_5 = new JLabel("Calorie Of Next Month:");
+		lblNewLabel_5.setBounds(278, 50, 149, 16);
+		panel_info.add(lblNewLabel_5);
+		
 		JLabel lblNewLabel_6 = new JLabel("Preference :");
-		lblNewLabel_6.setBounds(6, 75, 93, 16);
+		lblNewLabel_6.setBounds(6, 82, 93, 16);
 		panel_info.add(lblNewLabel_6);
-
+		
+		JLabel label_nextcalorie = new JLabel(myDietaryProfile.getNextCalorie()+"");
+		label_nextcalorie.setBounds(439, 50, 110, 16);
+		panel_info.add(label_nextcalorie);
+		
+		JLabel label_expense = new JLabel(myDietaryProfile.getExpense()+"");
+		label_expense.setBounds(656, 50, 93, 16);
+		panel_info.add(label_expense);
+		
 		JLabel label_cardnumber = new JLabel(myDietaryProfile.getCardNumber() + "");
-		label_cardnumber.setBounds(120, 20, 110, 16);
+		label_cardnumber.setBounds(156, 20, 86, 16);
 		panel_info.add(label_cardnumber);
 
 		JLabel label_username = new JLabel(myDietaryProfile.getUserName());
-		label_username.setBounds(335, 20, 110, 16);
+		label_username.setBounds(439, 20, 110, 16);
 		panel_info.add(label_username);
 
-		JLabel label_currentcalorie = new JLabel(myDietaryProfile.getCurrentCalorie() + "");
-		label_currentcalorie.setBounds(120, 50, 110, 16);
+		JLabel label_currentcalorie = new JLabel(myDietaryProfile.getCurrentCalorie()+"");
+		label_currentcalorie.setBounds(156, 50, 86, 16);
 		panel_info.add(label_currentcalorie);
-
-		JLabel label_expense = new JLabel("$ " + myDietaryProfile.getExpense() + "");
-		label_expense.setBounds(335, 50, 110, 16);
-		panel_info.add(label_expense);
 
 		JCheckBox checkbox_lowSugar = new JCheckBox("lowSugar");
 		checkbox_lowSugar.setSelected(myDietaryProfile.getLowSugar());
-		checkbox_lowSugar.setBounds(111, 71, 93, 23);
+		checkbox_lowSugar.setBounds(149, 78, 93, 23);
+		checkbox_lowSugar.setEnabled(false);
 		panel_info.add(checkbox_lowSugar);
 
 		JCheckBox checkbox_lowSodium = new JCheckBox("lowSodium");
 		checkbox_lowSodium.setSelected(myDietaryProfile.getLowSodium());
-		checkbox_lowSodium.setBounds(204, 71, 110, 23);
+		checkbox_lowSodium.setBounds(267, 78, 110, 23);
+		checkbox_lowSodium.setEnabled(false);
 		panel_info.add(checkbox_lowSodium);
 
 		JCheckBox checkbox_lowCholesterol = new JCheckBox("LowCholesterol");
 		checkbox_lowCholesterol.setSelected(myDietaryProfile.getLowCholesterol());
-		checkbox_lowCholesterol.setBounds(326, 71, 129, 23);
+		checkbox_lowCholesterol.setBounds(431, 78, 129, 23);
+		checkbox_lowCholesterol.setEnabled(false);
 		panel_info.add(checkbox_lowCholesterol);
+		
 
 		/************************************* record ******************************************/
 
@@ -163,79 +180,187 @@ public class GUIDietaryProfile extends JPanel {
 		for (int i = 0; i < NumberOfRow; i++) {
 			data[i][0] = myDietaryProfile.getList().get(i).getDate();
 			data[i][1] = myDietaryProfile.getList().get(i).getExpense();
-			data[i][2] = myDietaryProfile.getList().get(i).getUserName();
+			data[i][2] = myDietaryProfile.getList().get(i).getStoreName();
 		}
 
 		final JTable table = new JTable(data, COLUMN_NAMES);
-
-		table.setFillsViewportHeight(true); 		// ??
-
-		// scrollPane_record.add(table); 			// avoid this way, use setViewportView instead scrollPane_record.setColumnHeaderView(table);
-		scrollPane_record.setViewportView(table); 	// manually add this line, show the table
+		table.setFillsViewportHeight(true); 		
+		scrollPane_record.setViewportView(table); 	
 
 		
-
-
-		/************************************ bar graph****************************************/
-	
-
+		/************************************ tabbedPane****************************************/
+		
+		// bar graph
 		JPanel panel_bargraph = new JPanel();
+		panel_bargraph.setLayout(new BoxLayout(panel_bargraph, BoxLayout.Y_AXIS));
 		tabbedPane_graph.addTab("Bar Graph", null, panel_bargraph, null);
-		panel_bargraph.setPreferredSize(new Dimension(600, 230));
-		panel_bargraph.setMinimumSize(new Dimension(600, 230));
+		panel_bargraph.setPreferredSize(new Dimension(800, 300));
+		panel_bargraph.setMinimumSize(new Dimension(800, 300));
 
+		JPanel panel_bargraph_top = new JPanel();
+		panel_bargraph_top.setPreferredSize(new Dimension(800, 30));
+		panel_bargraph_top.setMinimumSize(new Dimension(800, 30));
+		panel_bargraph_top.setMaximumSize(new Dimension(800, 30));
+		panel_bargraph.add(panel_bargraph_top);
+		
+		JPanel panel_bargraph_bottom = new JPanel();
+		panel_bargraph_bottom.setPreferredSize(new Dimension(800, 270));
+//		panel_bargraph_bottom.setMinimumSize(new Dimension(800, 270));
+		panel_bargraph.add(panel_bargraph_bottom);
+		
+		// pie chart
+		JPanel panel_piechart = new JPanel();
+		tabbedPane_graph.addTab("Pie Chart", null, panel_piechart, null);
+		panel_piechart.setPreferredSize(new Dimension(800, 300));
+		panel_piechart.setMinimumSize(new Dimension(800, 300));
+		
+		JPanel panel_piechart_left = new JPanel();
+		panel_piechart_left.setPreferredSize(new Dimension(350, 300));
+		panel_piechart_left.setMinimumSize(new Dimension(350, 300));
+		panel_piechart.add(panel_piechart_left);
+		
+		JPanel panel_piechart_right = new JPanel();
+		panel_piechart_right.setLayout(new BoxLayout(panel_piechart_right, BoxLayout.Y_AXIS));
+		panel_piechart_right.setPreferredSize(new Dimension(350, 300));
+		panel_piechart_right.setMinimumSize(new Dimension(350, 300));
+		panel_piechart.add(panel_piechart_right);
+		
+		/********************************************** bargraph top****************************************/
+		JButton button_1 = new JButton();
+		button_1.setPreferredSize(new Dimension(16, 16));
+		button_1.setBackground(Color.ORANGE);
+		button_1.setOpaque(true); 
+		button_1.setBorderPainted(false);
+		
+		JButton button_2 = new JButton();
+		button_2.setPreferredSize(new Dimension(16, 16));
+		button_2.setBackground(Color.PINK);
+		button_2.setOpaque(true); 
+		button_2.setBorderPainted(false);
+		
+		JButton button_3 = new JButton();
+		button_3.setPreferredSize(new Dimension(16, 16));
+		button_3.setBackground(Color.CYAN);
+		button_3.setOpaque(true); 
+		button_3.setBorderPainted(false);
+		
+		JButton button_4 = new JButton();
+		button_4.setPreferredSize(new Dimension(16, 16));
+		button_4.setBackground(Color.YELLOW);
+		button_4.setOpaque(true); 
+		button_4.setBorderPainted(false);
+		
+		JLabel label_1 = new JLabel();
+		label_1.setPreferredSize(new Dimension(160, 16));
+		label_1.setText("Drink Vending Machine");
+		
+		JLabel label_2 = new JLabel();
+		label_2.setPreferredSize(new Dimension(160, 16));
+		label_2.setText("Snack Vending Machine");
+		
+		JLabel label_3 = new JLabel();
+		label_3.setPreferredSize(new Dimension(120, 16));
+		label_3.setText("Tago Restaurant");
+		
+		JLabel label_4 = new JLabel();
+		label_4.setPreferredSize(new Dimension(120, 16));
+		label_4.setText("Mission Cafe");
+		
+		panel_bargraph_top.add(button_1);
+		panel_bargraph_top.add(label_1);
+		panel_bargraph_top.add(button_2);
+		panel_bargraph_top.add(label_2);
+		panel_bargraph_top.add(button_3);
+		panel_bargraph_top.add(label_3);
+		panel_bargraph_top.add(button_4);
+		panel_bargraph_top.add(label_4);
+		
+		/************************************   bar graph  ************************************/
 		if (myDietaryProfile.getList().size() > 0) {
-			BarChart chart = new BarChart();
 			
-			System.out.println("panel_bargaph dimension: " + tabbedPane_graph.getSize());
+			BarChart chart = new BarChart();
 
 			for (int i = 0; i < myDietaryProfile.getList().size(); i++) {
-				Random rm = new Random();
-				int r = rm.nextInt(256);
-				int g = rm.nextInt(256);
-				int b = rm.nextInt(256);
-				Color color = new Color(r, g, b);
+				
+				DietaryRecord r =  myDietaryProfile.getList().get(i);
+
+				Color color = null;
+				if (r.getStoreName().equals("Drink Vending Machine")) {
+					color = new Color(255, 200, 0);			// orange
+				} else if (r.getStoreName().equals("Snack Vending Machine")) {
+					color = new Color(255, 175, 175);		// pink
+				} else if (r.getStoreName().equals("Tago Restaurant")) {
+					color = new Color(0, 255, 255);			//cyan
+				} else {
+					color = new Color(255, 255, 0);			// yellow
+				}
 				Bar bar = new Bar(color, (float) myDietaryProfile.getList().get(i).getExpense());
 				chart.addBar(i, bar);
 			}
-			panel_bargraph.add(chart);
+			panel_bargraph_bottom.add(chart);
 		}
 		
+		
+		/************************************* pie chart right	 ****************************************/
+		
+		JButton button_5 = new JButton();
+		button_5.setPreferredSize(new Dimension(16, 16));
+		button_5.setBackground(Color.WHITE);
+		button_5.setOpaque(true);
+		button_5.setBorderPainted(false);
+		
+		JLabel lblRemainFundOf = new JLabel();
+		lblRemainFundOf.setPreferredSize(new Dimension(300, 16));
+		lblRemainFundOf.setText("remain fund of this month: $ " + (myDietaryProfile.getCurrentCalorie()-myDietaryProfile.getExpense()));
+		
+		JButton button_6 = new JButton();
+		button_6.setPreferredSize(new Dimension(16, 16));
+		button_6.setBackground(Color.RED);
+		button_6.setOpaque(true);
+		button_6.setBorderPainted(false);
+		
+		JLabel label_6 = new JLabel();
+		label_6.setPreferredSize(new Dimension(300, 16));
+		label_6.setText("expense of this month: $ " + myDietaryProfile.getExpense());
+		
+		JPanel panel_row1 = new JPanel();
+		panel_row1.setPreferredSize(new Dimension(300,125));
+		
+		JPanel panel_row2 = new JPanel();
+		panel_row2.setPreferredSize(new Dimension(300,125));
+		
+		panel_row1.add(button_5);
+		panel_row1.add(lblRemainFundOf);
+		panel_row2.add(button_6);
+		panel_row2.add(label_6);
+		
+		panel_piechart_right.add(panel_row1);
+		panel_piechart_right.add(panel_row2);
 
-		/************************************
-		 * pie chart
-		 ****************************************/
+		
+		/************************************* pie chart left	 ****************************************/
 
-		JPanel panel_pieView = new JPanel();
-		tabbedPane_graph.addTab("Pie Chart", null, panel_pieView, null);
-		panel_pieView.setPreferredSize(new Dimension(600, 230));
-		panel_pieView.setMinimumSize(new Dimension(600, 230));
-	
-
+		PieChartView pieChart = new PieChartView();
 		if (myDietaryProfile.getList().size() > 0) {
-
-			PieChartView pieChart = new PieChartView();
-
-			for (int i = 0; i < myDietaryProfile.getList().size(); i++) {
-				Slice slice = new Slice(myDietaryProfile.getList().get(i).getExpense(),
-						myDietaryProfile.getList().get(i).getDate());
-				pieChart.addSlice(slice);
-			}
-
-			panel_pieView.add(pieChart);
-			
+			Slice slice = new Slice(myDietaryProfile.getExpense(), Color.RED);
+			pieChart.addSlice(slice);
+			slice = new Slice(myDietaryProfile.getCurrentCalorie() - myDietaryProfile.getExpense(), Color.WHITE);
+			pieChart.addSlice(slice);
+		} else {
+			Slice slice = new Slice(1.0f, Color.WHITE);
+			pieChart.addSlice(slice);
 		}
+		panel_piechart_left.add(pieChart);
 
 	}
 }
-
-
 
 class BarChart extends JPanel {
 	private Map<Integer, Bar> bars = new LinkedHashMap<Integer, Bar>();
 
 	public BarChart() {
-		setPreferredSize(new Dimension(600, 230)); 	
+		setPreferredSize(new Dimension(800, 220)); 	
+//		setMinimumSize(new Dimension(800, 250)); 
 	}
 
 	public void addBar(Integer i, Bar bar) {
@@ -251,7 +376,7 @@ class BarChart extends JPanel {
 			max = Math.max(max, (int) f);
 		}
 
-		int width = getWidth()/bars.size() - 5;
+		int width = getWidth() / bars.size() - 5;
 		int x = 1;
 		for (Bar bar : bars.values()) {
 			int value = (int) bar.getValue().floatValue();
@@ -262,8 +387,6 @@ class BarChart extends JPanel {
 			g.drawRect(x, getHeight() - height, width, height); 							
 			x += (width + 2);
 		}
-		
-		
 	}
 
 }
@@ -299,8 +422,8 @@ class PieChartView extends JPanel {
 	private List list = new ArrayList();
 	
 	public PieChartView() {
-		setPreferredSize(new Dimension(600, 230)); 	
-		setMinimumSize(new Dimension(600, 230)); 	
+		setPreferredSize(new Dimension(400, 260)); 	
+		setMinimumSize(new Dimension(400, 260)); 	
 	}
 
 	public void addSlice(Slice slice) {
@@ -321,7 +444,6 @@ class PieChartView extends JPanel {
 		double curValue = 0.0D;
 		int startAngle = 0;
 	
-		
 		while (iterator.hasNext()) {
 
 			int arcAngle = 0;
@@ -329,14 +451,12 @@ class PieChartView extends JPanel {
 			startAngle = (int) (curValue * 360 / total);
 			arcAngle = (int) (slice.getValue() * 360 / total);
 			g.setColor(slice.getColor());
-			g.fillArc(getWidth() / 2 - min / 2, getHeight() / 2 - min/2, min - 50, min - 50, startAngle, arcAngle);
+			g.fillArc(getWidth() / 2 - min / 2, getHeight() / 2 - min/2, min - 30, min - 30, startAngle, arcAngle);
 			curValue += slice.getValue();
 			g.setColor(Color.black);
-			g.drawArc(getWidth() / 2 - min / 2, getHeight() / 2 - min/2, min - 50, min - 50, startAngle, arcAngle);
+			g.drawArc(getWidth() / 2 - min / 2, getHeight() / 2 - min/2, min - 30, min - 30, startAngle, arcAngle);
 			
 		}
-
-
 	}
 	
 	private double getTotal() {
@@ -356,13 +476,11 @@ class PieChartView extends JPanel {
 
 class Slice {
 	private float value;
-	private String date;
 	private Color color;
 
-	public Slice(float value, String date) {
+	public Slice(float value, Color color) {
 		this.value = value;
-		this.date = date;
-		color = getRandomColor();
+		this.color = color;
 	}
 
 	public float getValue() {
@@ -373,14 +491,6 @@ class Slice {
 		this.value = value;
 	}
 
-	public String getDate() {
-		return date;
-	}
-
-	public void setDate(String date) {
-		this.date = date;
-	}
-
 	public Color getColor() {
 		return color;
 	}
@@ -389,16 +499,6 @@ class Slice {
 		this.color = color;
 	}
 
-	// get a random Color for drawing pie wedges
-	public Color getRandomColor() {
-		// calculate random red, green and blue values
-		int red = (int) (Math.random() * 256);
-		int green = (int) (Math.random() * 256);
-		int blue = (int) (Math.random() * 256);
-
-		// return newly created Color
-		return new Color(red, green, blue);
-	}
 }
 
 class LegendView extends JPanel {
@@ -427,24 +527,24 @@ class LegendView extends JPanel {
 	}
 
 	private void drawLegends(Graphics g) {
-		Iterator iterator = list.iterator();
-		Slice slice = null;
-
-		Font font = new Font("SansSerif", Font.BOLD, 12);
-		g.setFont(font);
-
-		FontMetrics metrics = getFontMetrics(font);
-		int ascent = metrics.getMaxAscent();
-		int offsetY = ascent + 2;
-
-		for (int i = 1; iterator.hasNext(); i++) {
-
-			slice = (Slice) iterator.next();
-			g.setColor(slice.getColor());
-			g.fillRect(125, offsetY * i, ascent, ascent);
-			g.setColor(Color.black);
-			g.drawString(slice.getDate(), 140, offsetY * i + ascent);
-		}
+//		Iterator iterator = list.iterator();
+//		Slice slice = null;
+//
+//		Font font = new Font("SansSerif", Font.BOLD, 12);
+//		g.setFont(font);
+//
+//		FontMetrics metrics = getFontMetrics(font);
+//		int ascent = metrics.getMaxAscent();
+//		int offsetY = ascent + 2;
+//
+//		for (int i = 1; iterator.hasNext(); i++) {
+//
+//			slice = (Slice) iterator.next();
+//			g.setColor(slice.getColor());
+//			g.fillRect(125, offsetY * i, ascent, ascent);
+//			g.setColor(Color.black);
+//			g.drawString(slice.getDate(), 140, offsetY * i + ascent);
+//		}
 	} 
 
 

@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
 import coen275project.CheckUpdateProfile;
@@ -62,24 +63,21 @@ public class EditProfile extends JPanel {
 	}
 
 	public EditProfile(User user) {
-		initializeExpenseData(user);
+		initializeData(user);
 		initializeGUI();
 	}
 
-	private void initializeExpenseData(User user) {
+	private void initializeData(User user) {
 		this.user = user;
 		myExpenseProfile = user.getExpenseProfile();
 		myDietaryProfile = user.getDietaryProfile();
 		
 	}
 
-	private DietaryProfile initializeDietaryData(String dietaryProfileFileName) {
-		return Serialization.deSerialize(dietaryProfileFileName);
-	}
-
 	public void initializeGUI() {
+		this.setSize(600, 400);
+		this.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setLayout(new BorderLayout(5, 5));
-//		setSize(getWidth(), getHeight());
 
 		/********************************************** NORTH **********************************************/
 
@@ -115,20 +113,17 @@ public class EditProfile extends JPanel {
 		panel_expenseprofile_fund.setPreferredSize(new Dimension(300, 20));
 		panel_expenseprofile.add(panel_expenseprofile_fund);
 	
-		JLabel label_fund = new JLabel("Fund");
-		label_fund.setPreferredSize(new Dimension(100,20));
-		textfield_fund = new JTextField(myExpenseProfile.getCurrentFund()+"");
-		textfield_fund.setPreferredSize(new Dimension(200,20));
-		panel_expenseprofile_fund.add(label_fund);
+		JLabel lblFundLimitation = new JLabel("Fund limitation of next month");
+		lblFundLimitation.setPreferredSize(new Dimension(200,20));
+		textfield_fund = new JTextField(myExpenseProfile.getNextFund() +"");
+		textfield_fund.setPreferredSize(new Dimension(100,20));
+		panel_expenseprofile_fund.add(lblFundLimitation);
 		panel_expenseprofile_fund.add(textfield_fund);
 		
-
-
 		// expense: region
 		panel_expenseprofile.add(Box.createRigidArea(new Dimension(0, 230)));
 
 
-		
 		// dietary
 		JPanel panel_dietaryprofile = new JPanel();
 		panel_dietaryprofile.setLayout(new BoxLayout(panel_dietaryprofile, BoxLayout.Y_AXIS));
@@ -137,18 +132,19 @@ public class EditProfile extends JPanel {
 				TitledBorder.TOP, null, null));
 		panel_2.add(panel_dietaryprofile);
 
-//		// dietary: row 1
+		
+		// dietary: row 1
 		JPanel panel_dietaryprofile_calorie = new JPanel();
 		panel_dietaryprofile_calorie.setAlignmentX(Component.LEFT_ALIGNMENT);
 		panel_dietaryprofile_calorie.setLayout(new BoxLayout(panel_dietaryprofile_calorie, BoxLayout.X_AXIS));
 		panel_dietaryprofile_calorie.setPreferredSize(new Dimension(300, 20));
 		panel_dietaryprofile.add(panel_dietaryprofile_calorie);
 		
-		JLabel label_calorie = new JLabel("Calorie");
-		label_calorie.setPreferredSize(new Dimension(100, 20));
+		JLabel lblCalorieLimitation = new JLabel("Calorie limitation of one day");
+		lblCalorieLimitation.setPreferredSize(new Dimension(200, 20));
 		textfield_calorie = new JTextField(myDietaryProfile.getCurrentCalorie()+"");
-		textfield_calorie.setPreferredSize(new Dimension(200, 20));
-		panel_dietaryprofile_calorie.add(label_calorie);
+		textfield_calorie.setPreferredSize(new Dimension(100, 20));
+		panel_dietaryprofile_calorie.add(lblCalorieLimitation);
 		panel_dietaryprofile_calorie.add(textfield_calorie);
 		
 		
@@ -165,7 +161,7 @@ public class EditProfile extends JPanel {
 		checkbox_lowsugar.setPreferredSize(new Dimension(300, 20));
 		panel_dietaryprofile_checkbox1.add(checkbox_lowsugar);
 		
-//		// dietary: row 3
+		// dietary: row 3
 		JPanel panel_dietaryprofile_checkbox2 = new JPanel();
 		panel_dietaryprofile_checkbox2.setAlignmentX(Component.LEFT_ALIGNMENT);
 		panel_dietaryprofile_checkbox2.setLayout(new BoxLayout(panel_dietaryprofile_checkbox2, BoxLayout.X_AXIS));
@@ -177,8 +173,8 @@ public class EditProfile extends JPanel {
 		checkbox_lowsodium.setSelected(myDietaryProfile.getLowSodium());
 		checkbox_lowsodium.setPreferredSize(new Dimension(300, 20));
 		panel_dietaryprofile_checkbox2.add(checkbox_lowsodium);
-//		
-//		// dietary: row 4
+	
+		// dietary: row 4
 		JPanel panel_dietaryprofile_checkbox3 = new JPanel();
 		panel_dietaryprofile_checkbox3.setAlignmentX(Component.LEFT_ALIGNMENT);
 		panel_dietaryprofile_checkbox3.setLayout(new BoxLayout(panel_dietaryprofile_checkbox3, BoxLayout.X_AXIS));
@@ -221,6 +217,7 @@ public class EditProfile extends JPanel {
 		panel_3.add(panel_3_button);
 
 		JButton btnNewButton_done = new JButton("DONE");
+		btnNewButton_done.setPreferredSize(new Dimension(600, 30));
 		btnNewButton_done.addActionListener(new ActionListener(){
 
 			@Override
@@ -231,20 +228,22 @@ public class EditProfile extends JPanel {
 					fund = Float.parseFloat(textfield_fund.getText());
 					calorie = (int)Integer.parseInt(textfield_calorie.getText());
 				} catch(NumberFormatException e1) {
-					//label_result.setText("please input number");
+					label_result.setText("please input number");
 					return;
 				}
 				
 				boolean low_sugar = checkbox_lowsugar.isSelected();
 				boolean low_sodium  = checkbox_lowsodium.isSelected();
 				boolean low_cholesterol = checkbox_Lowcholesterol.isSelected();
+				
 				CheckUpdateProfile.updateExpenseProfile(user, fund);
 				CheckUpdateProfile.updateDietaryProfile(user, calorie, low_sugar, low_sodium, low_cholesterol);
+				
+				label_result.setText("update correctly");
 			}
 			
 		});
 		panel_3_button.add(btnNewButton_done);
-		
 		
 	}
 

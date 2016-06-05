@@ -116,7 +116,7 @@ public class Navigation {
 //			message.setFont(new Font("Serif", Font.PLAIN, 20));
 //			setBackground(Color.yellow);
 //			add(message);
-			//User user_1000_0 = Serialization.deSerialize("database/user_1000_0.ser");
+
 			EditProfile editprofile = new EditProfile(theUser);
 			this.add(editprofile);
 			setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);	
@@ -132,7 +132,7 @@ public class Navigation {
 //			message.setFont(new Font("Serif", Font.PLAIN, 20));
 //			setBackground(Color.yellow);
 //			add(message);
-			//User user_1000_0 = Serialization.deSerialize("database/user_1000_0.ser");
+
 			GUIDietaryProfile e = new GUIDietaryProfile(theUser);
 			this.add(e);
 			setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);	 		
@@ -147,10 +147,10 @@ public class Navigation {
 //			message.setFont(new Font("Serif", Font.PLAIN, 20));
 //			setBackground(Color.yellow);
 //			add(message);
-			//User user_1000_0 = Serialization.deSerialize("database/user_1000_0.ser");
+
 			GUIExpenseProfile e = new GUIExpenseProfile(theUser);
 			this.add(e);
-			setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+			setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 			
 		}
 	}

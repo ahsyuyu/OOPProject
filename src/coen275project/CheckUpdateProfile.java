@@ -33,12 +33,6 @@ public class CheckUpdateProfile {
 	public static boolean loginUpdateExpenseProfile(User user) {
 		ExpenseProfile expenseProfile = user.getExpenseProfile();
 		String period = expenseProfile.getPeriod();
-		if (period == null) {			
-			System.err.println("Will Never see this line, in CheckValidation:loginCheckExpenseProfile");
-			expenseProfile.reset();
-			System.out.println("loginUpdateExpenseProfile: updated");
-			return true;
-		}
 		
 		// check if within the same month
 		String newMonth = new SimpleDateFormat("YYYY-MM").format(new Date());
@@ -126,9 +120,12 @@ public class CheckUpdateProfile {
 		// update DietaryProfile
 		user.getDietaryProfile().setExpense(user.getDietaryProfile().getExpense() + calorie);
 		// integrate dietaryProfile to everyday has a record against instead of recording every record
-		user.getDietaryProfile().addDietaryRecord(new DietaryRecord(calorie, user.getName()));
+		user.getDietaryProfile().addDietaryRecord(new DietaryRecord(calorie, user.getName(), foodStore.getName()));
 		
+		// TODO
 		Card.getTotalBalance(user.getCardNumber());
+		
+		
 		
 		// serialization
 		serialization(user);
