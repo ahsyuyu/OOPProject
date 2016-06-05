@@ -113,20 +113,20 @@ public class GUIDietaryProfile extends JPanel {
 		lblNewLabel_1.setBounds(6, 20, 151, 16);
 		panel_info.add(lblNewLabel_1);
 
-		JLabel lblNewLabel_2 = new JLabel("Calorie Of This Month:");
-		lblNewLabel_2.setBounds(6, 50, 151, 16);
+		JLabel lblNewLabel_2 = new JLabel("Calorie Limitation(daily) :");
+		lblNewLabel_2.setBounds(6, 50, 158, 16);
 		panel_info.add(lblNewLabel_2);
 
-		JLabel lblNewLabel_3 = new JLabel("Expense :");
-		lblNewLabel_3.setBounds(581, 50, 81, 16);
+		JLabel lblNewLabel_3 = new JLabel("Calorie Expense :");
+		lblNewLabel_3.setBounds(606, 20, 110, 16);
 		panel_info.add(lblNewLabel_3);
 
 		JLabel lblNewLabel_4 = new JLabel("User Name :");
-		lblNewLabel_4.setBounds(278, 20, 149, 16);
+		lblNewLabel_4.setBounds(309, 20, 149, 16);
 		panel_info.add(lblNewLabel_4);
 		
-		JLabel lblNewLabel_5 = new JLabel("Calorie Of Next Month:");
-		lblNewLabel_5.setBounds(278, 50, 149, 16);
+		JLabel lblNewLabel_5 = new JLabel("Calorie Limitation(daily of next period):");
+		lblNewLabel_5.setBounds(309, 50, 247, 16);
 		panel_info.add(lblNewLabel_5);
 		
 		JLabel lblNewLabel_6 = new JLabel("Preference :");
@@ -134,40 +134,40 @@ public class GUIDietaryProfile extends JPanel {
 		panel_info.add(lblNewLabel_6);
 		
 		JLabel label_nextcalorie = new JLabel(myDietaryProfile.getNextCalorie()+"");
-		label_nextcalorie.setBounds(439, 50, 110, 16);
+		label_nextcalorie.setBounds(606, 50, 55, 16);
 		panel_info.add(label_nextcalorie);
 		
 		JLabel label_expense = new JLabel(myDietaryProfile.getExpense()+"");
-		label_expense.setBounds(656, 50, 93, 16);
+		label_expense.setBounds(728, 20, 46, 16);
 		panel_info.add(label_expense);
 		
 		JLabel label_cardnumber = new JLabel(myDietaryProfile.getCardNumber() + "");
-		label_cardnumber.setBounds(156, 20, 86, 16);
+		label_cardnumber.setBounds(193, 20, 86, 16);
 		panel_info.add(label_cardnumber);
 
 		JLabel label_username = new JLabel(myDietaryProfile.getUserName());
-		label_username.setBounds(439, 20, 110, 16);
+		label_username.setBounds(484, 20, 110, 16);
 		panel_info.add(label_username);
 
 		JLabel label_currentcalorie = new JLabel(myDietaryProfile.getCurrentCalorie()+"");
-		label_currentcalorie.setBounds(156, 50, 86, 16);
+		label_currentcalorie.setBounds(193, 50, 86, 16);
 		panel_info.add(label_currentcalorie);
 
 		JCheckBox checkbox_lowSugar = new JCheckBox("lowSugar");
 		checkbox_lowSugar.setSelected(myDietaryProfile.getLowSugar());
-		checkbox_lowSugar.setBounds(149, 78, 93, 23);
+		checkbox_lowSugar.setBounds(173, 78, 93, 23);
 		checkbox_lowSugar.setEnabled(false);
 		panel_info.add(checkbox_lowSugar);
 
 		JCheckBox checkbox_lowSodium = new JCheckBox("lowSodium");
 		checkbox_lowSodium.setSelected(myDietaryProfile.getLowSodium());
-		checkbox_lowSodium.setBounds(267, 78, 110, 23);
+		checkbox_lowSodium.setBounds(298, 78, 110, 23);
 		checkbox_lowSodium.setEnabled(false);
 		panel_info.add(checkbox_lowSodium);
 
 		JCheckBox checkbox_lowCholesterol = new JCheckBox("LowCholesterol");
 		checkbox_lowCholesterol.setSelected(myDietaryProfile.getLowCholesterol());
-		checkbox_lowCholesterol.setBounds(431, 78, 129, 23);
+		checkbox_lowCholesterol.setBounds(476, 78, 129, 23);
 		checkbox_lowCholesterol.setEnabled(false);
 		panel_info.add(checkbox_lowCholesterol);
 		
@@ -311,7 +311,7 @@ public class GUIDietaryProfile extends JPanel {
 		
 		JLabel lblRemainFundOf = new JLabel();
 		lblRemainFundOf.setPreferredSize(new Dimension(300, 16));
-		lblRemainFundOf.setText("remain fund of this month: $ " + (myDietaryProfile.getCurrentCalorie()-myDietaryProfile.getExpense()));
+		lblRemainFundOf.setText("remain calorie of today: $ 0");
 		
 		JButton button_6 = new JButton();
 		button_6.setPreferredSize(new Dimension(16, 16));
@@ -319,9 +319,9 @@ public class GUIDietaryProfile extends JPanel {
 		button_6.setOpaque(true);
 		button_6.setBorderPainted(false);
 		
-		JLabel label_6 = new JLabel();
-		label_6.setPreferredSize(new Dimension(300, 16));
-		label_6.setText("expense of this month: $ " + myDietaryProfile.getExpense());
+		JLabel lblCalorieUsedOf = new JLabel();
+		lblCalorieUsedOf.setPreferredSize(new Dimension(300, 16));
+		lblCalorieUsedOf.setText("calorie used of today: $ 0");
 		
 		JPanel panel_row1 = new JPanel();
 		panel_row1.setPreferredSize(new Dimension(300,125));
@@ -332,7 +332,7 @@ public class GUIDietaryProfile extends JPanel {
 		panel_row1.add(button_5);
 		panel_row1.add(lblRemainFundOf);
 		panel_row2.add(button_6);
-		panel_row2.add(label_6);
+		panel_row2.add(lblCalorieUsedOf);
 		
 		panel_piechart_right.add(panel_row1);
 		panel_piechart_right.add(panel_row2);
