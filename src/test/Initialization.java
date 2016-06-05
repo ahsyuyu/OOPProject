@@ -118,10 +118,14 @@ public class Initialization {
 		expenseList_1001_0.add(er);
 		er = new ExpenseRecord("2016-06-03", 20, "user_1001_0", "Snack Vending Machine");
 		expenseList_1001_0.add(er);
-		dr = new DietaryRecord("2016-06-04", 200, "user_1001_0", "Tago Restaurant");
-		dietaryList_1000_0.add(dr);
-		dr = new DietaryRecord("2016-06-04", 190, "user_1001_0", "Tago Restaurant");
-		dietaryList_1000_0.add(dr);
+		er = new ExpenseRecord("2016-06-04", 20, "user_1001_0", "Drink Vending Machine");
+		expenseList_1001_0.add(er);
+		er = new ExpenseRecord("2016-06-04", 200, "user_1001_0", "Snack Vending Machine");
+		expenseList_1001_0.add(er);
+		er = new ExpenseRecord("2016-06-04", 100, "user_1001_0", "Drink Vending Machine");
+		expenseList_1001_0.add(er);
+		er = new ExpenseRecord("2016-06-04", 80, "user_1001_0", "Tago Restaurant");
+		expenseList_1001_0.add(er);
 		ExpenseProfile expenseProfile_1001_0 = new ExpenseProfile("1001", "user_1001_0", 1000, 1200, 980, "2016-06",
 				expenseList_1001_0);
 		
