@@ -60,7 +60,7 @@ public class TotalExpenseProfile extends JPanel{
 			    System.out.println("yes," + iExtension + " it exist");
 			    
 			    JScrollPane scrollPane_record = new ExpenseShowPanel(filePathString);
-				scrollPane_record.setBorder(BorderFactory.createTitledBorder("Your Record Information"));
+				scrollPane_record.setBorder(BorderFactory.createTitledBorder("Record Information of user_" + user.getCardNumber() + "_" + iExtension));
 				scrollPane_record.setPreferredSize(new Dimension(700, 200));
 				this.add(scrollPane_record);
 			} else {

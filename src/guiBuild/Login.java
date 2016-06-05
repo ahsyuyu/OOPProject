@@ -30,7 +30,7 @@ public class Login {
 	
 	private String accountNumber;
 	private String password;
-	private String extension;
+	private String extension = "0";
 
 	/**
 	 * Launch the application.
@@ -111,7 +111,14 @@ public class Login {
 	        	accountNumber = userAccountField.getText();
 	        	password = userPasswordField.getText();  
 	        	
-	        	Boolean judge = LoginCheck.loginCheckCard(accountNumber, extension, password);
+	        	//System.out.println("extension" + extension);
+	        	
+	        	Boolean judge = false;
+	        	if (!accountNumber.equals("") && !password.equals("")){
+	        		System.out.println("in");
+	        		judge = LoginCheck.loginCheckCard(accountNumber, extension, password);
+	        	} 
+	        	
 	            if (judge) {
 	            	lblWelcomeTo.setText("Succeed!");
 	            	userAccountField.setText("");
