@@ -80,10 +80,10 @@ public class Navigation {
 		JLabel message;
 		
 		public TotalExpensePanel(){
-			message = new JLabel("welcome, " + theUser.getName() + "!");
+			/*message = new JLabel("welcome, " + theUser.getName() + "!");
 			message.setFont(new Font("Serif", Font.PLAIN, 20));
 			setBackground(Color.yellow);
-			add(message);
+			add(message);*/
 			
 			TotalExpenseProfile tep = new TotalExpenseProfile(theUser);
 			this.add(tep);

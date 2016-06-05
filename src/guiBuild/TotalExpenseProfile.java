@@ -9,6 +9,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -18,6 +19,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
@@ -34,59 +36,115 @@ import coen275project.*;
  * When buttons "parent" or "child" is clicked, a new thread is created separately, and go to deductMonday()
  */
 
-public class TotalExpenseProfile extends JPanel{
-	private JPanel testMultiThreadPanel, totalExpensePanel;	
+public class TotalExpenseProfile extends JPanel{	
 	private User user;
+	//private ExpenseProfile myExpenseProfile = null;
+	private static final String[] COLUMN_NAMES = { "Date", "Expense", "Location", "User" };
 	
 	public TotalExpenseProfile(User user){
 		this.user = user;
+		//this.myExpenseProfile = user.getExpenseProfile();
 		initialize();
 	}
 	
 	public void initialize() {
-		//this.setLayout(new FlowLayout());
 		this.setSize(800, 800);
 		this.setBorder(new EmptyBorder(5, 5, 5, 5));
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); 
-		 
-		JScrollPane scrollPane_record = new JScrollPane();
-		scrollPane_record.setBorder(BorderFactory.createTitledBorder("Record Information"));
+		
+		// this user's profile
+		/*JScrollPane scrollPane_record = new ExpenseShowPanel(myExpenseProfile);
+		scrollPane_record.setBorder(BorderFactory.createTitledBorder("Your Record Information"));
 		scrollPane_record.setPreferredSize(new Dimension(700, 200));
-		this.add(scrollPane_record);
+		this.add(scrollPane_record);*/
 		
 		
-		testMultiThreadPanel = new TestMultiThreadPanel();
+
+		for (int iExtension = 0; iExtension < 5; iExtension++) {
+			String filePathString = "database/user_" + user.getCardNumber() + "_" + iExtension + ".ser";
+			File f = new File(filePathString);
+			
+			if(f.exists() && !f.isDirectory()) { 
+			    System.out.println("yes," + iExtension + " it exist");
+			    
+			    JScrollPane scrollPane_record = new ExpenseShowPanel(filePathString);
+				scrollPane_record.setBorder(BorderFactory.createTitledBorder("Your Record Information"));
+				scrollPane_record.setPreferredSize(new Dimension(700, 200));
+				this.add(scrollPane_record);
+			} else {
+				break;
+			}		
+		}
+		
+			
+		
+		JPanel testMultiThreadPanel = new TestMultiThreadPanel();
 		testMultiThreadPanel.setLayout(new FlowLayout());
-		testMultiThreadPanel.setPreferredSize(new Dimension(700, 150));
-		testMultiThreadPanel.setBorder(BorderFactory.createTitledBorder(null, "test Multi-Thread", TitledBorder.CENTER, TitledBorder.TOP, new Font("times new roman",Font.BOLD,36), Color.blue));
-		
+		testMultiThreadPanel.setPreferredSize(new Dimension(700, 120));
+		testMultiThreadPanel.setBorder(BorderFactory.createTitledBorder(null, "test Multi-Thread", TitledBorder.CENTER, TitledBorder.TOP, new Font("times new roman",Font.BOLD,30), Color.blue));
 		//this.add(Box.createRigidArea(new Dimension(800, 100)));
 		this.add(testMultiThreadPanel);
-		
-		/*totalExpensePanel = new ExpenseShowPanel();
-		totalExpensePanel.setLayout(new FlowLayout());
-		totalExpensePanel.setPreferredSize(new Dimension(800, 100));
-		totalExpensePanel.setBorder(BorderFactory.createTitledBorder(null, "ExpenseShowPanel", TitledBorder.CENTER, TitledBorder.TOP, new Font("times new roman",Font.BOLD,36), Color.blue));
-		*/
-		
-		
-		
 	}  
 
+	
+	
+	private class ExpenseShowPanel extends JScrollPane {
+	    private JLabel docNameLabel, docStoreLabel;
+	    private JTextField docNameText, docStoreText;
+	    private JPanel docNamePanel, docStorePanel, buttonPanel;
+	    private JTextArea docContentArea;
+	    private JScrollPane scrollPane;
+	    
+		public ExpenseShowPanel (String filePath) {
+			setBackground(Color.ORANGE);
+			
+			User theUser = Serialization.deSerialize(filePath);   //Lifen: get the user
+            ExpenseProfile oneExpenseProfile = theUser.getExpenseProfile();
+			/************************************* record ******************************************/
+
+			// populate table content
+			final int NumberOfRow = oneExpenseProfile.getList().size();
+			Object[][] data = new Object[NumberOfRow][4];
+			for (int i = 0; i < NumberOfRow; i++) {
+				data[i][0] = oneExpenseProfile.getList().get(i).getDate();
+				data[i][1] = oneExpenseProfile.getList().get(i).getExpense();
+				data[i][2] = oneExpenseProfile.getList().get(i).getStoreName();
+				data[i][3] = oneExpenseProfile.getList().get(i).getUserName();
+			}
+
+			final JTable table = new JTable(data, COLUMN_NAMES);
+
+			table.setFillsViewportHeight(true); 	
+
+			this.setViewportView(table); 	
+			/************************************* end ******************************************/
+		}
+	}
+	
+	
 	private class TestMultiThreadPanel extends JPanel{
 		private JButton buyButton;
 		private JTextField moneyArea;
+		private JLabel message;
+		private JLabel moneySign;
 		
 		public TestMultiThreadPanel(){
+			message = new JLabel("welcome, " + user.getName() + "!    ");
+			message.setFont(new Font("Serif", Font.PLAIN, 20));
+			setBackground(Color.yellow);
+			this.add(message);
+			
+			buyButton = new JButton("buy");
+			buyButton.setBounds(200, 202, 117, 29);
+			this.add(buyButton);
+			
 			moneyArea = new JTextField();
 			moneyArea.setBounds(188, 98, 134, 28);
 			moneyArea.setColumns(10);
 			this.add(moneyArea);
 			
-			buyButton = new JButton("buy");
-			buyButton.setBounds(200, 202, 117, 29);
-			this.add(buyButton);
-
+			moneySign = new JLabel("$");
+			this.add(moneySign);
 			
 			buyButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent event){
@@ -95,53 +153,9 @@ public class TotalExpenseProfile extends JPanel{
 							Card.temTest(user.getCardNumber(), Float.parseFloat(moneyArea.getText()));
 						}
 					};// end of thread
-
 					aWorker.start();
 				}//end of actionPerformed
 			});		
-		}
-	}
-	
-	private class ExpenseShowPanel extends JPanel {
-	    private JLabel docNameLabel, docStoreLabel;
-	    private JTextField docNameText, docStoreText;
-	    private JPanel docNamePanel, docStorePanel, buttonPanel;
-	    private JTextArea docContentArea;
-	    private JScrollPane scrollPane;
-	    
-		public ExpenseShowPanel () {
-			setBackground(Color.ORANGE);
-			
-			/*docNameLabel = new JLabel("new doc name");
-			docStoreLabel = new JLabel("docSotre name");
-			
-			docNameText = new JTextField(10);
-			docStoreText = new JTextField(10);
-			
-			docContentArea = new JTextArea("type doc content here", 5, 20);
-			
-			docNamePanel = new JPanel();
-			docNamePanel.setPreferredSize(new Dimension(300, 40));
-			docNamePanel.add(docNameLabel);
-			docNamePanel.add(docNameText);
-			
-			docStorePanel = new JPanel();
-			docStorePanel.setPreferredSize(new Dimension(300, 40));
-			docStorePanel.add(docStoreLabel);
-			docStorePanel.add(docStoreText);
-			
-			scrollPane = new JScrollPane(docContentArea);    //* the JTextArea has to be added to JScrollPane at this step. It doesn't work if use add() later
-			scrollPane.setPreferredSize(new Dimension(300, 300));
-			scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-			
-			buttonPanel = new JPanel();
-			buttonPanel.setPreferredSize(new Dimension(300, 40));
-			
-			this.add(docNamePanel);
-	 		this.add(docStorePanel);
-	 	    this.add(scrollPane);
-	 		this.add(buttonPanel); */
-	 		//mainFrame.setVisible(true);
 		}
 	}
 
