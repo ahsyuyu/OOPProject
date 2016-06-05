@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 
-public class ExpenseProfile implements Serializable{
+public class ExpenseProfile extends Observable implements Serializable{    //****
 	private static final long serialVersionUID = 2L;
 	
 	private static final String TYPE = "Expense Profile";
@@ -56,6 +56,8 @@ public class ExpenseProfile implements Serializable{
 	// user buy item
     public void addExpenseRecord(ExpenseRecord er) {
     	expenseRecordList.add(er);
+    	setChanged();       //****
+		notifyObservers();       //****
     }
     
     public String getCardNumber() {
