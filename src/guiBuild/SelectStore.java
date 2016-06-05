@@ -137,19 +137,19 @@ public class SelectStore extends JPanel {
 			int y = e.getY();
 			String storeName = "";
 			//blue Daly Science
-			if(x > 751 && x < 792 && y > 68 && y < 114){
+			if(x > 157 && x < 197 && y > 80 && y < 126){
 				System.out.println("blue");
 				storeName = "Drink Vending Machine";
 			}
-			else if(x > 703 && x < 748 && y > 222 && y < 275){
+			else if(x > 102 && x < 142 && y > 235 && y < 285){
 				System.out.println("orange");
 				storeName = "Tago Restaurant";
 			}
-			else if(x > 1096 && x < 1139 && y > 282 && y < 335){
+			else if(x > 494 && x < 540 && y > 293 && y < 340){
 				System.out.println("green");
 				storeName = "Snack Vending Machine";
 			}
-			else if(x > 963 && x < 1004 && y > 427 && y < 477){
+			else if(x > 367 && x < 407 && y > 440 && y < 485){
 				System.out.println("red");
 				storeName = "Mission Cafe";
 			}
