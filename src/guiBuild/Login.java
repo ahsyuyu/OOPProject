@@ -115,7 +115,6 @@ public class Login {
 	        	
 	        	Boolean judge = false;
 	        	if (!accountNumber.equals("") && !password.equals("")){
-	        		System.out.println("in");
 	        		judge = LoginCheck.loginCheckCard(accountNumber, extension, password);
 	        	} 
 	        	

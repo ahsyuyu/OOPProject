@@ -123,7 +123,9 @@ public class CheckUpdateProfile {
 		user.getDietaryProfile().addDietaryRecord(new DietaryRecord(calorie, user.getName(), foodStore.getName()));
 		
 		// TODO
-		Card.getTotalBalance(user.getCardNumber());
+		//Card.getTotalBalance(user.getCardNumber());    //Lifen:no need of this
+		Card.deductMoney(user.getCardNumber(), price);   //Lifen: deduct money
+		//System.out.println("here count");
 		
 		
 		

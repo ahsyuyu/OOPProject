@@ -73,7 +73,7 @@ public class Navigation {
     	frame.setVisible(true);
 	}	
 	
-	//Lifen: test MultiThread purchase
+	//Lifen: totalExpenseProfile + test MultiThread purchase
 	private class TotalExpensePanel extends JPanel{
 		JLabel message;
 		
@@ -116,6 +116,7 @@ public class Navigation {
 //			message.setFont(new Font("Serif", Font.PLAIN, 20));
 //			setBackground(Color.yellow);
 //			add(message);
+
 			EditProfile editprofile = new EditProfile(theUser);
 			this.add(editprofile);
 			setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);	
@@ -131,6 +132,7 @@ public class Navigation {
 //			message.setFont(new Font("Serif", Font.PLAIN, 20));
 //			setBackground(Color.yellow);
 //			add(message);
+
 			GUIDietaryProfile e = new GUIDietaryProfile(theUser);
 			this.add(e);
 			setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);	 		
@@ -145,6 +147,7 @@ public class Navigation {
 //			message.setFont(new Font("Serif", Font.PLAIN, 20));
 //			setBackground(Color.yellow);
 //			add(message);
+
 			GUIExpenseProfile e = new GUIExpenseProfile(theUser);
 			this.add(e);
 			setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
