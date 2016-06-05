@@ -147,9 +147,8 @@ public class Test_Yue {
 //		}
 //		
 		
-		System.out.println("Initialization........");
-		
-		/***************************Test GUI**************/
+		User user = Serialization.deSerialize("database/user_1002_0.ser");
+		System.out.println(user);
 		
 		
 		
