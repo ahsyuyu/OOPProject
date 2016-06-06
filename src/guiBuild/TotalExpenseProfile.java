@@ -1,33 +1,17 @@
 package guiBuild;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.BorderFactory;
-import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.TitledBorder;
 
 import coen275project.*;
 
@@ -60,14 +44,14 @@ public class TotalExpenseProfile extends JPanel implements Observer{
 		this.setBorder(new EmptyBorder(5, 5, 5, 5));
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); 
 		
+		// this user's expense record, update instantly
 		scrollPane_record = new ThisUserPanel(user.getExpenseProfile());
 		scrollPane_record.setBorder(BorderFactory.createTitledBorder("Your expense record: user_" + user.getCardNumber() + "_" + user.getExtensionNumber()));
 		scrollPane_record.setPreferredSize(new Dimension(700, 200));
 		this.add(scrollPane_record);
 	
-		
 			
-		// find the user + extension, if exists, create JScrollPanel and add to TotalExpenseProfile
+		// find the expense record of the family of this user. If exists, create JScrollPanel and add to TotalExpenseProfile. No need to update instantly
 		for (int iExtension = 0; iExtension < 5; iExtension++) {
 			String filePathString = "database/user_" + user.getCardNumber() + "_" + iExtension + ".ser";
 			if (iExtension == user.getExtensionNumber())
@@ -75,8 +59,6 @@ public class TotalExpenseProfile extends JPanel implements Observer{
 			
 			File f = new File(filePathString);
 			if(f.exists() && !f.isDirectory()) { 
-			    //System.out.println("yes," + iExtension + " it exist");
-			    
 			    JScrollPane scrollPane_record = new ExpenseShowPanel(filePathString);
 				scrollPane_record.setBorder(BorderFactory.createTitledBorder("Your family expense: user_" + user.getCardNumber() + "_" + iExtension));
 				scrollPane_record.setPreferredSize(new Dimension(700, 200));
@@ -86,10 +68,7 @@ public class TotalExpenseProfile extends JPanel implements Observer{
 			}		
 		}
 		
-		
-		
-		
-        
+ 
 		// test multi-thread panel
 		/*JPanel testMultiThreadPanel = new TestMultiThreadPanel();
 		testMultiThreadPanel.setLayout(new FlowLayout());
@@ -100,7 +79,6 @@ public class TotalExpenseProfile extends JPanel implements Observer{
 	}  
 
 	private class ThisUserPanel extends JScrollPane{
-
 		public ThisUserPanel (ExpenseProfile oneExpenseProfile) {
 			setBackground(Color.ORANGE);
 
@@ -115,26 +93,19 @@ public class TotalExpenseProfile extends JPanel implements Observer{
 			}
 
 			JTable table = new JTable(data, COLUMN_NAMES);
-
 			table.setFillsViewportHeight(true); 	
-
 			this.setViewportView(table); 	
-			/************************************* end ******************************************/
 		}
-
 	}
 
 
-	
-	private class ExpenseShowPanel extends JScrollPane{
-	    
+	private class ExpenseShowPanel extends JScrollPane{     // for the family members
 		public ExpenseShowPanel (String filePath) {
 			setBackground(Color.ORANGE);
 			
 			User theUser = Serialization.deSerialize(filePath);   // get the user
             ExpenseProfile oneExpenseProfile = theUser.getExpenseProfile();   // get s/he profile
             
-			/************************************* record, Yue's code***********************************/
 			// populate table content
 			int NumberOfRow = oneExpenseProfile.getList().size();
 			Object[][] data = new Object[NumberOfRow][4];
@@ -146,13 +117,9 @@ public class TotalExpenseProfile extends JPanel implements Observer{
 			}
 
 			JTable table = new JTable(data, COLUMN_NAMES);
-
 			table.setFillsViewportHeight(true); 	
-
 			this.setViewportView(table); 	
-			/************************************* end ******************************************/
 		}
-		
 	}
 		
 }

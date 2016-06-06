@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Card implements Serializable {
     private String cardNumber;
     private String password;
-    private float totalBalance = 5000.0F;     //****
+    private float totalBalance = 5000.0F; 
     private static final long serialVersionUID = 1L;
     
     public Card(String cardNumber, String password) {
@@ -42,44 +42,12 @@ public class Card implements Serializable {
 	    Serialization.serialize(thisCard,"database/card_"+ cardNumber +".ser");		
 	}
 	
-    
-	/*synchronized public void deductMoney(float expense) {   //synchronized //****  update after purchase   // 
-        try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		System.out.println("card: " + this.cardNumber);
-		Card temCard = Serialization.deSerialize("database/card_"+ this.cardNumber +".ser");
-		//this.totalBalance = temCard.getTotalBalance();
-		this.totalBalance = temCard.totalBalance;
-		System.out.print("( before deduct is " + this.totalBalance);
-		this.totalBalance -= expense;    // this is not atomic step
-		System.out.println(", after deduct is " + this.totalBalance + ")");
-	    Serialization.serialize(this,"database/card_"+ this.cardNumber +".ser");
-	}*/
-	
-	/*synchronized public void deductMoneyNoSer(float expense) {   //synchronized //****  update after purchase   // 
-        try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		System.out.println("card: " + this.cardNumber);
-		System.out.print("( before deduct is " + this.totalBalance);
-		this.totalBalance -= expense;    // this is not atomic step
-		System.out.println(", after deduct is " + this.totalBalance + ")");
-	}*/
-	
-	
 	public static float getTotalBalance(String cardNumber) {
 		Card temCard = Serialization.deSerialize("database/card_"+ cardNumber +".ser");
 		return temCard.totalBalance;
 	}
 	
-	public void setTotalBalance() {
-		
-	}
+	public void setTotalBalance() {}
 	
 	@Override
 	public String toString() {

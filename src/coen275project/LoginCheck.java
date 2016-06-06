@@ -25,9 +25,7 @@ public class LoginCheck {
             try {
 				line = br.readLine();
 				if (line != null && !line.equals("")){
-					//System.out.println(line);
 	            	String[] parts = line.split("\\s+");
-	            	//System.out.println(parts.length);
 	            	//System.out.println(parts[0] + " + " + parts[1] + " + " + parts[2]);
 	            	if (parts[0].equals(cardNumber) && parts[1].equals(password) && parts[2].equals(extension)){
 	            		return true;

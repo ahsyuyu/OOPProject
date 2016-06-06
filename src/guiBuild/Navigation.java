@@ -1,18 +1,11 @@
 package guiBuild;
 
-import java.awt.Color;
 import java.awt.ComponentOrientation;
-import java.awt.Dimension;
 import java.awt.EventQueue;
-import java.awt.Font;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
 import javax.swing.JFrame;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
@@ -55,12 +48,6 @@ public class Navigation {
 		frame.addWindowListener(windowExitHandler);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		// make the frame, according to the height and width of the screen size
-    	/*Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    	int height = screenSize.height;
-    	int width = screenSize.width;
-    	System.out.println("width" + width + ", height" + height);
-    	frame.setSize(width*9/10, height*7/8);*/
     	frame.setBounds(100, 100, 1250, 700);   	
     	frame.setLocationRelativeTo(null);          // center the mainFrame on screen
     	
@@ -77,32 +64,17 @@ public class Navigation {
     	frame.setVisible(true);
 	}	
 	
-	//Lifen: totalExpenseProfile + test MultiThread purchase
+	//Lifen: below are 5 different panels
 	private class TotalExpensePanel extends JPanel{
-		JLabel message;
-		
 		public TotalExpensePanel(){
-			/*message = new JLabel("welcome, " + theUser.getName() + "!");
-			message.setFont(new Font("Serif", Font.PLAIN, 20));
-			setBackground(Color.yellow);
-			add(message);*/
-			
 			TotalExpenseProfile tep = new TotalExpenseProfile(theUser);
 			this.add(tep);
 			setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		}
 	}
 	
-	// Lifen:  below are 4 panels as inner classes
 	private class OrderPanel extends JPanel {     // include SelectStore GUI
-		JLabel message;
-
 		public OrderPanel(){
-			/*message = new JLabel(theUser.getName() + ", welcome to Order/Buy Panel!");
-			message.setFont(new Font("Serif", Font.PLAIN, 20));
-			setBackground(Color.yellow);
-			add(message);*/
-			
 			SelectStore storeList = new SelectStore(theUser);
 //			Map map = new Map();
 //			this.add(storeList);
@@ -113,30 +85,15 @@ public class Navigation {
 	}
 	
 	private class PreferencePanel extends JPanel {
-		JLabel message;
-
 		public PreferencePanel(){
-//			message = new JLabel("Welcome " + theUser.getName() + ", please edit your preferences here");
-//			message.setFont(new Font("Serif", Font.PLAIN, 20));
-//			setBackground(Color.yellow);
-//			add(message);
-
 			EditProfile editprofile = new EditProfile(theUser);
 			this.add(editprofile);
-			setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);	
-			
+			setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);		
 		}
 	}
 
 	private class DietaryPanel extends JPanel {
-		JLabel message;
-
 		public DietaryPanel(){
-//			message = new JLabel(theUser.getName() + ", below is your Dietary Profile");
-//			message.setFont(new Font("Serif", Font.PLAIN, 20));
-//			setBackground(Color.yellow);
-//			add(message);
-
 			GUIDietaryProfile e = new GUIDietaryProfile(theUser);
 			this.add(e);
 			setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);	 		
@@ -144,18 +101,10 @@ public class Navigation {
 	}
 
 	private class ExpensePanel extends JPanel {
-		JLabel message;
-
 		public ExpensePanel(){
-//			message = new JLabel(theUser.getName() + ", below is your Expense Profile");
-//			message.setFont(new Font("Serif", Font.PLAIN, 20));
-//			setBackground(Color.yellow);
-//			add(message);
-
 			GUIExpenseProfile e = new GUIExpenseProfile(theUser);
 			this.add(e);
-			setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-			
+			setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);		
 		}
 	}
 	
@@ -166,7 +115,6 @@ public class Navigation {
 
 		@Override
 		public void windowClosing(WindowEvent e) {
-			// TODO Auto-generated method stub
 			serialization(theUser);
 			System.out.println("Closing!");
 		}

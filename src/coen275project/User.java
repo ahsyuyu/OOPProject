@@ -1,6 +1,5 @@
 package coen275project;
 
-import java.util.*;
 import java.io.Serializable;
 
 public class User implements Serializable {
@@ -56,7 +55,7 @@ public class User implements Serializable {
     	String s = "User:" + "\n";
     	s += "user name: " + name + "\n";
     	s += "extension: " + extensionNumber + "\n";
-    	s += cardNumber;     // Lifen: change to cardNumber
+    	s += cardNumber; 
     	s += expenseProfile;
     	s += dietaryProfile + "\n";
     	return s;

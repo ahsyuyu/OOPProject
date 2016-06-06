@@ -45,9 +45,7 @@ public class Login {
 					e.printStackTrace();
 				}
 			}
-		});
-		
-		
+		});	
 	}
 	
 	
@@ -110,9 +108,7 @@ public class Login {
 	        public void actionPerformed(ActionEvent e) {   
 	        	accountNumber = userAccountField.getText();
 	        	password = userPasswordField.getText();  
-	        	
-	        	//System.out.println("extension" + extension);
-	        	
+	        		        	
 	        	Boolean judge = false;
 	        	if (!accountNumber.equals("") && !password.equals("")){
 	        		judge = LoginCheck.loginCheckCard(accountNumber, extension, password);
@@ -123,12 +119,7 @@ public class Login {
 	            	userAccountField.setText("");
 	            	userPasswordField.setText("");
 	            	
-	            	try {
-						Thread.sleep(1000);
-						Navigation.main(new String[]{accountNumber, extension});    
-					} catch (InterruptedException e1) {
-						e1.printStackTrace();
-					}
+	            	Navigation.main(new String[]{accountNumber, extension});
 	            } else {
 	            	lblWelcomeTo.setText("Failed! Wrong account/password.");
 	            }
@@ -150,16 +141,5 @@ public class Login {
 		};
 		extensionComboBox.addItemListener(itemListener);	  
 		
-		
-		//below is Anne's test with loginButton
-		/*loginButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				USER = Serialization.deSerialize("No.001.ser");
-				System.out.println( (User)Serialization.deSerialize("No.001.ser") );
-				Menu m = new Menu();
-				m.frame.setVisible(true);
-				
-			}
-		});*/
 	}
 }

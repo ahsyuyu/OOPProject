@@ -1,27 +1,16 @@
 package coen275project;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.ArrayList;
 
-
 /**
  * is the control class represents use case
- * 
  * @author Yue Liu
- *
  */
 
 public class CheckUpdateProfile {
-
 	/**
 	 * check expenseProfile when log in, compare today and period in expenseprofile
 	 * if in the same month, do nothing
@@ -187,9 +176,6 @@ public class CheckUpdateProfile {
 		return list;
 	}
 	
-	
-	
-
 	
 	/**
 	 * check validation and update ExpenseProfile(nextFund) 
