@@ -168,16 +168,16 @@ public class SelectStore extends JPanel {
 	    VendingMachine vm1 = new VendingMachine("Drink Vending Machine", 3, "Daly Science Center");
 	    VendingMachine vm2 = new VendingMachine("Snack Vending Machine", 4, "Engineering Center");
 	    
-	    Food sandwhich = new Food("Sandwhich", 5.99F, 500, true, true, true);
-	    Food yoguart = new Food("Yoguart", 3.99F, 100, true, true, true);
-	    Food hamburger = new Food("Hamburger", 8.99F, 1500, true, false, false);
-	    Food pizza = new Food("Pizza", 4.49F, 250, true, false, false);
-	    Food latte = new Food("Latte", 3.99F, 500, true, true, true);
-	    Food american = new Food("American Coffee", 3.49F, 500, true, true, true);
-	    Food coke = new Food("Coke", 1.99F, 140, false, true, true);
-	    Food toritos = new Food("Toritos", 2.99F, 130, false, false, true);
-	    Food cheetos = new Food("Cheetos", 2.99F, 150, false, false, true);
-	    Food chipAhoy = new Food("Chips Ahoy", 1.99F, 110, false, false, true);
+	    Food sandwhich = new Food("Sandwhich", 5.5F, 500, true, true, true);
+	    Food yoguart = new Food("Yoguart", 3F, 100, true, true, true);
+	    Food hamburger = new Food("Hamburger", 8.5F, 1500, true, false, false);
+	    Food pizza = new Food("Pizza", 4.5F, 250, true, false, false);
+	    Food latte = new Food("Latte", 3F, 500, true, true, true);
+	    Food american = new Food("American Coffee", 3.5F, 500, true, true, true);
+	    Food coke = new Food("Coke", 1F, 140, false, true, true);
+	    Food toritos = new Food("Toritos", 2.5F, 130, false, false, true);
+	    Food cheetos = new Food("Cheetos", 2F, 150, false, false, true);
+	    Food chipAhoy = new Food("Chips Ahoy", 1.5F, 110, false, false, true);
 	    
 	    cafe1.addFoodToList(sandwhich.getName(), sandwhich);
 	    cafe1.addFoodToList(yoguart.getName(), yoguart);
