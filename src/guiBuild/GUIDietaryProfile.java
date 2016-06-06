@@ -41,6 +41,7 @@ import javax.swing.border.Border;
 
 import coen275project.*;
 import javafx.scene.control.CheckBox;
+import javax.swing.ScrollPaneConstants;
 
 
 public class GUIDietaryProfile extends JPanel implements Observer{
@@ -69,7 +70,6 @@ public class GUIDietaryProfile extends JPanel implements Observer{
 		}
 		window.setVisible(true);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
 		
 	}
 
@@ -125,11 +125,11 @@ public class GUIDietaryProfile extends JPanel implements Observer{
 		panel_info.add(lblNewLabel_2);
 
 		JLabel lblNewLabel_3 = new JLabel("Calorie Consumed :");
-		lblNewLabel_3.setBounds(606, 20, 110, 16);
+		lblNewLabel_3.setBounds(590, 20, 126, 16);
 		panel_info.add(lblNewLabel_3);
 
 		JLabel lblNewLabel_4 = new JLabel("User Name :");
-		lblNewLabel_4.setBounds(309, 20, 149, 16);
+		lblNewLabel_4.setBounds(309, 20, 81, 16);
 		panel_info.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_5 = new JLabel("Calorie Limitation(daily of next period):");
@@ -141,7 +141,7 @@ public class GUIDietaryProfile extends JPanel implements Observer{
 		panel_info.add(lblNewLabel_6);
 		
 		JLabel label_nextcalorie = new JLabel(myDietaryProfile.getNextCalorie()+"");
-		label_nextcalorie.setBounds(606, 50, 55, 16);
+		label_nextcalorie.setBounds(590, 50, 55, 16);
 		panel_info.add(label_nextcalorie);
 		
 		JLabel label_expense = new JLabel(myDietaryProfile.getExpense()+"");
@@ -153,7 +153,8 @@ public class GUIDietaryProfile extends JPanel implements Observer{
 		panel_info.add(label_cardnumber);
 
 		JLabel label_username = new JLabel(myDietaryProfile.getUserName());
-		label_username.setBounds(484, 20, 110, 16);
+		label_username.setHorizontalAlignment(SwingConstants.LEFT);
+		label_username.setBounds(402, 20, 110, 16);
 		panel_info.add(label_username);
 
 		JLabel label_currentcalorie = new JLabel(myDietaryProfile.getCurrentCalorie()+"");
@@ -204,16 +205,16 @@ public class GUIDietaryProfile extends JPanel implements Observer{
 		panel_bargraph.setPreferredSize(new Dimension(800, 300));
 		panel_bargraph.setMinimumSize(new Dimension(800, 300));
 
+		// top
 		JPanel panel_bargraph_top = new JPanel();
 		panel_bargraph_top.setPreferredSize(new Dimension(800, 30));
 		panel_bargraph_top.setMinimumSize(new Dimension(800, 30));
 		panel_bargraph_top.setMaximumSize(new Dimension(800, 30));
 		panel_bargraph.add(panel_bargraph_top);
 		
-		JPanel panel_bargraph_bottom = new JPanel();
-		panel_bargraph_bottom.setPreferredSize(new Dimension(800, 270));
-//		panel_bargraph_bottom.setMinimumSize(new Dimension(800, 270));
-		panel_bargraph.add(panel_bargraph_bottom);
+		
+		// scroll will be add after bargraph
+		
 		
 		// pie chart
 		JPanel panel_piechart = new JPanel();
@@ -286,6 +287,7 @@ public class GUIDietaryProfile extends JPanel implements Observer{
 		if (myDietaryProfile.getList().size() > 0) {
 			
 			BarChart chart = new BarChart();
+			chart.setPreferredSize(new Dimension(myDietaryProfile.getList().size() * 110, 200));
 
 			for (int i = 0; i < myDietaryProfile.getList().size(); i++) {
 				
@@ -301,12 +303,14 @@ public class GUIDietaryProfile extends JPanel implements Observer{
 				} else {
 					color = new Color(255, 255, 0);			// yellow
 				}
-				Bar bar = new Bar(color, (float) myDietaryProfile.getList().get(i).getExpense());
+				Bar bar = new Bar(color, (float) myDietaryProfile.getList().get(i).getExpense(), myDietaryProfile.getList().get(i).getDate());
 				chart.addBar(i, bar);
 			}
-			panel_bargraph_bottom.add(chart);
+			
+			JScrollPane scrollpane_bargraph = new JScrollPane(chart);
+			scrollpane_bargraph.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+			panel_bargraph.add(scrollpane_bargraph);
 		}
-		
 		
 		/************************************* pie chart right	 ****************************************/
 		
@@ -366,8 +370,7 @@ class BarChart extends JPanel {
 	private Map<Integer, Bar> bars = new LinkedHashMap<Integer, Bar>();
 
 	public BarChart() {
-		setPreferredSize(new Dimension(800, 220)); 	
-//		setMinimumSize(new Dimension(800, 250)); 
+			
 	}
 
 	public void addBar(Integer i, Bar bar) {
@@ -377,21 +380,30 @@ class BarChart extends JPanel {
 
 	@Override
 	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
 		int max = Integer.MIN_VALUE;
 		for (Bar bar : bars.values()) {
 			float f = bar.getValue();
 			max = Math.max(max, (int) f);
 		}
 
-		int width = getWidth() / bars.size() - 5;
-		int x = 1;
+		int width = 100;
+		int x = 20;
 		for (Bar bar : bars.values()) {
 			int value = (int) bar.getValue().floatValue();
-			int height = (int) ((getHeight() - 5) * ((double) value / max)); 
+			int height = (int) ((getHeight() - 30) * ((double) value / max)); 
+			// draw bar
 			g.setColor(bar.getColor());
 			g.fillRect(x, getHeight() - height, width, height);
+			// draw border
 			g.setColor(Color.black);
-			g.drawRect(x, getHeight() - height, width, height); 							
+			g.drawRect(x, getHeight() - height, width, height); 			
+			// draw string
+			g.setColor(Color.black);
+			g.setFont(new Font("Monospaced", Font.PLAIN, 12));
+			g.drawString(bar.getData(), x+30, getHeight() - height - 20);
+			g.drawString("$" + bar.getValue().toString(), x+30, getHeight() - height - 10);
+			
 			x += (width + 2);
 		}
 	}
@@ -401,10 +413,12 @@ class BarChart extends JPanel {
 class Bar {
 	Color color;
 	Float value;
+	String data;
 
-	public Bar(Color color, Float value) {
+	public Bar(Color color, Float value, String data) {
 		this.color = color;
 		this.value = value;
+		this.data = data.substring(5);
 	}
 
 	public Color getColor() {
@@ -421,6 +435,14 @@ class Bar {
 
 	public void setValue(Float value) {
 		this.value = value;
+	}
+	
+	public String getData() {
+		return data;
+	}
+
+	public void setData(String data) {
+		this.data = data;
 	}
 }
 
