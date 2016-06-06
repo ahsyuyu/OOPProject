@@ -43,7 +43,7 @@ import coen275project.*;
 import javafx.scene.control.CheckBox;
 
 
-public class GUIDietaryProfile extends JPanel {
+public class GUIDietaryProfile extends JPanel implements Observer{
 
 	// entity
 	private User user = null;
@@ -77,10 +77,17 @@ public class GUIDietaryProfile extends JPanel {
 		initializeData(user);
 		initializeGUI();
 	}
+	
+	public void update( Observable observable, Object object ){
+		System.out.println("MVC test, step 2d");
+		this.removeAll();
+		initializeGUI();
+	}
 
 	private void initializeData(User user) {
 		this.user = user;
 		myDietaryProfile = user.getDietaryProfile();
+		myDietaryProfile.addObserver(this);
 	}
 
 	private void initializeGUI() {

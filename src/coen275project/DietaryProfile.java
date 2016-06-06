@@ -5,10 +5,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Observable;
 import java.io.Serializable;
 
 
-public class DietaryProfile implements Serializable{
+public class DietaryProfile extends Observable implements Serializable{
 	private static final long serialVersionUID = 2L;
 	
 	private static final String TYPE = "Dietary Profile";
@@ -56,6 +57,9 @@ public class DietaryProfile implements Serializable{
     // TODO everyday with one record 
     public void addDietaryRecord(DietaryRecord record) {
     	dietaryRecordList.add(record);
+    	System.out.println("MVC test step 1d");
+    	setChanged();       //****
+		notifyObservers();       //****
     }
     
     public void reset_newmonth() {
