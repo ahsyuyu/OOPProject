@@ -43,7 +43,7 @@ import javafx.scene.control.CheckBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class GUIExpenseProfile extends JPanel {
+public class GUIExpenseProfile extends JPanel implements Observer{
 
 	// entity
 	User user = null;
@@ -80,6 +80,13 @@ public class GUIExpenseProfile extends JPanel {
 	private void initializeData(User user) {
 		this.user = user;
 		myExpenseProfile = user.getExpenseProfile();
+		myExpenseProfile.addObserver(this);
+	}
+	
+	public void update( Observable observable, Object object ){
+		System.out.println("MVC test, step 2");
+		this.removeAll();
+		initializeGUI();
 	}
 
 	private void initializeGUI() {
