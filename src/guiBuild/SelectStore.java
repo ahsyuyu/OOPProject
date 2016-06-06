@@ -40,9 +40,7 @@ public class SelectStore extends JPanel {
 		mapPanel = new JPanel();
 		listPanel.setLayout(new BorderLayout(20,20));
 		mapPanel.setLayout(new BorderLayout(20,20));
-		//StoreList sl = new StoreList();
 		storeList = new JList<>(sList);
-		//storeList.setPreferredSize(new Dimension(300,400));
 		DefaultListCellRenderer renderer = (DefaultListCellRenderer) storeList.getCellRenderer();
 		renderer.setHorizontalAlignment(SwingConstants.CENTER);
 		storeList.setFont(new Font("Serif", Font.PLAIN, 28));
@@ -55,7 +53,6 @@ public class SelectStore extends JPanel {
 		listTitle.setHorizontalAlignment(JLabel.CENTER);
 		listTitle.setFont(new Font("Serif", Font.PLAIN, 28));;
 		listPanel.add(listTitle, BorderLayout.NORTH);
-		//listPanel.setBorder(BorderFactory.createEmptyBorder(int top, int left, int bottom, int right);
 		listPanel.add(new JPanel(), BorderLayout.EAST);
 		listPanel.add(new JPanel(), BorderLayout.WEST);
 		listPanel.add(new JPanel(), BorderLayout.SOUTH);
@@ -78,7 +75,6 @@ public class SelectStore extends JPanel {
 	class StoreList extends JPanel{
 		public StoreList(){
 			setLayout(new BorderLayout());
-			//add(new JLabel("Store List"));
 			storeList = new JList<>(sList);
 			storeList.setPreferredSize(new Dimension(300,400));
 			storeList.setFont(new Font("Serif", Font.PLAIN, 24));
@@ -96,10 +92,6 @@ public class SelectStore extends JPanel {
 			if(e.getValueIsAdjusting() ){
 				mapPanel.removeAll();
 				mapPanel.repaint();
-//				JFrame foodStoreMenuWindow = new JFrame();
-//				foodStoreMenuWindow.setSize(500,500);
-//				foodStoreMenuWindow.setVisible(true);
-//				foodStoreMenuWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				
 				FoodStore fs = foodstorelist.getFoodStore(storeList.getSelectedValue());//
 				FoodStoreMenu fsm = new FoodStoreMenu(theUser, fs);
@@ -120,7 +112,6 @@ public class SelectStore extends JPanel {
 			ImageIcon imageIcon = new ImageIcon((new ImageIcon("image.jpg"))
 					.getImage().getScaledInstance(600, 600,
 					java.awt.Image.SCALE_SMOOTH));
-			//ImageIcon imageIcon = new ImageIcon("image.jpg");
 			MapHandler mh = new MapHandler();
 			addMouseListener(mh);
 			add(new JLabel(imageIcon));
@@ -135,7 +126,7 @@ public class SelectStore extends JPanel {
 			int x = e.getX();
 			int y = e.getY();
 			String storeName = "";
-			//blue Daly Science
+
 			if(x > 157 && x < 197 && y > 80 && y < 126){
 				System.out.println("blue");
 				storeName = "Drink Vending Machine";

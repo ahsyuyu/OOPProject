@@ -2,9 +2,6 @@ package guiBuild;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -13,14 +10,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.TableCellRenderer;
 
 import java.util.Date;
 import java.text.DateFormat;
@@ -42,7 +36,6 @@ public class FoodStoreMenu extends JPanel {
 		this.theUser = u;
 		this.foodStore = fs;
 		HashMap<String, Food> fsm = fs.getFoodList();
-		//DefaultListModel<String> fooddlm = new DefaultListModel<String>();
 		Iterator<?> it = fsm.entrySet().iterator();
 		int counter = 0;
 		while(it.hasNext()){
@@ -77,9 +70,6 @@ public class FoodStoreMenu extends JPanel {
 			float price = 0;
 			int calories = 0;
 			List<List<Boolean>> allNutrition = new ArrayList<>();
-//			boolean lowSugar;
-//			boolean lowSodium;
-//			boolean lowCholesterol;
 			
 			for(int i = 0; i < foodList.length; i++) {
 				System.out.println(foodList[i]);
@@ -98,10 +88,8 @@ public class FoodStoreMenu extends JPanel {
 			
 			System.out.println(price);
 			System.out.println(calories);
-			//System.out.println(CheckUpdateProfile.buyItem(theUser, foodStore, price, calories, allNutrition));
 			//[food1, food2, ... calories, expense]
 			List<Boolean> validation = CheckUpdateProfile.buyItem(theUser, foodStore, price, calories, allNutrition);
-			//System.out.println(validation);
 			String msg = "";
 			Boolean succes = true;
 			List<Integer> invalidItems = new ArrayList<Integer>();
@@ -134,31 +122,6 @@ public class FoodStoreMenu extends JPanel {
 				
 			}
 
-			/*foodStoreMenuList.setDefaultRenderer(Object.class, new DefaultTableCellRenderer(){
-			    @Override
-			    public Component getTableCellRendererComponent(JTable table,
-			            Object value, boolean isSelected, boolean hasFocus, int row, int col) {
-
-			        final Component cell = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, col);
-			        
-
-		        	for(int i = 0; i < invalidItems.size(); i++ ){
-		        		if(row == invalidItems.get(i)){//
-		        			//System.out.println(i);
-		        			cell.setBackground(Color.red);
-		        		}
-		        	}
-
-//			        if(row == 1){//invalidItems.get(i)
-//			        	System.out.println("coloring");
-//	        			cell.setForeground(Color.red);
-//	        		}
-			        
-			        
-			             
-			        return this;
-			    }   
-			});*/
 			
 		}
 	}
