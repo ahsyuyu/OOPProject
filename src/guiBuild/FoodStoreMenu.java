@@ -2,6 +2,7 @@ package guiBuild;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -60,6 +62,9 @@ public class FoodStoreMenu extends JPanel {
 		checkoutHandler ch = new checkoutHandler();
 		checkout.addActionListener(ch);
 		add(checkout, BorderLayout.SOUTH);
+		JLabel foodStoreName = new JLabel((String)fs.getName());
+		foodStoreName.setFont(new Font("Serif", Font.PLAIN, 28));
+		add(foodStoreName,BorderLayout.NORTH);
 	}
 	
 	
