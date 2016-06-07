@@ -51,6 +51,8 @@ public class ExpenseProfile extends Observable implements Serializable{    //***
     // modify fund of next month
     public void setNextFund(float fund) {
     	this.nextFund = fund;	
+    	setChanged();       //****
+		notifyObservers();       //****
     }
     
 	// user buy item

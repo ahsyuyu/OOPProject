@@ -232,6 +232,7 @@ public class EditProfile extends JPanel {
 					calorie = (int)Integer.parseInt(textfield_calorie.getText());
 				} catch(NumberFormatException e1) {
 					label_result.setText("please input number");
+					label_result.setForeground(Color.RED);
 					return;
 				}
 				
@@ -243,6 +244,7 @@ public class EditProfile extends JPanel {
 				CheckUpdateProfile.updateDietaryProfile(user, calorie, low_sugar, low_sodium, low_cholesterol);
 				
 				label_result.setText("update correctly");
+				label_result.setForeground(Color.GREEN);
 			}
 			
 		});

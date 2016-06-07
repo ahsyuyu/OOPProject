@@ -51,7 +51,7 @@ public class GUIDietaryProfile extends JPanel implements Observer{
 	private DietaryProfile myDietaryProfile = null;
 
 	// GUI data
-	private static final String[] COLUMN_NAMES = { "Date", "Expense", "Location"};
+	private static final String[] COLUMN_NAMES = { "Date", "Calorie", "Location"};
 
 	public static void main(String[] args) {
 		String filename = "database/user_1000_0.ser";
@@ -141,23 +141,28 @@ public class GUIDietaryProfile extends JPanel implements Observer{
 		panel_info.add(lblNewLabel_6);
 		
 		JLabel label_nextcalorie = new JLabel(myDietaryProfile.getNextCalorie()+"");
+		label_nextcalorie.setEnabled(false);
 		label_nextcalorie.setBounds(590, 50, 55, 16);
 		panel_info.add(label_nextcalorie);
 		
 		JLabel label_expense = new JLabel(myDietaryProfile.getExpense()+"");
+		label_expense.setForeground(Color.BLUE);
 		label_expense.setBounds(728, 20, 46, 16);
 		panel_info.add(label_expense);
 		
 		JLabel label_cardnumber = new JLabel(myDietaryProfile.getCardNumber() + "");
+		label_cardnumber.setForeground(Color.BLUE);
 		label_cardnumber.setBounds(193, 20, 86, 16);
 		panel_info.add(label_cardnumber);
 
 		JLabel label_username = new JLabel(myDietaryProfile.getUserName());
+		label_username.setForeground(Color.BLUE);
 		label_username.setHorizontalAlignment(SwingConstants.LEFT);
 		label_username.setBounds(402, 20, 110, 16);
 		panel_info.add(label_username);
 
 		JLabel label_currentcalorie = new JLabel(myDietaryProfile.getCurrentCalorie()+"");
+		label_currentcalorie.setForeground(Color.BLUE);
 		label_currentcalorie.setBounds(193, 50, 86, 16);
 		panel_info.add(label_currentcalorie);
 
@@ -322,7 +327,7 @@ public class GUIDietaryProfile extends JPanel implements Observer{
 		
 		JLabel lblRemainFundOf = new JLabel();
 		lblRemainFundOf.setPreferredSize(new Dimension(300, 16));
-		lblRemainFundOf.setText("remain calorie of today: $ 0");
+		lblRemainFundOf.setText("remain calorie of today: " + (myDietaryProfile.getCurrentCalorie() - myDietaryProfile.getExpense()));
 		
 		JButton button_6 = new JButton();
 		button_6.setPreferredSize(new Dimension(16, 16));
@@ -332,7 +337,7 @@ public class GUIDietaryProfile extends JPanel implements Observer{
 		
 		JLabel lblCalorieUsedOf = new JLabel();
 		lblCalorieUsedOf.setPreferredSize(new Dimension(300, 16));
-		lblCalorieUsedOf.setText("calorie consumed of today: $ 0");
+		lblCalorieUsedOf.setText("calorie consumed of today: " + myDietaryProfile.getExpense());
 		
 		JPanel panel_row1 = new JPanel();
 		panel_row1.setPreferredSize(new Dimension(300,125));
@@ -402,7 +407,7 @@ class BarChart extends JPanel {
 			g.setColor(Color.black);
 			g.setFont(new Font("Monospaced", Font.PLAIN, 12));
 			g.drawString(bar.getData(), x+30, getHeight() - height - 20);
-			g.drawString("$" + bar.getValue().toString(), x+30, getHeight() - height - 10);
+			g.drawString(bar.getValue().toString(), x+30, getHeight() - height - 10);
 			
 			x += (width + 2);
 		}

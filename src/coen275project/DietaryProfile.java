@@ -154,6 +154,15 @@ public class DietaryProfile extends Observable implements Serializable{
     	this.currentCalorie = setCurrentCalorie;
     }
     
+	public void editProfile(int nextCalorie, boolean lowSugar, boolean lowSodium, boolean lowCholesterol) {
+		this.nextCalorie = nextCalorie;
+		this.lowSugar = lowSugar;
+		this.lowSodium = lowSodium;
+		this.lowCholesterol = lowCholesterol;
+		setChanged();       //****
+		notifyObservers();       //****
+	}
+	
     @Override
     public String toString() {
     	String s = "Profile type: " + TYPE + "\n";

@@ -140,26 +140,32 @@ public class GUIExpenseProfile extends JPanel implements Observer {
 		panel_info.add(lblNextFund);
 
 		JLabel label_cardnumber = new JLabel(myExpenseProfile.getCardNumber() + "");
+		label_cardnumber.setForeground(Color.BLUE);
 		label_cardnumber.setBounds(149, 20, 110, 16);
 		panel_info.add(label_cardnumber);
 
 		JLabel label_username = new JLabel(myExpenseProfile.getUserName());
+		label_username.setForeground(Color.BLUE);
 		label_username.setBounds(448, 20, 89, 16);
 		panel_info.add(label_username);
 
 		JLabel label_currentfund = new JLabel("$ " + myExpenseProfile.getCurrentFund());
+		label_currentfund.setForeground(Color.BLUE);
 		label_currentfund.setBounds(149, 50, 110, 16);
 		panel_info.add(label_currentfund);
 
 		JLabel label_expense = new JLabel("$ " + myExpenseProfile.getExpense());
+		label_expense.setForeground(Color.BLUE);
 		label_expense.setBounds(674, 50, 110, 16);
 		panel_info.add(label_expense);
 
 		JLabel label_period = new JLabel(myExpenseProfile.getPeriod());
+		label_period.setForeground(Color.BLUE);
 		label_period.setBounds(674, 20, 110, 16);
 		panel_info.add(label_period);
 
 		JLabel label_nextfund = new JLabel("$ " + myExpenseProfile.getNextFund());
+		label_nextfund.setForeground(Color.GRAY);
 		label_nextfund.setBounds(448, 50, 89, 16);
 		panel_info.add(label_nextfund);
 

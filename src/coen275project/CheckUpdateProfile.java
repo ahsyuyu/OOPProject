@@ -211,11 +211,8 @@ public class CheckUpdateProfile {
 	 * @return
 	 */
 	public static boolean updateDietaryProfile (User user, int newCalorie, boolean lowsugar, boolean lowsodium, boolean lowcholesterol) {
-		user.getDietaryProfile().setNextCalorie(newCalorie);
-		user.getDietaryProfile().setLowSugar(lowsugar);
-		user.getDietaryProfile().setLowSodium(lowsodium);
-		user.getDietaryProfile().setLowCholesterol(lowcholesterol);
 		
+		user.getDietaryProfile().editProfile(newCalorie, lowsugar, lowsodium, lowcholesterol);
 		//serialization(user);
 		return true;
 	}
