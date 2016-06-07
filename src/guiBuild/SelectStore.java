@@ -177,7 +177,7 @@ public class SelectStore extends JPanel {
 	    Food coke = new Food("Coke", 1F, 140, false, true, true);
 	    Food toritos = new Food("Toritos", 2.5F, 130, false, false, true);
 	    Food cheetos = new Food("Cheetos", 2F, 150, false, false, true);
-	    Food chipAhoy = new Food("Chips Ahoy", 1.5F, 110, false, false, true);
+	    Food chipAhoy = new Food("Chips Ahoy", 1.5F, 110, true, true, true);
 	    
 	    cafe1.addFoodToList(sandwhich.getName(), sandwhich);
 	    cafe1.addFoodToList(yoguart.getName(), yoguart);
