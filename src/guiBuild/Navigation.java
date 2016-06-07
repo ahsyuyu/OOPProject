@@ -116,7 +116,7 @@ public class Navigation {
 		@Override
 		public void windowClosing(WindowEvent e) {
 			serialization(theUser);
-			System.out.println("Closing!");
+			//System.out.println("Closing!");
 		}
 		
 		private boolean serialization(User user) {
