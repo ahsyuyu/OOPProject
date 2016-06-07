@@ -32,7 +32,7 @@ public class SelectStore extends JPanel {
 	User theUser;
 	
 	public SelectStore(User u){
-		System.out.println(u);
+		//System.out.println(u);
 		initialize();
 		this.theUser = u;
 		setLayout(new GridLayout(1,0));
@@ -121,26 +121,26 @@ public class SelectStore extends JPanel {
 	private class MapHandler implements MouseListener{
 		
 		public void mouseClicked(MouseEvent e){
-			System.out.println(e.getX() + " " + e.getY());
+			//System.out.println(e.getX() + " " + e.getY());
 			
 			int x = e.getX();
 			int y = e.getY();
 			String storeName = "";
 
 			if(x > 157 && x < 197 && y > 80 && y < 126){
-				System.out.println("blue");
+				//System.out.println("blue");
 				storeName = "Drink Vending Machine";
 			}
 			else if(x > 102 && x < 142 && y > 235 && y < 285){
-				System.out.println("orange");
+				//System.out.println("orange");
 				storeName = "Tago Restaurant";
 			}
 			else if(x > 494 && x < 540 && y > 293 && y < 340){
-				System.out.println("green");
+				//System.out.println("green");
 				storeName = "Snack Vending Machine";
 			}
 			else if(x > 367 && x < 407 && y > 440 && y < 485){
-				System.out.println("red");
+				//System.out.println("red");
 				storeName = "Mission Cafe";
 			}
 			if(!storeName.isEmpty()){
