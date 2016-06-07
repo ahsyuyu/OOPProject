@@ -28,16 +28,17 @@ public class Card implements Serializable {
 		this.password = password;
 	}
 	
-	synchronized public static void deductMoney(String cardNumber, float expense){
+	synchronized public static void deductMoney(String cardNumber, float expense){   //
+		Card thisCard = Serialization.deSerialize("database/card_"+ cardNumber +".ser");
+		System.out.println("card: " + cardNumber);
+		System.out.print("( before deduct is " + thisCard.totalBalance);
+		
 		try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 		
-		Card thisCard = Serialization.deSerialize("database/card_"+ cardNumber +".ser");
-		System.out.println("card: " + cardNumber);
-		System.out.print("( before deduct is " + thisCard.totalBalance);
 		thisCard.totalBalance -= expense;    // this is not atomic step
 		System.out.println(", after deduct is " + thisCard.totalBalance + ")");
 		

@@ -45,7 +45,28 @@ public class Login {
 					e.printStackTrace();
 				}
 			}
-		});	
+		});
+		
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {					
+					Login window2 = new Login();
+					window2.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		
+		/*Thread bWorker = new Thread() {
+			public void run(){       
+				try{ 
+					Login window = new Login();
+					window.frame.setVisible(true);}          
+				catch(Exception ex){} 
+			}
+		};*/
+		
 	}
 	
 	

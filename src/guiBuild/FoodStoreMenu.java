@@ -77,7 +77,7 @@ public class FoodStoreMenu extends JPanel {
 			List<List<Boolean>> allNutrition = new ArrayList<>();
 			
 			for(int i = 0; i < foodList.length; i++) {
-				System.out.println(foodList[i]);
+				//System.out.println(foodList[i]);
 				List<Boolean> nutrition = new ArrayList<Boolean>();
 				String foodName = (String)foodStoreMenuList.getValueAt(foodList[i],0);
 				
@@ -91,8 +91,8 @@ public class FoodStoreMenu extends JPanel {
 				allNutrition.add(nutrition);
 			}
 			
-			System.out.println(price);
-			System.out.println(calories);
+			//System.out.println(price);
+			//System.out.println(calories);
 			//[food1, food2, ... calories, expense]
 			List<Boolean> validation = CheckUpdateProfile.buyItem(theUser, foodStore, price, calories, allNutrition);
 			String msg = "";
