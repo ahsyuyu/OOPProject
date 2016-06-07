@@ -46,8 +46,8 @@ public class FoodStoreMenu extends JPanel {
 			Food f = (Food)pair.getValue();
 			rows[counter][1] = Float.toString( f.getPrice() );
 			rows[counter][2] = Integer.toString( f.getCalories() );
-			rows[counter][3] = (f.getSodium())? "Low":"High";
-			rows[counter][4] = (f.getSugar())? "Low":"High";
+			rows[counter][3] = (f.getSugar())? "Low":"High";
+			rows[counter][4] = (f.getSodium())? "Low":"High";
 			rows[counter][5] = (f.getCholesterol())? "Low":"High";
 	
 			counter++;
