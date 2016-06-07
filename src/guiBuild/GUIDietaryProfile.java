@@ -79,7 +79,7 @@ public class GUIDietaryProfile extends JPanel implements Observer{
 	}
 	
 	public void update( Observable observable, Object object ){
-		System.out.println("MVC test, step 2d");
+		//System.out.println("MVC test, step 2d");
 		this.removeAll();
 		initializeGUI();
 	}

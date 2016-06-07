@@ -58,7 +58,7 @@ public class ExpenseProfile extends Observable implements Serializable{    //***
 	// user buy item
     public void addExpenseRecord(ExpenseRecord er) {
     	expenseRecordList.add(er);
-    	System.out.println("MVC test step 1");
+    	//System.out.println("MVC test step 1");
     	setChanged();       //****
 		notifyObservers();       //****
     }

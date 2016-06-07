@@ -34,7 +34,7 @@ public class TotalExpenseProfile extends JPanel implements Observer{
 	}
 	
 	public void update( Observable observable, Object object ){
-		System.out.println("MVC test, step 2f");
+		//System.out.println("MVC test, step 2f");
 		this.removeAll();
 		initialize();
 	}

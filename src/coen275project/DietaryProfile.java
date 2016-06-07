@@ -57,7 +57,7 @@ public class DietaryProfile extends Observable implements Serializable{
     // TODO everyday with one record 
     public void addDietaryRecord(DietaryRecord record) {
     	dietaryRecordList.add(record);
-    	System.out.println("MVC test step 1d");
+    	//System.out.println("MVC test step 1d");
     	setChanged();       //****
 		notifyObservers();       //****
     }

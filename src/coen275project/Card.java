@@ -2,6 +2,8 @@ package coen275project;
 
 import java.io.Serializable;
 
+import javax.swing.JOptionPane;
+
 public class Card implements Serializable {
     private String cardNumber;
     private String password;
@@ -39,7 +41,7 @@ public class Card implements Serializable {
 		thisCard.totalBalance -= expense;    // this is not atomic step
 		System.out.println(", after deduct is " + thisCard.totalBalance + ")");
 		
-	    Serialization.serialize(thisCard,"database/card_"+ cardNumber +".ser");		
+	    Serialization.serialize(thisCard,"database/card_"+ cardNumber +".ser");	
 	}
 	
 	public static float getTotalBalance(String cardNumber) {
