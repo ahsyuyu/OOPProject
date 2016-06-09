@@ -17,7 +17,6 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import coen275project.*;
-import test.SerializtionTest;
 
 public class Login {
 	public static User USER;
