@@ -58,15 +58,5 @@ public class ExpenseRecord implements Serializable{
 		return "\n" + "date=" + date + ", expense=" + expense +  " , location = " + storeName + ", userName=" + userName;
 	}
 	
-	public static void main(String[] args) {
-
-//		ExpenseRecord expenseRecord = new ExpenseRecord(1, "2016-05-23");
-//		ExpenseRecord expenseRecord1 = new ExpenseRecord(2, "2016-05-23");
-//		ExpenseRecord expenseRecord2 = new ExpenseRecord(3, "2016-05-24");
-//		
-//		System.out.println(expenseRecord);
-//		System.out.println(expenseRecord1);
-//		System.out.println(expenseRecord2);
-	}
 }
 
