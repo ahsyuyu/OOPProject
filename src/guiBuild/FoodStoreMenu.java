@@ -22,6 +22,7 @@ import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
+import coen275project.Card;
 import coen275project.CheckUpdateProfile;
 import coen275project.Food;
 import coen275project.FoodStore;
@@ -69,8 +70,17 @@ public class FoodStoreMenu extends JPanel {
 	
 	
 	
-	class checkoutHandler implements ActionListener{
+	class checkoutHandler implements ActionListener{		
 		public void actionPerformed(ActionEvent e){
+			Thread aWorker = new Thread() {
+				public void run(){ 
+					checkout();
+				}
+			};// end of thread
+			aWorker.start();
+			
+		}
+		public void checkout(){
 			int[] foodList  = foodStoreMenuList.getSelectedRows();
 			float price = 0;
 			int calories = 0;
@@ -126,8 +136,6 @@ public class FoodStoreMenu extends JPanel {
 				JOptionPane.showMessageDialog(null, msg,"ok",JOptionPane.PLAIN_MESSAGE);
 				
 			}
-
-			
 		}
 	}
 	
