@@ -26,8 +26,8 @@ import coen275project.VendingMachine;
 public class SelectStore extends JPanel {
 	String[] sList = {"Mission Cafe", "Tago Restaurant", "Drink Vending Machine", "Snack Vending Machine"};
 	JList<String> storeList;
-	static JPanel listPanel;
-	static JPanel mapPanel;
+	JPanel listPanel;
+	JPanel mapPanel;
 	static FoodStoreList foodstorelist;
 	User theUser;
 	
