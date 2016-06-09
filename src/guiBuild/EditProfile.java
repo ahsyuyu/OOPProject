@@ -48,6 +48,7 @@ public class EditProfile extends JPanel {
 	private JCheckBox checkbox_lowsugar;
 	private JCheckBox checkbox_lowsodium;
 	private JCheckBox checkbox_Lowcholesterol;
+	private JLabel label_result;
 	
 	public static void main(String[] args) {
 		String filename = "database/user_1000_0.ser";
@@ -207,7 +208,7 @@ public class EditProfile extends JPanel {
 		panel_3_result.setPreferredSize(new Dimension(600, 50));
 		panel_3.add(panel_3_result);
 		
-		JLabel label_result= new JLabel("Result");
+		label_result= new JLabel("Result");
 		label_result.setHorizontalAlignment(SwingConstants.CENTER);
 		label_result.setPreferredSize(new Dimension(600, 50));
 		panel_3_result.add(label_result);
@@ -219,9 +220,9 @@ public class EditProfile extends JPanel {
 		panel_3_button.setPreferredSize(new Dimension(600, 50));
 		panel_3.add(panel_3_button);
 
-		JButton btnNewButton_done = new JButton("DONE");
-		btnNewButton_done.setPreferredSize(new Dimension(600, 30));
-		btnNewButton_done.addActionListener(new ActionListener(){
+		button_save = new JButton("DONE");
+		button_save.setPreferredSize(new Dimension(600, 30));
+		button_save.addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -248,7 +249,7 @@ public class EditProfile extends JPanel {
 			}
 			
 		});
-		panel_3_button.add(btnNewButton_done);
+		panel_3_button.add(button_save);
 		
 	}
 
